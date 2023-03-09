@@ -23,11 +23,13 @@
 import SideBar from './sidebar/index.vue'
 ````
 
-## 路由使用
+## router路由使用
 
 ````js
 import { useRouter } from 'vue-router'
 const router = useRouter()
+
+router.push('/login')
 ````
 
 ## 生命周期使用
@@ -52,5 +54,7 @@ app.use(store)
 // 组件中
 import { useStore } from 'vuex';
 const store = useStore()
+
+await store.dispatch('模块名/方法名');
 
 ````

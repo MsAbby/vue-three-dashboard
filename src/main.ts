@@ -6,6 +6,7 @@ import './assets/style/common.less'
 import App from './App.vue'
 
 
+
 /*
 ** 写法： app.use(router)
 ** 解释： 以前是把router 引进来，再使用, 默认导出只能导出一个

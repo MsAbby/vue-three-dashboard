@@ -10,7 +10,7 @@
 					<el-input v-model="ruleForm.password" type="password" autocomplete="off" placeholder="请输入密码" minlength="200"/>
 				</el-form-item>
 				<el-form-item>
-					<el-button type="primary" @click="loginFn()">登录</el-button>
+					<el-button type="primary" @click="handelLogin()">登录</el-button>
 					<el-button @click="registerFn()">注册</el-button>
 				</el-form-item>
 			</el-form>
@@ -25,6 +25,11 @@
 **    toRef:  针对一个响应式对象（reactive 封装）的 prop（属性）创建一个ref
 */
 import { reactive, toRef, ref } from 'vue';
+import { useRouter } from 'vue-router';
+import { useStore } from 'vuex';
+
+const router = useRouter();
+const store = useStore();
 
 const validateUsername = (rule: unknown, value: string | undefined, callback: (msg?: Error) => void) => {
 	if (value === '') {
@@ -62,12 +67,14 @@ let ruleFormRef = ref()
 ** 1. 校验规则
 ** 2.
 */
-const loginFn = () => {
-	ruleFormRef.value.validate().then(() => {
-		console.log('校验通过')
-	}).catch(() => {
-		console.log('校验不通过')
-	})
+const handelLogin = () => {
+	// ruleFormRef.value.validate().then(() => {
+	// 	console.log('校验通过')
+	// }).catch(() => {
+	// 	console.log('校验不通过')
+	// })
+	store.dispatch('routes/setAllRoutes');
+	router.push('/welcome')
 }
 // 注册
 const registerFn = () => {

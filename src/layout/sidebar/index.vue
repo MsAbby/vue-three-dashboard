@@ -7,13 +7,12 @@
         @open="handleOpen"
         @close="handleClose"
       >
-        <!-- <SidebarItem
-          v-for="route in router.options.routes"
+        <SidebarItem
+          v-for="route in routes"
           :key="route.path"
           :item="route"
           :base-path="route.path"
-          :is-collapse="isCollapse"
-        /> -->
+        />
       </el-menu>
     </el-col>
   </el-row>
@@ -34,6 +33,8 @@ import {
 import {reactive, onMounted, computed } from 'vue'
 import { useRouter } from 'vue-router'
 import { useStore } from 'vuex';
+import SidebarItem from '../component/sidebar-item.vue'
+
 const router = useRouter()
 const store = useStore()
 
@@ -47,14 +48,12 @@ let state = reactive({
 
 })
 
-// let stateRef = ref({
-//   isCollapse: true
-// })
 
 onMounted(() => {
-    console.log(router.options.routes, store)
+    console.log(store.state.routes.routes)
 })
-const routes = computed(() => {
 
+const routes = computed(() => {
+  return store.state.routes.routes
 })
 </script>

@@ -1,8 +1,17 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
 import { App } from 'vue';
+import allRoutes from './all-routers';
 
-const routes: Array<RouteRecordRaw> = [
-	{ path: '/', redirect: '/welcome' },
+const constantRoutes: Array<RouteRecordRaw> = [
+	{ path: '/', redirect: '/login' },
+	{
+		path: '/login',
+		name: 'login',
+		component: () => import('@/views/login/index.vue'),
+	},
+]
+
+const dynamicRoutes: Array<RouteRecordRaw> = [
 	{
 		path: '/layout',
 		name: 'layout',
@@ -18,14 +27,15 @@ const routes: Array<RouteRecordRaw> = [
 				name: 'home',
 				component: () => import('@/views/home/index.vue'),
 			},
-			{
-				path: '/login',
-				name: 'login',
-				component: () => import('@/views/login/index.vue'),
-			},
+			{ ...allRoutes }
 		]
 	},
-];
+]
+
+const routes: Array<RouteRecordRaw> = [
+	...constantRoutes,
+	...dynamicRoutes
+]
 const router = createRouter({
 	routes,
 	history: createWebHashHistory(),
@@ -34,3 +44,5 @@ const router = createRouter({
 export const initRouter = (app: App<Element>) => {
 	app.use(router)
 }
+
+export default router;
