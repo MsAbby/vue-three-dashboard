@@ -1,7 +1,10 @@
 import { createApp } from 'vue'
 import { initRouter } from './router'
+import store from './store'
 import './style.css'
+import './assets/style/common.less'
 import App from './App.vue'
+
 
 /*
 ** 写法： app.use(router)
@@ -12,4 +15,5 @@ import App from './App.vue'
 const app = createApp(App)
 // 初始化路由
 initRouter(app)
+app.use(store)
 app.mount('#app')

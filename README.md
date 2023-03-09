@@ -1,18 +1,56 @@
 # Vue 3 + TypeScript + Vite
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
++ vue3 + ts + vite
++ vue3需要nodeJS的版本最低是node14.18.0
 
 ## Recommended IDE Setup
++ npm i
++ nvm use 14.21.1
++ npm run serve
 
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+## less
 
-## Type Support For `.vue` Imports in TS
++ 自己集成
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
+## 组件
++ 引入即可
 
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
+````js
+// 使用
+<SideBar></SideBar>
 
-1. Disable the built-in TypeScript Extension
-   1. Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-   2. Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
+// 引入
+import SideBar from './sidebar/index.vue'
+````
+
+## 路由使用
+
+````js
+import { useRouter } from 'vue-router'
+const router = useRouter()
+````
+
+## 生命周期使用
+
+````js
+// 引入
+import { onMounted } from 'vue'
+
+// 使用
+onMounted(() => {
+    console.log(router)
+})
+````
+
+## store使用
+
+````js
+// main.ts
+import store from './store'
+app.use(store)
+
+// 组件中
+import { useStore } from 'vuex';
+const store = useStore()
+
+````

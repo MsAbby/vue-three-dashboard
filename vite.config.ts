@@ -19,7 +19,9 @@ export default defineConfig({
   resolve: {
     alias: {
       "@": resolve(__dirname, '.', "src"),
+      "@assets": resolve(__dirname, '.', "src/assets"),
       "_c": resolve(__dirname, '.', "src/component"),
-    }
+    },
+    extensions:['.mjs','.js','.ts','.jsx','.tsx','.json'],
   }
 });

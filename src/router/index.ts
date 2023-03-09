@@ -1,4 +1,3 @@
-import { appendFile } from 'fs';
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
 import { App } from 'vue';
 
@@ -7,7 +6,7 @@ const routes: Array<RouteRecordRaw> = [
 	{
 		path: '/layout',
 		name: 'layout',
-		component: () => import('@/components/layout/index.vue'),
+		component: () => import('@/layout/index.vue'),
 		children: [
 			{
 				path: '/welcome',

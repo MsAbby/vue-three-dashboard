@@ -1,8 +1,6 @@
-<!--  -->
+<!-- 看板 -->
 <template>
-<div class="app-content">
-  <router-view></router-view>
-</div>
+  <div> 看板</div>
 </template>
 
 <script lang='ts' setup>
@@ -10,8 +8,4 @@ import { reactive, toRef, ref } from 'vue'
 </script>
 
 <style lang='less' scoped>
-  .app-content {
-    width: 100vw;
-    height: 100vh;
-  }
 </style>
