@@ -35,8 +35,8 @@ const actions = {
 
   // 设置所有路由
   async setAllRoutes({ commit }) {
-    const defaulArr = [] as any
-    let data = defaulArr.concat(allRoutes);
+    console.log([{id: 1}, {id: 2}])
+    let data = allRoutes as any;
     localStorage.setItem('menu', data);
     commit('setAllRoutes', data);
   },

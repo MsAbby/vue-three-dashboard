@@ -2,6 +2,12 @@ import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
 import { App } from 'vue';
 import allRoutes from './all-routers';
 
+interface routerInterface {
+	path: string,
+	name: string,
+	component: ()=>{}
+}
+
 const constantRoutes: Array<RouteRecordRaw> = [
 	{ path: '/', redirect: '/login' },
 	{
@@ -22,13 +28,7 @@ const dynamicRoutes: Array<RouteRecordRaw> = [
 				name: 'welcome',
 				component: () => import('@/views/welcome/index.vue'),
 			},
-			{
-				path: '/home',
-				name: 'home',
-				component: () => import('@/views/home/index.vue'),
-			},
-			{ ...allRoutes }
-		]
+		].concat(allRoutes)
 	},
 ]
 

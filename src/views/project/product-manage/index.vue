@@ -1,6 +1,6 @@
-<!-- 总览 -->
+<!-- 产品列表 -->
 <template>
-  <div>总览</div>
+  <div></div>
 </template>
 
 <script lang='ts' setup>

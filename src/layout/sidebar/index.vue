@@ -1,8 +1,10 @@
 <template>
   <el-row class="tac">
     <el-col :span="24">
+      <!-- router： 开启， 就会以index为跳转目标, 使用 default-active 来设置加载时的激活项 -->
       <el-menu
-        default-active="2"
+        default-active
+        router
         class="el-menu-vertical-demo"
         @open="handleOpen"
         @close="handleClose"
