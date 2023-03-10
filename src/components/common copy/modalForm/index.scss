@@ -1,0 +1,31 @@
+.form-modal-jsx-content {
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding:10px;
+    margin-bottom: -24px;
+    max-height: 700px;
+    .mgr-0 {
+        margin-right: 0px;
+    }
+    .full-width {
+        width: 100%;
+    }
+     .only-text {
+        .ivu-input[disabled] {
+            cursor: pointer;
+        }
+    }
+}
+
+.is-together {
+    padding-left: 0px !important;
+    .ivu-form-item-content {
+        margin-left: 0 !important;
+    }
+}
+
+.ivu-col-span-24 {
+    display: block;
+    flex: 0 0 100%;
+    max-width: 100%;
+}
