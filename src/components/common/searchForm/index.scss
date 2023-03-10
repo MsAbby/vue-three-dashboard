@@ -1,0 +1,19 @@
+.form-search-jsx-render-contianer {
+    .full-width {
+        width: 100%;
+    }
+    .mgr-0 {
+        margin-right: 0;
+    }
+    .mgr-10 {
+        margin-right: 10px;
+    }
+    .search-operation {
+        flex: 1;
+        text-align: right;
+        .btn-group {
+            display: inline-block;
+            margin-bottom: 24px;
+        }
+    }
+}

@@ -7,8 +7,10 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
-    CustomForm: typeof import('./src/components/custom-form/index.vue')['default']
-    CustomTable: typeof import('./src/components/custom-table/index.vue')['default']
+    copy: typeof import('./src/components/common/custom-form copy/index.vue')['default']
+    CustomForm: typeof import('./src/components/common/custom-form/index.vue')['default']
+    CustomModal: typeof import('./src/components/common/custom-modal/index.vue')['default']
+    CustomTable: typeof import('./src/components/common/custom-table/index.vue')['default']
     ElAside: typeof import('element-plus/es')['ElAside']
     ElButton: typeof import('element-plus/es')['ElButton']
     ElCol: typeof import('element-plus/es')['ElCol']
@@ -27,8 +29,13 @@ declare module '@vue/runtime-core' {
     ElSubMenu: typeof import('element-plus/es')['ElSubMenu']
     Header: typeof import('./src/components/layout/header/index.vue')['default']
     Layout: typeof import('./src/components/layout/index.vue')['default']
+    OwnerBindingChange: typeof import('./src/components/configComponents/example/OwnerBindingChange.vue')['default']
+    OwnerBindingQuery: typeof import('./src/components/configComponents/example/OwnerBindingQuery.vue')['default']
+    OwnerManagement: typeof import('./src/components/configComponents/example/OwnerManagement.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    ShareRecord: typeof import('./src/components/configComponents/example/ShareRecord.vue')['default']
     Sidebar: typeof import('./src/components/layout/sidebar/index.vue')['default']
+    VehchleCascader: typeof import('./src/components/configComponents/example/components/VehchleCascader.vue')['default']
   }
 }
