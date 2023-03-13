@@ -1,11 +1,11 @@
 import Vue from 'vue';
 
-import searchForm from './searchForm/index.jsx.js';
-import searchFormHoc from './searchForm/hoc.jsx.js';
-import searchPage from './searchPage/index.jsx.js';
-import searchPageHoc from './searchPage/hoc.jsx.js';
-import modalForm from './modalForm/index.jsx.js';
-import modalFormHoc from './modalForm/hoc.jsx.js';
+import searchForm from './searchForm/index.jsx';
+import searchFormHoc from '../base-components/form-search/hoc.jsx';
+import searchPage from './searchPage/index.jsx';
+import searchPageHoc from './searchPage/hoc.jsx';
+import modalForm from './modalForm/index.jsx';
+import modalFormHoc from './modalForm/hoc.jsx';
 import formConfigBuilder from './suger';
 
 

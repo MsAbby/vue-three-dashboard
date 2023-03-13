@@ -1,9 +1,11 @@
 import { createApp } from 'vue'
 import { initRouter } from './router'
 import store from './store'
+import ElementPlus from 'element-plus'
+import App from './App.vue'
 import './style.css'
 import './assets/style/common.less'
-import App from './App.vue'
+import 'element-plus/dist/index.css'
 
 
 
@@ -17,4 +19,5 @@ const app = createApp(App)
 // 初始化路由
 initRouter(app)
 app.use(store)
+app.use(ElementPlus)
 app.mount('#app')
