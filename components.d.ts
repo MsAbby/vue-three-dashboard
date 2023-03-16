@@ -28,6 +28,7 @@ declare module '@vue/runtime-core' {
     ElScrollbar: typeof import('element-plus/es')['ElScrollbar']
     ElSubMenu: typeof import('element-plus/es')['ElSubMenu']
     ElUpload: typeof import('element-plus/es')['ElUpload']
+    FormContent: typeof import('./src/components/base-components/form-content/index.vue')['default']
     Header: typeof import('./src/components/layout/header/index.vue')['default']
     Layout: typeof import('./src/components/layout/index.vue')['default']
     OwnerBindingChange: typeof import('./src/components/configComponents/example/OwnerBindingChange.vue')['default']

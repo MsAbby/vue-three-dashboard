@@ -146,3 +146,21 @@ const transValue = () => {
   emit("getValue", value.value)
 }
 ````
+
+## 11. vue2之this.$refs.xxx(标签写ref)可拿到dom元素
+````js
+const form = ref(null)
+form.value.validate(valid => {
+    if (!valid) return;
+    this.$emit('search', {...this.params});
+});
+````
+
+## 12. nextTick
+````js
+import { reactive, toRef, ref, nextTick } from 'vue'
+await nextTick()
+nextTick(()=>{
+  otherParam.showA = true
+})
+````

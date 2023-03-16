@@ -9,6 +9,7 @@
       @videoUpload="(value) => videoUpload(value, index)"
     >
     </UploadVideo>
+    <FormContent></FormContent>
   </div>
 </template>
 
@@ -20,6 +21,7 @@
 */
 import { reactive, toRef, ref } from 'vue'
 import UploadVideo from '@/components/upload-video.vue'
+import FormContent from '@/components/base-components/form-content/index.vue'
  const qData = reactive({
     formData: {
       picVideo: ''
