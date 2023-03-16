@@ -27,6 +27,7 @@ declare module '@vue/runtime-core' {
     ElRow: typeof import('element-plus/es')['ElRow']
     ElScrollbar: typeof import('element-plus/es')['ElScrollbar']
     ElSubMenu: typeof import('element-plus/es')['ElSubMenu']
+    ElUpload: typeof import('element-plus/es')['ElUpload']
     Header: typeof import('./src/components/layout/header/index.vue')['default']
     Layout: typeof import('./src/components/layout/index.vue')['default']
     OwnerBindingChange: typeof import('./src/components/configComponents/example/OwnerBindingChange.vue')['default']
@@ -37,6 +38,8 @@ declare module '@vue/runtime-core' {
     ShareRecord: typeof import('./src/components/configComponents/example/ShareRecord.vue')['default']
     Sidebar: typeof import('./src/components/layout/sidebar/index.vue')['default']
     TableContent: typeof import('./src/components/table-content/index.vue')['default']
+    UploadFiles: typeof import('./src/components/upload-files.vue')['default']
+    UploadVideo: typeof import('./src/components/upload-video.vue')['default']
     VehchleCascader: typeof import('./src/components/configComponents/example/components/VehchleCascader.vue')['default']
   }
 }
