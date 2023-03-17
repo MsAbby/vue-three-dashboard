@@ -14,7 +14,6 @@
       :configForm="qData.configForm"
     >
     </FormContentPage.fixComponent>
-    <el-input v-model="input" placeholder="Please input" />
   </div>
 </template>
 

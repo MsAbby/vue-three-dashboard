@@ -1,5 +1,6 @@
 
 import { defineComponent, ref, reactive, onMounted, nextTick, h } from 'vue'
+
 import './index.less'
 
 export default defineComponent({
@@ -81,8 +82,6 @@ export default defineComponent({
                                 const lg = list?.lgSpan || 12;
                                 const md = list?.mdSpan || 12;
                                 const sm = list?.smSpan || 12;
-
-                                const mm = h(list.component, {}, '111')
                                 return (
                                     <el-col xxl={xxl} xl={xl} lg={lg} md={md} sm={sm} xs={24} key={list.key}>
                                         {/* 常规组件渲染 */}
@@ -92,7 +91,8 @@ export default defineComponent({
                                             prop={list.prop}
                                             rules={list.rules}
                                         >
-                                            <list.component
+                                            { list.component }
+                                            {/* <list.component
                                                 class={["full-width", list.className]}
                                                 on={list.on}
                                                 attrs={list.attrs}
@@ -124,7 +124,7 @@ export default defineComponent({
                                                         ) : null
                                                     })
                                                 }
-                                            </list.component>
+                                            </list.component> */}
                                         </el-form-item>
                                     </el-col>
                                 );

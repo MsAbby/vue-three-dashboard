@@ -1,24 +1,23 @@
 /*
 * form 表单常用的小组件
 */
-
-import { resolveComponent, h } from 'vue'
+import { h } from 'vue'
 let formConfigBuilder = {}
 
 // input
 formConfigBuilder.Input = function Input(config) {
-  return formConfigBuildeFactory(
-    'el-input',
-    {
-      clearable: true,
-      placeholder: `请输入${config.label}`,
-    }
-  )(config);
+  const mm = formConfigBuildeFactory({
+    clearable: true,
+    placeholder: `请输入${config.label}`,
+  })(config);
+
+  const component = h(ElInput, {...config})
+  return {...config, component}
 }
 
 // textarea
 formConfigBuilder.TextArea = function TextArea(config) {
-    return formConfigBuildeFactory('Input', {
+    return formConfigBuildeFactory({
         type: 'textarea',
         clearable: true,
         autosize: { minRows: 3, maxRows: 5 },
@@ -28,7 +27,7 @@ formConfigBuilder.TextArea = function TextArea(config) {
 
 // datepicker
 formConfigBuilder.DatePicker = function DatePicker(config) {
-    return formConfigBuildeFactory('DatePicker', {
+    return formConfigBuildeFactory({
         clearable: true,
         editable: false,
         type: 'daterange',
@@ -39,7 +38,7 @@ formConfigBuilder.DatePicker = function DatePicker(config) {
 
 // select
 formConfigBuilder.Select = function Select(config) {
-    return formConfigBuildeFactory('Select', {
+    return formConfigBuildeFactory({
         transfer: true,
         clearable: true,
         placeholder: `请选择${config.label}`
@@ -62,22 +61,17 @@ formConfigBuilder.Option = function Option({
 
 // cascader
 formConfigBuilder.Cascader = function Cascader(config) {
-    return formConfigBuildeFactory('Cascader', {
+    return formConfigBuildeFactory({
         clearable: true,
         editable: false,
         placeholder: config.label
     })(config);
 }
 
-// Transfer
-formConfigBuilder.Transfer = function (config) {
-    return formConfigBuildeFactory('Transfer', {})(config);
-}
 
-function formConfigBuildeFactory(componentName, defaultProps) {
+function formConfigBuildeFactory(defaultProps) {
   return function (config) {
     return formConfigBuilder.Custom({
-      component: componentName,
       props: { ...defaultProps, ...config.props },
       ...config
     })
@@ -100,5 +94,21 @@ formConfigBuilder.Custom = function (config) {
   config.hidden = typeof config.hidden === 'boolean' ? config.hidden : false;
   return config;
 }
+
+// formConfigBuilder.Custom = function (config) {
+//   config.className = config.className || {};
+//   config.attrs = config.attrs || {};
+//   config.style = config.style || {};
+//   config.children = config.children || [];
+//   config.on = config.on || {};
+//   config.nativeOn = config.nativeOn || {};
+//   config.props = config.props || {};
+//   config.domProps = config.domProps || {};
+//   config.rules = config.rules || {};
+//   config.onlyText = config.onlyText || false;
+//   config.textFilter = config.textFilter || ((v) => v);
+//   config.hidden = typeof config.hidden === 'boolean' ? config.hidden : false;
+//   return config;
+// }
 
 export default formConfigBuilder;
