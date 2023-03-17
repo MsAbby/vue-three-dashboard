@@ -9,7 +9,12 @@
       @videoUpload="(value) => videoUpload(value, index)"
     >
     </UploadVideo>
-    <FormContent></FormContent>
+    <!-- <FormContent :configForm="qData.configForm"></FormContent> -->
+    <FormContentPage.fixComponent
+      :configForm="qData.configForm"
+    >
+    </FormContentPage.fixComponent>
+    <el-input v-model="input" placeholder="Please input" />
   </div>
 </template>
 
@@ -21,11 +26,21 @@
 */
 import { reactive, toRef, ref } from 'vue'
 import UploadVideo from '@/components/upload-video.vue'
-import FormContent from '@/components/base-components/form-content/index.vue'
- const qData = reactive({
+import FormContent from '@/components/base-components/form-content/index.jsx'
+import FormContentHoc from '@/components/base-components/form-content/hoc.jsx'
+import FormConfigBuilder from "@/components/base-components/form-components/index.jsx";
+
+const FormContentPage = FormContentHoc({})
+
+const qData = reactive({
     formData: {
       picVideo: ''
-    }
+    },
+    configForm: [
+      FormConfigBuilder.Input({ label: 'VIN', key: 'vin', props: 'vin' }),
+      FormConfigBuilder.Input({ label: 'developer', key: 'developer', props: 'developer' }),
+      FormConfigBuilder.Input({ label: 'developer1', key: 'developer1', props: 'developer1' }),
+    ]
 })
 
 /******** methods ********/

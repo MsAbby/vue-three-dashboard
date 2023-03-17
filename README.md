@@ -141,10 +141,20 @@ watch(count, (newValue, oldValue) => {
 
 ## 10 子传父事件
 ````js
-const emit = defineEmits(["getValue"])
+// 组件
+const emit = defineEmits(["getValue"]) 
 const transValue = () => {
   emit("getValue", value.value)
 }
+
+// js中
+setup(props, context) {
+  onMounted(() => {
+    nextTick(() => {
+        context.emit('initParams', { ...qData.params });
+    })
+  })
+
 ````
 
 ## 11. vue2之this.$refs.xxx(标签写ref)可拿到dom元素
@@ -164,3 +174,82 @@ nextTick(()=>{
   otherParam.showA = true
 })
 ````
+
+## 13. 关于vue 的 h 函数
+### h函数
++ vue 的render函数中无法渲染element组件库的标签， 原样输出的
++ 缺点： h 函数，可处理动态性更高的场景。但如果是复杂的场景，h 函数写起来就显得非常繁琐，需要自己把所有的属性都转变成对象。并且组件嵌套的时候，对象也会变得非常复杂
+
+````vue
+<template>
+  <Btn></Btn>
+</template>
+
+<script lang='ts' setup>
+import { h} from 'vue'
+const Btn = (props: Props, ctx: any) => {
+    return h('div', {
+        class: 'p-2.5 text-white bg-green-500 rounded shadow-lg w-20 text-center inline m-1',
+    }, h('el-button', { type: "primary"}, '添加'))
+}
+</script>
+````
+
+### jsx语法
++ 解决方案： render函数中解析组件库的标签要使用jsx语法
++ 默认的情况下，vue3+vite的项目不支持jsx，如果想支持jsx，需要安装插件@vitejs/plugin-vue-jsx
+
+````js
+// 安装
+npm i @vitejs/plugin-vue-jsx -D
+
+
+// vite.config.js
+import vueJsx from "@vitejs/plugin-vue-jsx"; // 配置vue使用jsx
+export default defineConfig({plugins: [vue(), vueJsx()]});
+
+// 组件使用
+<script lang="jsx">
+  import { ref } from "vue";
+  export default {
+    setup() {
+      const count = ref(100);
+      return () => <div>测试文件</div>
+    }
+  }
+</script> 
+
+// jsx 文件中使用  index.jsx
+import { defineComponent } from 'vue'
+export default defineComponent({
+  setup() {
+    return () => <div>jsx文件</div>
+  }
+}) 
+````
+
+## vue3中没有mixin，也不需要mixin ，使用函数式组件
+
+````js
+// App.vue
+<template>
+  <hello name="tom">欢迎</hello>
+</template>
+<script lang="ts">
+import { defineComponent,h } from "vue";
+ 
+const Hello = (props:any,context:any)=>{
+  return h('h1',props,context.slots)
+};
+ 
+Hello.props = ['name']
+ 
+export default defineComponent({
+  components:{
+    Hello
+  }
+});
+</script>
+
+````
+

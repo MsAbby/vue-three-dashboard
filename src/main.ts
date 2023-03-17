@@ -1,11 +1,12 @@
 import { createApp } from 'vue'
+import App from './App.vue'
 import { initRouter } from './router'
 import store from './store'
 import ElementPlus from 'element-plus'
-import App from './App.vue'
+import 'element-plus/dist/index.css'
+
 import './style.css'
 import './assets/style/common.less'
-import 'element-plus/dist/index.css'
 
 
 
