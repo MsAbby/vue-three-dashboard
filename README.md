@@ -6,7 +6,7 @@
 ## Recommended IDE Setup
 + npm i
 + nvm use 14.21.1
-+ npm run serve
++ npm run dev
 
 ## 01. less
 
