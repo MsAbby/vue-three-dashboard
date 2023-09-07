@@ -1,14 +1,14 @@
 <template>
     <div>
         <div>
-            <h2>【日期】选择器</h2>
+            <h3>【日期】选择器</h3>
             <div class="flex-x-between module-box">
                 <DatePickerOne />
             </div>
         </div>
         <div>
-            <h2>【日期-时间】选择器</h2>
-            <DateTimePickerContent />
+            <h3>【日期-时间】选择器</h3>
+            <DatePickerTimerOne />
         </div>
     </div>
 </template>
@@ -16,7 +16,7 @@
 <script lang='ts' setup>
 import { reactive, toRef, ref } from 'vue'
 import DatePickerOne from "./components/date-picker-one.vue"
-import DateTimePickerContent from "./date-time-picker.vue"
+import DatePickerTimerOne from "./components/date-picker-time-one.vue"
 </script>
 <style lang='less' scoped>
 .module-box {

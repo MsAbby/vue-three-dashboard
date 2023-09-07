@@ -2,12 +2,13 @@
     <article class="module-content">
         <section class="module-content-top">
             <div  class="flex-x-between">
-                <el-date-picker
-                    v-model="value1.value"
-                    type="month"
-                    value-format="YYYY-MM"
-                    placeholder="选择月份"
-                />
+                 <el-date-picker
+                    v-model="searchModel"
+                    type="datetime"
+                    clearable
+                    @change="handleDateChange($event, item, 'YYYY-MM-DD HH:mm:ss')"
+                    format="YYYY-MM-DD HH:mm:ss"
+                    ></el-date-picker>
                 <el-button type="primary" @click="handelSearch">查询</el-button>
             </div>
             <div class="module-result">{{ formData.dateMonth }}</div>
@@ -25,29 +26,13 @@
  **      ref:  给值类型添加响应式
  **    toRef:  针对一个响应式对象（reactive 封装）的 prop（属性）创建一个ref
  */
-import {computed, reactive, toRef, ref, onMounted } from "vue";
-
-const value1 = ref('')
-const defaultDate = new Date(2010, 9, 1);
-value1.value = defaultDate;
-console.log(value1.value )
-
+import {computed, reactive, toRef, ref, onMounted, watch } from "vue";
 
 const formData = reactive({
-	dateMonth: "",
+    searchModel: "",
 });
 
-const { name, age, like } = toRef(formData);
 
-const datetime = computed(() => {
-    const nowDate = new Date();
-    const year = nowDate.getFullYear();
-    const month = nowDate.getMonth();
-    const result = `${year}-${month}`;
-
-    formData.dateMonth = `${year}-${month}`
-    return result
-});
 
 
 </script>

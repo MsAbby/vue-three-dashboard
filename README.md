@@ -2,6 +2,8 @@
 
 + vue3 + ts + vite
 + vue3需要nodeJS的版本最低是node14.18.0
++ 模版参考： https://github.com/un-pany/v3-admin-vite
+           https://huzhushan.gitee.io/vue3-element-admin-site/#/login?redirect=/home
 
 ## Recommended IDE Setup
 + npm i
@@ -193,6 +195,20 @@ const Btn = (props: Props, ctx: any) => {
     }, h('el-button', { type: "primary"}, '添加'))
 }
 </script>
+````
+
+## 14. vite中， computed 写法
+````js
+  import { computed, toRef, reactive } from "vue";
+ 
+  let person = reactive({ name: "老天师", age: 123, like: "雷法" });
+ 
+  const { name, age, like } = toRef(person);
+  
+  const names = computed(() => {
+    return `${age.value}岁的${name.value}熟练使用无敌的${like.value}`;
+  });
+
 ````
 
 ### jsx语法
