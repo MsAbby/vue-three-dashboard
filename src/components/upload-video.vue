@@ -35,7 +35,7 @@
 			style="display: inline-block"
 		>
 			<div class="ne-upload-window">
-        <el-icon class="avatar-uploader-icon" v-if="!vData.visible"><Plus /></el-icon>
+        <el-icon class="avatar-uploader-icon" v-if="!vData.visible"></el-icon>
         <el-button :loading="vData.visible" v-if="vData.visible"></el-button>
 				<div class="ne-upload-window-text">上传视频</div>
 			</div>
@@ -55,7 +55,6 @@
   **    toRef:  针对一个响应式对象（reactive 封装）的 prop（属性）创建一个ref
   */
   import { reactive, toRef, ref, watch, onMounted} from 'vue'
-  import { Plus } from '@element-plus/icons-vue'
   const emit = defineEmits(["videoUpload"])
 
   /******** props ********/

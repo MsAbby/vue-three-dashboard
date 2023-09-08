@@ -21,7 +21,7 @@
 	</el-menu-item>
 
 	<!-- 有子菜单时: 第一步展示父菜单， 第二步循环展示子菜单 -->
-	<el-sub-menu v-else :index="item.path">
+	<a-sub-menu v-else :index="item.path">
 		<template #title>
 			<!-- <component
         class="menu-icon"
@@ -35,7 +35,7 @@
 		</template>
 		<template v-for="(option, index) in item.children">
 			<menu-item v-if="option.children" :key="option.path" :item="option" />
-			<el-menu-item v-else :index="option.path" :key="index">
+			<a-menu-item v-else :index="option.path" :key="index">
 				<!-- <component
           class="menu-icon"
           v-if="option.meta.icon"
@@ -47,9 +47,9 @@
 				<span class="title">
 					{{ option.meta.title }}
 				</span>
-			</el-menu-item>
+			</a-menu-item>
 		</template>
-	</el-sub-menu>
+	</a-sub-menu>
 </template>
 
 <script>

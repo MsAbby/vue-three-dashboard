@@ -1,10 +1,27 @@
-# Vue 3 + TypeScript + Vite
+# Vue 3 + TypeScript + Vite + antd
 
 + vue3 + ts + vite
 + vue3需要nodeJS的版本最低是node14.18.0
-+ 模版参考： https://github.com/un-pany/v3-admin-vite
-           https://huzhushan.gitee.io/vue3-element-admin-site/#/login?redirect=/home
++ npm install ant-design-vue --save // 全局引入不推荐
 
+## vite按需加载
+vite.config.js文件
+```js
+import ViteComponents, {
+  AntDesignVueResolver
+} from 'vite-plugin-components';
+import vue from '@vitejs/plugin-vue'
+
+export default {
+  plugins: [
+    /* ... */
+    vue(),
+    ViteComponents({
+      customComponentResolvers: [AntDesignVueResolver()],
+    }),
+  ],
+};
+```
 ## Recommended IDE Setup
 + npm i
 + nvm use 14.21.1

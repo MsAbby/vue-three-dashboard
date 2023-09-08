@@ -2,18 +2,18 @@
 <template>
 	<div class="login">
 		<div class="login-container">
-			<el-form ref="ruleFormRef" :model="ruleForm" :rules="rules" label-width="120px" class="demo-ruleForm">
-				<el-form-item prop="username">
-					<el-input v-model="ruleForm.username" type="text" autocomplete="off" placeholder="请输入用户名"/>
-				</el-form-item>
-				<el-form-item prop="password">
-					<el-input v-model="ruleForm.password" type="password" autocomplete="off" placeholder="请输入密码" minlength="200"/>
-				</el-form-item>
-				<el-form-item>
-					<el-button type="primary" @click="handelLogin()">登录</el-button>
-					<el-button @click="registerFn()">注册</el-button>
-				</el-form-item>
-			</el-form>
+			<a-form ref="ruleFormRef" :model="ruleForm" :rules="rules" label-width="120px" class="demo-ruleForm">
+				<a-form-item prop="username">
+					<a-input v-model="ruleForm.username" type="text" autocomplete="off" placeholder="请输入用户名"/>
+				</a-form-item>
+				<a-form-item prop="password">
+					<a-input v-model="ruleForm.password" type="password" autocomplete="off" placeholder="请输入密码" minlength="200"/>
+				</a-form-item>
+				<a-form-item>
+					<a-button type="primary" @click="handelLogin()">登录</a-button>
+					<a-button @click="registerFn()">注册</a-button>
+				</a-form-item>
+			</a-form>
 		</div>
 	</div>
 </template>

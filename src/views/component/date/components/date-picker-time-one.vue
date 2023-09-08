@@ -2,14 +2,14 @@
     <article class="module-content">
         <section class="module-content-top">
             <div  class="flex-x-between">
-                 <el-date-picker
+                 <a-date-picker
                     v-model="searchModel"
                     type="datetime"
                     clearable
                     @change="handleDateChange($event, item, 'YYYY-MM-DD HH:mm:ss')"
                     format="YYYY-MM-DD HH:mm:ss"
-                    ></el-date-picker>
-                <el-button type="primary" @click="handelSearch">查询</el-button>
+                    ></a-date-picker>
+                <a-button type="primary" @click="handelSearch">查询</a-button>
             </div>
             <div class="module-result">{{ formData.dateMonth }}</div>
         </section>

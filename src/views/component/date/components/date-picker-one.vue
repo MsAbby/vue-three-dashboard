@@ -2,13 +2,13 @@
     <article class="module-content">
         <section class="module-content-top">
             <div  class="flex-x-between">
-                <el-date-picker
+                <a-date-picker
                     v-model="value1.value"
                     type="month"
                     value-format="YYYY-MM"
                     placeholder="选择月份"
                 />
-                <el-button type="primary" @click="handelSearch">查询</el-button>
+                <a-button type="primary" @click="handelSearch">查询</a-button>
             </div>
             <div class="module-result">{{ formData.dateMonth }}</div>
         </section>
