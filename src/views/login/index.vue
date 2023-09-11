@@ -2,16 +2,38 @@
 <template>
 	<div class="login">
 		<div class="login-container">
-			<a-form ref="ruleFormRef" :model="ruleForm" :rules="rules" label-width="120px" class="demo-ruleForm">
-				<a-form-item prop="username">
-					<a-input v-model="ruleForm.username" type="text" autocomplete="off" placeholder="请输入用户名"/>
+			<a-form
+				name="basic"
+				autocomplete="off"
+				:model="formState"
+				:label-col="{ span: 8 }"
+				:wrapper-col="{ span: 16 }"
+				:rules="rules"
+			>
+				<a-form-item
+					label="用户名"
+					name="username"
+				>
+					<a-input v-model:value="formState.username" />
 				</a-form-item>
-				<a-form-item prop="password">
-					<a-input v-model="ruleForm.password" type="password" autocomplete="off" placeholder="请输入密码" minlength="200"/>
+
+				<a-form-item
+					label="密码"
+					name="password"
+				>
+					<a-input-password v-model:value="formState.password" />
 				</a-form-item>
-				<a-form-item>
-					<a-button type="primary" @click="handelLogin()">登录</a-button>
-					<a-button @click="registerFn()">注册</a-button>
+
+				<a-form-item name="remember" :wrapper-col="{ offset: 8, span: 16 }">
+					<a-checkbox
+						v-model:checked="formState.remember"
+					>
+						记住密码
+					</a-checkbox>
+				</a-form-item>
+
+				<a-form-item :wrapper-col="{ offset: 8, span: 16 }">
+					<a-button type="primary" html-type="submit" @click="handelLogin">登录</a-button>
 				</a-form-item>
 			</a-form>
 		</div>
@@ -20,66 +42,74 @@
 
 <script lang="ts" setup>
 /*
-** reactive:  只能 给对象、数组添加响应式
-**      ref:  给值类型添加响应式
-**    toRef:  针对一个响应式对象（reactive 封装）的 prop（属性）创建一个ref
-*/
-import { reactive, toRef, ref } from 'vue';
-import { useRouter } from 'vue-router';
-import { useStore } from 'vuex';
+ ** reactive:  只能 给对象、数组添加响应式
+ **      ref:  给值类型添加响应式
+ **    toRef:  针对一个响应式对象（reactive 封装）的 prop（属性）创建一个ref
+ */
+import { reactive, toRef, ref } from "vue";
+import { useRouter } from "vue-router";
+import { useStore } from "vuex";
 
 const router = useRouter();
 const store = useStore();
 
-const validateUsername = (rule: unknown, value: string | undefined, callback: (msg?: Error) => void) => {
-	if (value === '') {
-		callback(new Error('请输入用户名'))
-	} else {
-		callback()
-	}
-}
-const validatePassword = (rule: unknown, value: string | undefined, callback: (msg?: Error) => void) => {
-	if (value === '') {
-		callback(new Error('请输入密码'))
-	} else {
-		callback()
-	}
+// 1. interface
+interface FormState {
+	username: string;
+	password: string;
+	remember: boolean;
+	rules: array<any>;
 }
 
-const state = reactive({
-	ruleForm: {
-		username: '',
-		password: '',
-	},
-	rules: {
-		username: [{ validator: validateUsername, trigger: 'blur' }],
-		password: [{ validator: validatePassword, trigger: 'blur' }]
+//  2. rules
+const validateUsername = (
+	rule: unknown,
+	value: string | undefined,
+	callback: (msg?: Error) => void
+) => {
+	if (value === "") {
+		callback(new Error("请输入用户名"));
+	} else {
+		callback();
 	}
+};
+const validatePassword = (
+	rule: unknown,
+	value: string | undefined,
+	callback: (msg?: Error) => void
+) => {
+	if (value === "") {
+		callback(new Error("请输入密码"));
+	} else {
+		callback();
+	}
+};
+
+// 3. data
+const formState = reactive<FormState>({
+	username: "",
+	password: "",
+	remember: true,
+	rules: {
+		username: [{ validator: validateUsername, trigger: "blur" }],
+		password: [{ validator: validatePassword, trigger: "blur" }],
+	},
 });
 
-// 不用toRef解构， 会失去响应式
-let ruleForm = toRef(state, 'ruleForm')
-let rules = toRef(state, 'rules')
-// 获取el-form 对象
-let ruleFormRef = ref()
-
-/*
-** 1. 校验规则
-** 2.
-*/
+// 4. methods
 const handelLogin = () => {
 	// ruleFormRef.value.validate().then(() => {
 	// 	console.log('校验通过')
 	// }).catch(() => {
 	// 	console.log('校验不通过')
 	// })
-	store.dispatch('routes/setAllRoutes');
-	router.push('/welcome')
-}
+	store.dispatch("routes/setAllRoutes");
+	router.push("/welcome");
+};
 // 注册
-const registerFn = () => {
+const registerFn = () => {};
 
-}
+
 </script>
 
 <style scoped>
@@ -99,6 +129,5 @@ const registerFn = () => {
 	border-radius: 10px;
 	justify-content: center;
 	align-items: center;
-
 }
 </style>

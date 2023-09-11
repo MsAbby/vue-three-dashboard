@@ -12,7 +12,7 @@
 
 ````js
 
-<el-form>
+<a-form>
   // form 里面的组件要根据业务动态渲染( props传过去 )
-</el-form>
+</a-form>
 ````

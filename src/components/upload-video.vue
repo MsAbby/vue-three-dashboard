@@ -14,15 +14,15 @@
 					<source :src="vData.url" type="video/3gpp" />
 				</video>
 				<div v-if="vData.url">
-					<el-icon
+					<a-icon
 						type="md-close"
 						style="position: absolute; top: 0; left: 230px"
 						@click="Remove"
-					></el-icon>
+					></a-icon>
 				</div>
 			</div>
 		</template>
-		<el-upload
+		<a-upload
 			v-if="!vData.url"
 			ref="upload"
 			class="upload-demo"
@@ -35,8 +35,8 @@
 			style="display: inline-block"
 		>
 			<div class="ne-upload-window">
-        <el-icon class="avatar-uploader-icon" v-if="!vData.visible"></el-icon>
-        <el-button :loading="vData.visible" v-if="vData.visible"></el-button>
+        <a-icon class="avatar-uploader-icon" v-if="!vData.visible"></a-icon>
+        <a-button :loading="vData.visible" v-if="vData.visible"></a-button>
 				<div class="ne-upload-window-text">上传视频</div>
 			</div>
 			<template #tip>

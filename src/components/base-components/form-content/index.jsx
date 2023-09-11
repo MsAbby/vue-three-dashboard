@@ -66,7 +66,7 @@ export default defineComponent({
             return (
                 <div class="form-search-jsx-render-contianer">
                     {/* 一个form表单, labelWidth: 标签的宽度 */}
-                    <el-form
+                    <a-form
                         ref="form"
                         label-width={qData.formAttributes.abelWidth}
                         inline={qData.formAttributes.inline}
@@ -74,7 +74,7 @@ export default defineComponent({
                         model={qData.params}
                     >
                     {/* 多行（包含不同的组件： configs中有不同类型的组件） */}
-                    <el-row gutter={ 12 }>
+                    <a-row gutter={ 12 }>
                         {
                             props.configForm && props.configForm.map((list, index) => {
                                 const xxl = list?.xxlSpan || 6;
@@ -83,9 +83,9 @@ export default defineComponent({
                                 const md = list?.mdSpan || 12;
                                 const sm = list?.smSpan || 12;
                                 return (
-                                    <el-col xxl={xxl} xl={xl} lg={lg} md={md} sm={sm} xs={24} key={list.key}>
+                                    <a-col xxl={xxl} xl={xl} lg={lg} md={md} sm={sm} xs={24} key={list.key}>
                                         {/* 常规组件渲染 */}
-                                        <el-form-item
+                                        <a-form-item
                                             class="mgr-0 full-width"
                                             label={list.label}
                                             prop={list.prop}
@@ -125,13 +125,13 @@ export default defineComponent({
                                                     })
                                                 }
                                             </list.component> */}
-                                        </el-form-item>
-                                    </el-col>
+                                        </a-form-item>
+                                    </a-col>
                                 );
                             })
                         }
-                    </el-row>
-                    </el-form>
+                    </a-row>
+                    </a-form>
                 </div>
             )
         }

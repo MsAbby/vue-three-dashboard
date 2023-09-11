@@ -102,14 +102,14 @@ export default defineComponent ({
     //     const searchBtns = () => (
     //         <div class="search-operation">
     //             <div class="btn-group">
-    //                 <el-button class="mgr-10" type="primary" loading={this.btnLoading} onClick={ this.search }>查询</el-button>
-    //                 <el-button class="mgr-10" onClick={ this.reset }>重置</el-button>
+    //                 <a-button class="mgr-10" type="primary" loading={this.btnLoading} onClick={ this.search }>查询</a-button>
+    //                 <a-button class="mgr-10" onClick={ this.reset }>重置</el-button>
     //                 {
     //                     configs.length < 4 ? null : (
-    //                         <el-button type="text" onClick={ this.onExpland }>
+    //                         <a-button type="text" onClick={ this.onExpland }>
     //                             <span>{ this.expland ? "收起" : "展开" }</span>
-    //                             <el-icon type={`ios-arrow-${!this.expland ? 'down' : 'up'}`} />
-    //                         </el-button>
+    //                             <a-icon type={`ios-arrow-${!this.expland ? 'down' : 'up'}`} />
+    //                         </a-button>
     //                     )
     //                 }
     //             </div>
@@ -117,7 +117,7 @@ export default defineComponent ({
     //     );
     //     return (
     //         <div class="form-search-jsx-render-contianer">
-    //             <el-form
+    //             <a-form
     //                 ref="form"
     //                 props={{
     //                     inline: true,
@@ -127,7 +127,7 @@ export default defineComponent ({
     //                     model: params
     //                 }}
     //             >
-    //             {/* <el-row gutter={ 12 }>
+    //             {/* <a-row gutter={ 12 }>
     //                 {
     //                     ...configs.map((config, index) => {
     //                         const xxl = config?.xxlSpan || 6;
@@ -137,8 +137,8 @@ export default defineComponent ({
     //                         const sm = config?.smSpan || 12;
     //                         return (
     //                             (expland ? true : index < 3) ?
-    //                             <el-col xxl={xxl} xl={xl} lg={lg} md={md} sm={sm} xs={24} key={config.key}>
-    //                                 <el-form-item
+    //                             <a-col xxl={xxl} xl={xl} lg={lg} md={md} sm={sm} xs={24} key={config.key}>
+    //                                 <a-form-item
     //                                     class="mgr-0 full-width"
     //                                     label={config.label}
     //                                     prop={config.prop}
@@ -176,14 +176,14 @@ export default defineComponent ({
     //                                             })
     //                                         }
     //                                     </config.component>
-    //                                 </el-form-item>
-    //                             </el-col> : null
+    //                                 </a-form-item>
+    //                             </a-col> : null
     //                         );
     //                     })
     //                 }
     //                 {searchBtns()}
-    //             </el-row> */}
-    //             </el-form>
+    //             </a-row> */}
+    //             </a-form>
     //         </div>
     //     )
 // }
