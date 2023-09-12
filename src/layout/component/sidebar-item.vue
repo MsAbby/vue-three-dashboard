@@ -1,22 +1,22 @@
 <template>
-	<a-sub-menu :key="route.path">
-		<div>{{ route.meta.title}}</div>
-		<!-- <template #title>111</template>
-		<template v-for="(options, index) in route.children" :key="index"> -->
-			<!-- <template v-if="!options.children">
-				<a-menu-item :key="option.path" @click="menuItemClick(route)">
-					{{ route.title }}
-				</a-menu-item>
-			</template> -->
-			<!-- <template v-else>
-				<sub-menu
-					:key="route.path"
-					:menu-info="route"
-					@menuItemClick="menuItemClick(route)"
-				></sub-menu>
-			</template> -->
-		<!-- </template> -->
-	</a-sub-menu>
+	<!-- 没有孩子的 -->
+	<a-menu-item :key="route.path" v-if="!route.children">
+		<template #icon>{{ route.meta.title}}</template>
+		<template #title>{{ route.meta.title}}</template>
+	</a-menu-item>
+	<!-- 有孩子的 -->
+	<a-menu-item :key="route.path" v-else>
+		<template #icon>{{ route.meta.title}}</template>
+		<template #title>{{ route.meta.title}}</template>
+		<!-- <template>
+			<MenuItem
+				v-for="options in routes.children"
+				:key="options.path"
+				:route="options"
+			></MenuItem>
+		</template> -->
+	</a-menu-item>
+	
 </template>
 
 <script>

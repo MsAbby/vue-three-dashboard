@@ -1,5 +1,6 @@
 <template>
 	<a-menu
+		mode="inline"
 		v-model:selectedKeys="selectedKeys"
 		class="el-menu-vertical-demo"
 	>

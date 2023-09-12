@@ -1,6 +1,6 @@
-import { Layout, Button, TimePicker, Form, Input, Checkbox } from "ant-design-vue";
+import { Layout, Menu, Button, TimePicker, Form, Input, Checkbox } from "ant-design-vue";
 
-const components = [Layout, Button, TimePicker, Form, Input, Checkbox];
+const components = [Layout, Menu, Button, TimePicker, Form, Input, Checkbox];
 
 export default function setupAtnd(app: any) {
 	components.forEach((component) => {
