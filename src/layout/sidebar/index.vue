@@ -1,13 +1,20 @@
+
 <template>
+	<div class="menu_logo">
+   	 	<span v-show="!collapsed">通用后台</span>
+  	</div>
 	<a-menu
 		mode="inline"
 		v-model:selectedKeys="selectedKeys"
 		class="el-menu-vertical-demo"
+		v-model:openKeys="openKeys"
+		@update:selectedKeys="updateSelectedKeys"
+		@update:openKeys="updateOpenKeys"
 	>
-		<SidebarItem
-			v-for="route in routes"
-			:key="route.path"
-			:route="route"
+		<SideBarItem
+			v-for="item in menuRouter"
+			:key="item.path"
+			:route="item"
 		/>
 	</a-menu>
 </template>
@@ -21,15 +28,42 @@
 import { reactive, onMounted, computed, ref } from "vue";
 import { useRouter } from "vue-router";
 import { useStore } from "vuex";
-import SidebarItem from "../component/sidebar-item.vue";
+import SideBarItem from "./sidebar-item.vue";
 
-const router = useRouter();
+const props = defineProps({
+	collapsed: Boolean
+});
+
 const store = useStore();
+const route = useRouter();
 const selectedKeys = ref<string[]>(['/']);
+const openKeys = ref<string[]>([])
+
+// computed
+const menuRouter = computed(() => {
+	console.log(store.state.routes)
+	return store.state.routes.routes;
+});
+
+// emit
+const emit = defineEmits(
+	[
+		'menuItemClick',
+		'update:selectedKeys',
+		'update:openKeys'
+	]
+)
+
+const updateSelectedKeys = (...res: string[][]) => {
+  	emit('update:selectedKeys', ...res);
+};
+
+const updateOpenKeys = (...res: string[][]) => {
+  emit('update:openKeys', ...res);
+};
 
 let state = reactive({});
 
-const routes = computed(() => {
-	return store.state.routes.routes;
-});
+
+
 </script>

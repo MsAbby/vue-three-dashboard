@@ -1,31 +1,29 @@
 <template>
-	<!-- 没有孩子的 -->
-	<a-menu-item :key="route.path" v-if="!route.children">
-		<template #icon>{{ route.meta.title}}</template>
-		<template #title>{{ route.meta.title}}</template>
-	</a-menu-item>
-	<!-- 有孩子的 -->
-	<a-menu-item :key="route.path" v-else>
-		<template #icon>{{ route.meta.title}}</template>
-		<template #title>{{ route.meta.title}}</template>
-		<!-- <template>
-			<MenuItem
-				v-for="options in routes.children"
-				:key="options.path"
-				:route="options"
-			></MenuItem>
-		</template> -->
-	</a-menu-item>
+	<a-sub-menu :key="route.key">
+		<template #icon><SettingOutlined /></template>
+		<template #title>{{ route.meta.title }}</template>
+		<template v-for="item in route.meta.children" :key="item.key">
+			<template v-if="!item.children">
+				<a-menu-item :key="item.key" @click="menuItemClick(item)">
+					{{ item.title }}
+				</a-menu-item>
+			</template>
+			<template v-else>
+				<sub-menu
+					:key="item.key"
+					:menu-info="item"
+					@menuItemClick="menuItemClick(item)"
+				></sub-menu>
+			</template>
+		</template>
+	</a-sub-menu>
+
+	
 	
 </template>
 
-<script>
-export default {
-	name: "MenuItem",
-};
-</script>
+<script lang="ts" setup name="SubMenu">
 
-<script setup>
 import { computed } from "vue";
 import { useStore } from "vuex";
 

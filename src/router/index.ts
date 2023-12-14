@@ -1,3 +1,4 @@
+
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
 import { App } from 'vue';
 import allRoutes from './all-routers';

@@ -1,27 +1,31 @@
 <template>
-	<div class="common-layout">
+	<div class="layout">
 		<a-layout style="width: 100%; height: 100%">
 			<!-- 左侧边栏 -->
-			<a-layout-sider v-model:collapsed="collapsed" :trigger="null" collapsible>
-				<SideBar></SideBar>
+			<a-layout-sider
+				width="256"
+			 	v-model:collapsed="collapsed"
+				:trigger="null"
+				collapsible
+			>
+				<layout-sidebar :collapsed="collapsed" />
 			</a-layout-sider>
+			<!-- 右侧内容 -->
 			<a-layout>
-				<a-layout-header style="background: #fff; padding: 0">
-					<menu-unfold-outlined
-						v-if="collapsed"
-						class="trigger"
-						@click="() => (collapsed = !collapsed)"
-					/>
-					<menu-fold-outlined
-						v-else
-						class="trigger"
-						@click="() => (collapsed = !collapsed)"
-					/>
+				<!-- 头部 -->
+				<a-layout-header
+					class="header"
+					style="background: #fff;
+					padding: 0"
+				>
+					<layout-header v-model:collapsed="collapsed" />
 				</a-layout-header>
+				<!-- 内容 -->
                 <a-layout-content
+					class="container"
                     :style="{ margin: '24px 16px', padding: '24px', background: '#fff', minHeight: '280px' }"
                 >
-                   <router-view></router-view>
+					<!-- <layout-tabs /> -->
                 </a-layout-content>
 			</a-layout>
 		</a-layout>
@@ -33,24 +37,61 @@
  **      ref:  给值类型添加响应式
  **    toRef:  针对一个响应式对象（reactive 封装）的 prop（属性）创建一个ref
  */
-import {
-  PieChartOutlined,
-  DesktopOutlined,
-  UserOutlined,
-  TeamOutlined,
-  FileOutlined,
-} from '@ant-design/icons-vue';
 import { reactive, toRef, ref } from "vue";
-import SideBar from "./sidebar/index.vue";
+import layoutSidebar from './sidebar/index.vue'
+// import layoutTabs from './tabs/tabs.vue'
+import layoutHeader from './header/index.vue'
 
 const collapsed = ref<boolean>(false);
 
 const state = reactive({});
+
 </script>
 
-<style scoped>
-.common-layout {
-	width: 100%;
-	height: 100%;
+<style scoped lang="less">
+.layout {
+	overflow: hidden;
+	height: 100vh;
+	&.header {
+	  background-color: #FFF;
+	  padding: 0;
+	}
+	&.container {
+	  padding: 8px;
+	  overflow-y: auto;
+	  overflow-x: hidden;
+	}
+	&.container::-webkit-scrollbar {
+	  width: 6px;
+	}
+	&.container::-webkit-scrollbar-thumb {
+	  border-radius: 10px;
+	  box-shadow: inset 0 0 5px #d8d8d8;
+	  background: #C1C1C1;
+	}
+	&.container::-webkit-scrollbar-track {
+	  box-shadow: inset 0 0 5px #d8d8d8;
+	  background: #ededed;
+	}
+  }
+</style>
+<style lang="less">
+.layout {
+  &.ant-layout-sider-children {
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+  &.ant-layout-sider-children::-webkit-scrollbar {
+    width: 4px;
+  }
+  &.ant-layout-sider-children::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    box-shadow: inset 0 0 5px #d8d8d8;
+    background: #535353;
+  }
+  &.ant-layout-sider-children::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px #d8d8d8;
+    background: #ededed;
+  }
 }
 </style>
