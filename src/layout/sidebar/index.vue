@@ -1,4 +1,3 @@
-
 <template>
 	<div class="menu_logo">
    	 	<span v-show="!collapsed">通用后台</span>
@@ -11,11 +10,8 @@
 		@update:selectedKeys="updateSelectedKeys"
 		@update:openKeys="updateOpenKeys"
 	>
-		<SideBarItem
-			v-for="item in menuRouter"
-			:key="item.path"
-			:route="item"
-		/>
+		<!-- 引入子组件 -->
+		<SubMenu :menuRouter="menuRouter" />
 	</a-menu>
 </template>
 
@@ -28,7 +24,7 @@
 import { reactive, onMounted, computed, ref } from "vue";
 import { useRouter } from "vue-router";
 import { useStore } from "vuex";
-import SideBarItem from "./sidebar-item.vue";
+import SubMenu from "./sub-menu.vue";
 
 const props = defineProps({
 	collapsed: Boolean
