@@ -298,4 +298,6 @@ import echarts from "./plugins/echarts/index";
 app.config.globalProperties.$echarts = echarts;
 
 
+visualMap visualMap-piecewise 可以自定义tooltips
+
 
