@@ -4,6 +4,7 @@
   	</div>
 	<a-menu
 		mode="inline"
+		theme="light"
 		v-model:selectedKeys="selectedKeys"
 		class="el-menu-vertical-demo"
 		v-model:openKeys="openKeys"
@@ -58,7 +59,8 @@ const updateOpenKeys = (...res: string[][]) => {
   emit('update:openKeys', ...res);
 };
 
-let state = reactive({});
+let state = reactive({
+});
 
 
 

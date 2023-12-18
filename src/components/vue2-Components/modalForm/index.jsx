@@ -1,8 +1,9 @@
+
 import { Modal, Button, Form, Spin, Row, Col, FormItem, Tooltip, Input } from 'view-design';
 import formMixin from '../mixins/formMixin';
 import modalMixin from '../mixins/modalMixin';
 
-import './index.scss';
+import './index.less';
 
 /**
  * 表单单双列切换阈值

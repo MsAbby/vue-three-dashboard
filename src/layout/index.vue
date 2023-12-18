@@ -25,7 +25,7 @@
 					class="container"
                     :style="{ margin: '24px 16px', padding: '24px', background: '#fff', minHeight: '280px' }"
                 >
-					<!-- <layout-tabs /> -->
+					<router-view ></router-view>
                 </a-layout-content>
 			</a-layout>
 		</a-layout>
@@ -77,21 +77,21 @@ const state = reactive({});
 </style>
 <style lang="less">
 .layout {
-  &.ant-layout-sider-children {
-    overflow-y: auto;
-    overflow-x: hidden;
-  }
-  &.ant-layout-sider-children::-webkit-scrollbar {
-    width: 4px;
-  }
-  &.ant-layout-sider-children::-webkit-scrollbar-thumb {
-    border-radius: 10px;
-    box-shadow: inset 0 0 5px #d8d8d8;
-    background: #535353;
-  }
-  &.ant-layout-sider-children::-webkit-scrollbar-track {
-    box-shadow: inset 0 0 5px #d8d8d8;
-    background: #ededed;
-  }
+//   &.ant-layout-sider-children {
+//     overflow-y: auto;
+//     overflow-x: hidden;
+//   }
+//   &.ant-layout-sider-children::-webkit-scrollbar {
+//     width: 4px;
+//   }
+//   &.ant-layout-sider-children::-webkit-scrollbar-thumb {
+//     border-radius: 10px;
+//     box-shadow: inset 0 0 5px #d8d8d8;
+//     background: #535353;
+//   }
+//   &.ant-layout-sider-children::-webkit-scrollbar-track {
+//     box-shadow: inset 0 0 5px #d8d8d8;
+//     background: #ededed;
+//   }
 }
 </style>

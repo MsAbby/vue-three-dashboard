@@ -3,7 +3,7 @@ import SearchForm from "../searchForm/index.jsx";
 import CTable from "../../CTable.vue";
 import { resizer, prefix } from "../utils/dom";
 
-import './index.scss';
+import './index.less';
 
 const tableSizes = () => ([
     { label: '默认',  value: 'default' },

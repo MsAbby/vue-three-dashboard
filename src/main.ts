@@ -1,8 +1,11 @@
+
 import { createApp } from 'vue'
 import App from './App.vue'
 import { initRouter } from './router'
 import store from './store'
 import setupAtnd from './ant-design-vue/index'
+// 引入echarts
+import echarts from "./plugins/echarts/index";
 import 'ant-design-vue/dist/reset.css';
 import './style.css'
 import './assets/style/reset.less'
@@ -16,6 +19,9 @@ import './assets/style/common.less'
 ** 解释： 把 app 传进 router中, 导出可以导出多个
 */
 const app = createApp(App)
+
+// 注册组件
+app.config.globalProperties.$echarts = echarts;
 // 初始化路由
 initRouter(app)
 setupAtnd(app)

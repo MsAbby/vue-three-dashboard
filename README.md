@@ -287,3 +287,15 @@ export default defineComponent({
 
 ````
 
+
+### 按需引入echarts
+
+
+yarn add echarts --S
+
+main.js 要注入
+import echarts from "./plugins/echarts/index";
+app.config.globalProperties.$echarts = echarts;
+
+
+

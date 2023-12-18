@@ -101,7 +101,7 @@ export default {
     }
 }
 </script>
-<style lang="scss" scoped>
+<style lang="less" scoped>
     .text {
         width: 100%;
         overflow: hidden;
