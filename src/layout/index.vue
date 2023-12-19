@@ -52,11 +52,11 @@ const state = reactive({});
 .layout {
 	overflow: hidden;
 	height: 100vh;
-	&.header {
+	.header {
 	  background-color: #FFF;
 	  padding: 0;
 	}
-	&.container {
+	.container {
 	  padding: 8px;
 	  overflow-y: auto;
 	  overflow-x: hidden;
