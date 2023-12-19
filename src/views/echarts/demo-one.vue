@@ -56,10 +56,10 @@ const pieEcharts = ref<any>(null);
 
 // select
 const options = ref<Array<SelectTypes>>([
-      { value: 'day', label: '日' },
-      { value: 'week', label: '周' },
-      { value: 'month', label: '月' },
-    ]);
+	{ value: 'day', label: '日' },
+	{ value: 'week', label: '周' },
+	{ value: 'month', label: '月' },
+]);
 
 // line option
 const optionLine = {
@@ -778,6 +778,8 @@ const optionPie = {
 	},
 };
 
+
+
 onMounted(() => {
 	nextTick(() => {
 		initLineChart();
@@ -806,4 +808,13 @@ const initPieChart = () => {
 		pieEcharts.value.resize();
 	};
 };
+
+// 设置只能选择当前时间以前的时间（不包含今天）
+const range = (start: any, end: any) => {
+    const result: any = [];
+    for (let i = start; i <= end; i++) {
+        result.push(i);
+    }
+    return result;
+}
 </script>

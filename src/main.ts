@@ -6,6 +6,8 @@ import store from './store'
 import setupAtnd from './ant-design-vue/index'
 // 引入echarts
 import echarts from "./plugins/echarts/index";
+// 引入moment
+import moment from "moment"
 import 'ant-design-vue/dist/reset.css';
 import './style.css'
 import './assets/style/reset.less'
@@ -22,6 +24,8 @@ const app = createApp(App)
 
 // 挂载echarts
 app.config.globalProperties.$echarts = echarts;
+// 挂载moment
+app.config.globalProperties.$moment = moment;
 // 初始化路由
 initRouter(app)
 setupAtnd(app)
