@@ -1,12 +1,12 @@
 <template>
-    <div class="layout__header">
-      <div class="header__left">
-        <menu-unfold-outlined
+    <div class="layout_header">
+      <div class="header_left">
+        <!-- <menu-unfold-outlined
           v-if="collapsed"
           class="trigger"
           @click="$emit('update:collapsed', !collapsed)"
-        />
-        <menu-fold-outlined v-else class="trigger" @click="$emit('update:collapsed', !collapsed)" />
+        /> -->
+        <!-- <menu-fold-outlined v-else class="trigger" @click="$emit('update:collapsed', !collapsed)" /> -->
         <!-- <div class="group__tabs">
           <a-tabs :activeKey="activeKey" >
             <a-tab-pane v-for="item in routers" :key="item.id" :tab="item.name" />
@@ -27,7 +27,7 @@
           <template #overlay>
             <a-menu>
               <a-menu-item key="1" @click="logout()">
-                <template #icon><a-icon type="PoweroffOutlined" /></template>
+                <template #icon></template>
                 退出登录
               </a-menu-item>
             </a-menu>
@@ -52,13 +52,13 @@
   
   </script>
   <style lang="less" scoped>
-  .layout__header {
+  .layout_header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0 22px;
     font-size: 20px;
-    & .header__left {
+    & .header_left {
       display: flex;
       align-items: center;
       flex-grow: 1;

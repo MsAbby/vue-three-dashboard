@@ -20,7 +20,7 @@ import './assets/style/common.less'
 */
 const app = createApp(App)
 
-// 注册组件
+// 挂载echarts
 app.config.globalProperties.$echarts = echarts;
 // 初始化路由
 initRouter(app)

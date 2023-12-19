@@ -1,11 +1,3 @@
-<!--
- * @Autor        : lang.liu@beantechs.com
- * @Date         : 2021-02-01 17:25:53
- * @LastEditTime : 2021-08-25 18:24:00
- * @LastEditors  : shaoxu.yu@beantechs.cn
- * @Description  : Update v0.0.5 Button按钮添加上传loading
- * @FilePath     : /bt-operation-dashboard/client/component/uploadFiles.vue
--->
 <template>
   <span>
     <Upload v-if="uploadType === 'button'" :on-format-error="handleFormatError" :before-upload="handleUpload" :show-upload-list="false" action="" style="display:inline-block;">
@@ -20,10 +12,10 @@
           <img v-if="isImgOrVideo === 'img'" :src="uploadData" @click="handleView"/>
           <video v-if="isImgOrVideo === 'video'" :src="uploadData" :autoplay="autoplay" controls="controls" loop="loop"></video>
           <div v-if="isUpdate" class="upload_img-cover" v-show="!disabled && isImgOrVideo === 'img'">
-            <Icon type="ios-trash-outline" @click.native="delImg"></Icon>
+           <PlayCircleOutlined @click.native="delImg" />
           </div>
           <div v-if="isUpdate" class="upload_video-cover" v-show="!disabled && isImgOrVideo === 'video'">
-            <Icon type="ios-close-circle-outline" @click.native="delVideo"></Icon>
+            <PlayCircleOutlined @click.native="delVideo" />
           </div>
         </div>
         <div class="flex" v-if="!uploadData">
@@ -41,7 +33,7 @@
             style="display: inline-block;"
           >
             <div class="ne-upload-window">
-              <Icon class="ne-upload-window-img" type="md-add" size="20"></Icon>
+              <PlayCircleOutlined />
               <div class="ne-upload-window-text">{{ uploadBoxTxt }}</div>
             </div>
           </Upload>

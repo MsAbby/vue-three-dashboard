@@ -8,8 +8,6 @@
 		v-model:selectedKeys="selectedKeys"
 		class="el-menu-vertical-demo"
 		v-model:openKeys="openKeys"
-		@update:selectedKeys="updateSelectedKeys"
-		@update:openKeys="updateOpenKeys"
 	>
 		<!-- 引入子组件 -->
 		<SubMenu :menuRouter="menuRouter" />
@@ -41,27 +39,4 @@ const menuRouter = computed(() => {
 	console.log(store.state.routes)
 	return store.state.routes.routes;
 });
-
-// emit
-const emit = defineEmits(
-	[
-		'menuItemClick',
-		'update:selectedKeys',
-		'update:openKeys'
-	]
-)
-
-const updateSelectedKeys = (...res: string[][]) => {
-  	emit('update:selectedKeys', ...res);
-};
-
-const updateOpenKeys = (...res: string[][]) => {
-  emit('update:openKeys', ...res);
-};
-
-let state = reactive({
-});
-
-
-
 </script>

@@ -35,7 +35,7 @@ const renderOperate = (h, vm) => (
                     {/* 刷新 */}
                     <Tooltip content="刷新" style="margin-left: 10px">
                         <Button onClick={ vm.pageRefresh }>
-                            <Icon class="icon-refresh" style={vm.iconRefreshStyle} type="md-refresh"/>
+                            <SyncOutlined style={vm.iconRefreshStyle} />
                         </Button>
                     </Tooltip>
                     {/* 密度 */}
@@ -44,7 +44,7 @@ const renderOperate = (h, vm) => (
                         style="margin-left: 10px"
                         on={{ 'on-click': (size) => vm.tableSize = size }}>
                         <Tooltip content="密度" placement="top">
-                            <Button><Icon type="md-list" /></Button>
+                            <Button><SyncOutlined /></Button>
                         </Tooltip>
                         <DropdownMenu slot="list">
                             {
@@ -64,7 +64,7 @@ const renderOperate = (h, vm) => (
                     {/* 列设置 */}
                     <Dropdown trigger="click" placement="left-start">
                         <Tooltip content="列设置" placement="top" style="margin-left: 10px">
-                            <Button><Icon type="md-options" /></Button>
+                            <Button><SyncOutlined /></Button>
                         </Tooltip>
                         <DropdownMenu slot="list">
                             <div class="col-show-head">
