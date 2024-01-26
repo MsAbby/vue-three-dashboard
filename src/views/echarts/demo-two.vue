@@ -178,7 +178,7 @@ export default {
     },
 };
 </script>
-<style scoped lang="scss">
+<style scoped lang="less">
 .tbox-warning-type {
     .empty-text {
         text-align: center;

@@ -13,7 +13,6 @@ import './style.css'
 import './assets/style/reset.less'
 import './assets/style/common.less'
 
-
 /*
 ** 写法： app.use(router)
 ** 解释： 以前是把router 引进来，再使用, 默认导出只能导出一个
@@ -26,6 +25,7 @@ const app = createApp(App)
 app.config.globalProperties.$echarts = echarts;
 // 挂载moment
 app.config.globalProperties.$moment = moment;
+// app.provide("moment", moment);
 // 初始化路由
 initRouter(app)
 setupAtnd(app)
