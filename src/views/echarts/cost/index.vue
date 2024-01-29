@@ -1,9 +1,4 @@
-<!--
- * @author: lishumin/GW00323781
- * @date: 2024/01/26 14:09:09
- * @description: 
- * Copyright(c)2024 GWM.Co.Ltd.All rights reserved.
--->
+
 <template>
 	<div class="cost-report">
 		<!-- time -->
