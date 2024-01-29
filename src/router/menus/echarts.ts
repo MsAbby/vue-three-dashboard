@@ -1,3 +1,4 @@
+
 const echartsRouter = {
   path: '/echarts',
   name: 'echarts',
@@ -21,6 +22,15 @@ const echartsRouter = {
       component: () => import('@/views/echarts/cost/index.vue'),
       meta: {
         title: '案例二',
+        icon: 'icon-code',
+      },
+    },
+    {
+      path: '/cost2',
+      name: 'echarts-cost2',
+      component: () => import('@/views/echarts/cost2/index.vue'),
+      meta: {
+        title: '案例三',
         icon: 'icon-code',
       },
     },

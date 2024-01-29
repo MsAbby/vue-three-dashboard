@@ -1,6 +1,6 @@
 <template>
 	<div class="menu_logo">
-   	 	<span v-show="!collapsed">通用后台</span>
+   	 	<span v-show="!collapsed" style="height: 64px; width: 100%; display: inline-block; text-align: center; line-height: 64px;">通用后台</span>
   	</div>
 	<a-menu
 		mode="inline"

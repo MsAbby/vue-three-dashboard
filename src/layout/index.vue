@@ -1,9 +1,10 @@
 <template>
 	<div class="layout">
-		<a-layout style="width: 100%; height: 100%">
+		<a-layout style="width: 100%; height: 100%; " theme="light">
 			<!-- 左侧边栏 -->
 			<a-layout-sider
 				width="256"
+				style="background: #fff;"
 			 	v-model:collapsed="collapsed"
 				:trigger="null"
 				collapsible
@@ -23,7 +24,7 @@
 				<!-- 内容 -->
                 <a-layout-content
 					class="container"
-                    :style="{ margin: '24px 16px', padding: '24px', background: '#fff', minHeight: '280px' }"
+                    :style="{ margin: '24px 16px', minHeight: '280px' }"
                 >
 					<router-view ></router-view>
                 </a-layout-content>
@@ -57,7 +58,6 @@ const state = reactive({});
 	  padding: 0;
 	}
 	.container {
-	  padding: 8px;
 	  overflow-y: auto;
 	  overflow-x: hidden;
 	}
