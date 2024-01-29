@@ -1,40 +1,42 @@
 // 组合式函数
 // 按照惯例，组合式函数名以“use”开头
+import { getCurrentInstance, nextTick } from "vue";
 export default function usePieEChartsOptions() {
-	const setTooltipEchart = () => {
-		this.$nextTick(() => {
-			let dom = "";
-			// echarts.getInstanceByDom获取之前可能创建过的实例，如果有则继续使用这个实例，否则创建
-			if (deptId) {
-				dom = document.getElementById("tooltipChartDepartment");
-			} else {
-				dom = document.getElementById("tooltipChartModel");
+	let currentDetail = [];
+	const { proxy } = getCurrentInstance();
+	const setTooltipEchart = async (deptId) => {
+		await nextTick();
+		let dom = "";
+		// echarts.getInstanceByDom获取之前可能创建过的实例，如果有则继续使用这个实例，否则创建
+		if (deptId) {
+			dom = document.getElementById("tooltipChartDepartment");
+		} else {
+			dom = document.getElementById("tooltipChartModel");
+		}
+		if (dom) {
+			let tooltipEchart = proxy.$echarts.getInstanceByDom(dom);
+			if (tooltipEchart) {
+				// 在初始化图表之前销毁之前的实例
+				tooltipEchart.dispose();
 			}
-			if (dom) {
-				this.tooltipEchart = this.$echarts.getInstanceByDom(dom);
-				if (this.tooltipEchart) {
-					// 在初始化图表之前销毁之前的实例
-					this.tooltipEchart.dispose();
-				}
-				this.tooltipEchart = this.$echarts.init(dom);
-				const options = deepClone(this.option);
-				options.series[0].data = this.currentDetail;
-				options.tooltip = {
-					show: true,
-					formatter: "{b0}: {c0}元 ({d}%)",
-				};
-				this.tooltipEchart.clear();
-				options && this.tooltipEchart.setOption(options);
-				// 随着屏幕大小调节图表
-				window.addEventListener("resize", () => {
-					this.tooltipEchart.resize();
-				});
-			}
-		});
+			tooltipEchart = proxy.$echarts.init(dom);
+			const options = getCommonOptions().option;
+			console.log("+++", currentDetail)
+			options.series[0].data = currentDetail;
+			options.tooltip = {
+				show: true,
+				formatter: "{b0}: {c0}元 ({d}%)",
+			};
+			tooltipEchart.clear();
+			options && tooltipEchart.setOption(options);
+			// 随着屏幕大小调节图表
+			window.addEventListener("resize", () => {
+				tooltipEchart.resize();
+			});
+		}
 	};
 	const getCommonOptions = () => {
 		return {
-			currentDetail: [],
 			option: {
 				// 悬浮框
 				tooltip: {
@@ -77,7 +79,7 @@ export default function usePieEChartsOptions() {
 						return [x, "-135%"];
 					},
 					formatter: (params, ticket, callback) => {
-						this.currentDetail = [];
+						currentDetail = [];
 						let request = {};
 						const txt = params.data.deptId ? "车型" : "部门";
 						let htmlStr = `
@@ -98,32 +100,47 @@ export default function usePieEChartsOptions() {
 
 						if (params.data.deptId) {
 							request = {
-								month: this.month,
-								costType: this.departmentActive,
+								// month: this.month,
+								// costType: this.departmentActive,
 								jumpParam: params.data.deptId,
 								jumpTo: 2,
 							};
 						} else {
 							request = {
-								month: this.month,
-								costType: this.modelActive,
+								// month: this.month,
+								// costType: this.modelActive,
 								jumpParam: params.data.name,
 								jumpTo: 1,
 							};
 						}
 						// xxxxxxx(request).then((res) => {
 						const res = {
-							code: "000000",
-							data: [],
-							description: "",
+							"code": "000000",
+							"data": [
+								{
+									"deptId": null,
+									"level": "leaf",
+									"name": "部门B",
+									"sort": 1,
+									"value": "8.64"
+								},
+								{
+									"deptId": null,
+									"level": "leaf",
+									"name": "部门A",
+									"sort": 2,
+									"value": "8.58"
+								}
+							],
+							"description": "SUCCESS"
 						}
 						if (res.code === "000000") {
-							this.currentDetail = res.data || [];
-							if (!this.currentDetail) return "";
+							currentDetail = res.data || [];
+							if (!currentDetail) return "";
 							let rankStr = "";
 							let color = "";
 							const len =
-								this.currentDetail.length > 7 ? 7 : this.currentDetail.length;
+								currentDetail.length > 7 ? 7 : currentDetail.length;
 							for (var i = 0; i < len; i++) {
 								if (i === 0) {
 									color = "#3A78F2";
@@ -138,9 +155,9 @@ export default function usePieEChartsOptions() {
 								<div class="h-flex h-flex-between h-flex-center rank-item">
 									<p class="h-flex h-flex-start rank-name">
 										<span class="rank-logo" style="background-color: ${color}">${i + 1}</span>
-										<span class="name">${this.currentDetail[i].name}</span>
+										<span class="name">${currentDetail[i].name}</span>
 									</p>
-									<p class="rank-value">${this.currentDetail[i].value}元</p>
+									<p class="rank-value">${currentDetail[i].value}元</p>
 								</div>`;
 								rankStr += item;
 							}
@@ -181,11 +198,6 @@ export default function usePieEChartsOptions() {
 							}
 							callback(setTooltipEchart(params.data.deptId));
 							callback(ticket, htmlStr);
-						} else {
-							this.$Notice.error({
-								title: "请求失败",
-								desc: res.description,
-							});
 						}
 						// });
 						return htmlStr;
@@ -270,8 +282,6 @@ export default function usePieEChartsOptions() {
 					},
 				],
 			},
-			tooltipEchart: null,
-			tooltipList: [],
 		};
 	};
 	// 深拷贝

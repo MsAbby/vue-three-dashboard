@@ -11,7 +11,7 @@
 	</div>
 </template>
 <script lang="ts" setup>
-import { onMounted, getCurrentInstance, nextTick, defineProps, watch, ref, Ref } from "vue";
+import { getCurrentInstance, nextTick, defineProps, watch, ref, Ref } from "vue";
 
 const { proxy }: any = getCurrentInstance();
 
@@ -26,7 +26,6 @@ const isSearchReactive: Ref<boolean> = ref(props.isSearch);
 
 // watch
 watch(() => props.isSearch, (newVal) => {
-	console.log("-------", newVal)
 	isSearchReactive.value = newVal;
 	if (newVal) {
 		handelData()
@@ -39,10 +38,6 @@ let option: any = {};
 let xList: Array<any> = [];
 let yList: Array<any> = [];
 let dataList: Array<any> = [];
-
-onMounted(() => {
-	handelData();
-})
 
 const handelData = () => {
 	console.log("monthReactive", props.month);
@@ -354,6 +349,7 @@ const handelData = () => {
 			description: "SUCCESS",
 		};
 		if (res.code === "000000") {
+			proxy.$emit("searchEnd");
 			dataList = res.data;
 			if (dataList && dataList.length > 0) {
 				dataList.forEach((item) => {

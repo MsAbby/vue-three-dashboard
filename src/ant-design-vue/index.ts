@@ -1,3 +1,4 @@
+
 import * as antIcons from '@ant-design/icons-vue'
 import {
 	Avatar,
@@ -12,7 +13,10 @@ import {
 	Checkbox,
 	Select,
 	Radio,
-	Upload
+	Upload,
+	Spin,
+	Row,
+	Col
 } from "ant-design-vue";
 
 
@@ -29,7 +33,10 @@ const components = [
 	Checkbox,
 	Select,
 	Radio,
-	Upload
+	Upload,
+	Spin,
+	Row,
+	Col
 ];
 
 export default function setupAtnd(app: any) {

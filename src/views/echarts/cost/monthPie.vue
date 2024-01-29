@@ -1,17 +1,24 @@
 <template>
-	<div class="month-cost-pie-box">
-		<Row :gutter="0">
-			<Col :xxl="12" :xl="12" :md="24" :sm="24" :xs="24" style="border-right: 10px solid #F2F2F2">
+	<div class="month-pie-box">
+		<a-row :gutter="0">
+			<a-col
+				:xxl="12"
+				:xl="12"
+				:md="24"
+				:sm="24"
+				:xs="24"
+				style="border-right: 10px solid #f2f2f2"
+			>
 				<section class="month-cost-pie">
-					<article class="h-flex h-flex-between h-align-center title-area">
+					<article class="flex-x-between title-area">
 						<h3>哈哈方面月度数据使用</h3>
-						<ul class="h-flex h-flex-between h-align-center tabs-box">
+						<ul class="flex-x-between tabs-box">
 							<li
 								v-for="item in modelList"
 								:key="item.value"
 								:class="[
 									'tabs-item',
-									modelActive === item.value ? 'tabs-active' : '',
+									mActive === item.value ? 'tabs-active' : '',
 								]"
 								@click="changeModel(item)"
 							>
@@ -21,31 +28,31 @@
 					</article>
 					<!-- content -->
 					<article class="echart-father">
-						<a-spin fix v-if="showPie"/>
-						<div class="empty-text" v-show="modelData.length === 0">
+						<a-spin fix v-if="showPie" />
+						<!-- <div class="empty-text" v-show="mData.length === 0">
 							暂无数据
 						</div>
-						<div
-							v-show="modelData.length !== 0"
-							class="echart"
-							id="monthModelCostChart"
-							ref="monthModelCostChart"
-						></div>
+						<div v-show="mData.length !== 0" style="width: 100%;"> -->
+							<div
+								class="echart"
+								id="monthMChart"
+								ref="monthMChart"
+							></div>
+						<!-- </div> -->
 					</article>
-					
 				</section>
-			</Col>
-			<Col :xxl="12" :xl="12" :md="24" :sm="24" :xs="24">
+			</a-col>
+			<a-col :xxl="12" :xl="12" :md="24" :sm="24" :xs="24">
 				<section class="month-cost-pie">
-					<article class="h-flex h-flex-between h-align-center title-area">
-						<h3>公司方面月度数据使用</h3>
-						<ul class="h-flex h-flex-between h-align-center tabs-box">
+					<article class="flex-x-between title-area">
+						<h3>嘟嘟方面月度数据使用</h3>
+						<ul class="flex-x-between tabs-box">
 							<li
 								v-for="item in departmentList"
 								:key="item.value"
 								:class="[
 									'tabs-item',
-									departmentActive === item.value ? 'tabs-active' : '',
+									dActive === item.value ? 'tabs-active' : '',
 								]"
 								@click="changeDepartment(item)"
 							>
@@ -55,83 +62,112 @@
 					</article>
 					<!-- content -->
 					<article class="echart-father">
-						<a-spin fix v-if="showPieDepart"/>
-						<div class="empty-text" v-show="departmentData.length === 0">
+						<a-spin fix v-if="showPieDepart" />
+						<!-- <div class="empty-text" v-show="dData.length === 0">
 							暂无数据
 						</div>
-						<div
-							v-show="departmentData.length !== 0"
-							class="echart"
-							id="monthDepartmentCostChart"
-							ref="monthDepartmentCostChart"
-						></div>
+						<div v-show="dData.length !== 0" style="width: 100%;"> -->
+							<div
+								class="echart"
+								id="monthDChart"
+								ref="monthDChart"
+							></div>
+						<!-- </div> -->
 					</article>
 				</section>
-			</Col>
-		</Row>
+			</a-col>
+		</a-row>
 	</div>
 </template>
 <script lang="ts" setup>
-import { getCurrentInstance, nextTick } from "vue";
-import { getCommonOptions, deepClone } from "./usePieEChartsOptions";
+import { getCurrentInstance, nextTick, watch, Ref, ref } from "vue";
+import usePieEChartsOptions from "./usePieEChartsOptions";
 
 const { proxy }: any = getCurrentInstance();
+const usePieECharts = usePieEChartsOptions();
+
+// prop
+const props = defineProps({
+	month: String,
+	isSearch: Boolean,
+});
+
+// Define a reactive variable to store the prop value
+const isSearchReactive: Ref<boolean> = ref(props.isSearch);
+
+// watch
+watch(
+	() => props.isSearch,
+	(newVal) => {
+		isSearchReactive.value = newVal;
+		if (newVal) {
+			init();
+		}
+	}
+);
 
 // 不使用mixins ，逻辑复用可以使用“组合式函数”
-let month: number = 1;
-// 1.月总数据 2.月带宽数据 3.月存储数据
-let modelActive: number = 1;
-// 1.月总数据 2.月带宽数据 3.月存储数据
-let departmentActive: number = 1;
+// 1.总 2.带宽 3.存储
+let mActive: number = 1;
+// 1.总 2.带宽 3.存储
+let dActive: number = 1;
 let modelList: Array<any> = [
-	{ label: "月总数据", value: 1 },
-	{ label: "月带宽数据", value: 2 },
-	{ label: "月存储数据", value: 3 },
+	{ label: "月总哈哈", value: 1 },
+	{ label: "月带带哈哈", value: 2 },
+	{ label: "月存存哈哈", value: 3 },
 ];
 let departmentList: Array<any> = [
-	{ label: "月总数据", value: 1 },
-	{ label: "月带宽数据", value: 2 },
-	{ label: "月存储数据", value: 3 },
+	{ label: "月总哈哈", value: 1 },
+	{ label: "月带带哈哈", value: 2 },
+	{ label: "月存存哈哈", value: 3 },
 ];
-let modelData: Array<any> = [];
-let departmentData:  Array<any> = [];
-let modelChart: any = null;
-let departmentChart: any = null;
+let mData: Array<any> = [];
+let dData: Array<any> = [];
+let mChart: any = null;
+let dChart: any = null;
 let showPie: boolean = false;
 let showPieDepart: boolean = false;
 
 /**
  * @description: 初始化
- */		
-const init = (month) => {
-	month = month;
-	modelActive = 1;
-	departmentActive = 1;
-	initModelData();
-	initDepartmentData();
-}
-	
+ */
+const init = () => {
+	mActive = 1;
+	dActive = 1;
+	initMData();
+	initDData();
+};
+
 /**
  * @description: 初始化车型数据
- */		
-const initModelData = async () => {
+ */
+const initMData = async () => {
 	try {
 		showPie = true;
 		const params = {
-			month: month,
-			costType: modelActive,
+			month: props.month,
+			costType: mActive,
 			queryStatisticalType: 1,
 		};
 		// const res = await xxxxxxx(params);
 		const res = {
 			code: "000000",
-			data: [],
-		}
+			data: [
+				{
+					deptId: null,
+					level: "root",
+					name: "哈哈哈哈哈26",
+					sort: 1,
+					value: "6.30",
+				},
+			],
+			description: "SUCCESS",
+		};
 		if (res.code === "000000") {
-			modelData = res.data;
-			if (modelData && modelData.length > 0) {
+			mData = res.data;
+			if (mData && mData.length > 0) {
 				nextTick(() => {
-					initEchartModel();
+					initEchartM();
 				});
 			}
 		} else {
@@ -142,105 +178,115 @@ const initModelData = async () => {
 	} finally {
 		showPie = false;
 	}
-}
+};
 
 /**
  * @description: 初始化部门数据
- */		
-const initDepartmentData = async () => {
+ */
+const initDData = async () => {
 	try {
 		showPieDepart = true;
 		const params = {
-			month: month,
-			costType: departmentActive,
+			month: props.month,
+			costType: dActive,
 			queryStatisticalType: 2,
 		};
-		// const res = await getCostPieChart(params);
+		// const res = await xxxxx(params);
 		const res = {
 			code: "000000",
-			data: [],
-		}
+			data: [
+				{
+					deptId: "43",
+					level: "root",
+					name: "部门B",
+					sort: 1,
+					value: "8.64",
+				},
+				{
+					deptId: "42",
+					level: "root",
+					name: "部门A",
+					sort: 2,
+					value: "8.58",
+				},
+			],
+			description: "SUCCESS",
+		};
 		if (res.code === "000000") {
-			departmentData = res.data;
-			if (departmentData && departmentData.length > 0) {
+			dData = res.data;
+			if (dData && dData.length > 0) {
 				nextTick(() => {
-					initEchartDepartment();
+					initEchartD();
 				});
 			}
 		} else {
-			console.log("请求失败")
+			console.log("请求失败");
 		}
 	} catch (error) {
 		console.log("捕获失败", error);
 	} finally {
 		showPieDepart = false;
 	}
-}
+};
 
 /**
- * @description: 车型饼图
- */		
-const initEchartModel = async () => {
-	const modelDom = document.getElementById("monthModelCostChart");
-	modelChart = proxy.$echarts.getInstanceByDom(modelDom);
-	if (modelChart) {
-		modelChart.dispose();
-	}
-	modelChart = modelDom && proxy.$echarts.init(modelDom);
-	const options = deepClone(getCommonOptions.options);
-	// console.log(this.modelData, modelDom, this.modelChart);
-	options.series[0].data = modelData;
-	options && modelChart.setOption(options);
+ * @description: 饼图1
+ */
+const initEchartM = async () => {
+	const modelDom = document.getElementById("monthMChart");
+	mChart = proxy.$echarts.init(modelDom);
+	const options = usePieECharts.getCommonOptions().option;
+	options.series[0].data = mData;
+	options && mChart.setOption(options);
+	console.log("000000", mChart);
 	//随着屏幕大小调节图表
 	window.addEventListener("resize", () => {
 		setTimeout(() => {
-			modelChart.resize();
+			mChart.resize();
 		}, 500);
 	});
-}
-		
+};
+
 /**
- * @description: 部门饼图
- */		
- const initEchartDepartment = async () => {
-	const departDom = document.getElementById("monthDepartmentCostChart");
-	departmentChart = proxy.$echarts.getInstanceByDom(departDom);
-	if (departmentChart) {
-		departmentChart.dispose();
-	}
-	departmentChart = departDom && proxy.$echarts.init(departDom);
-	const options = deepClone(getCommonOptions.options);
-	options.series[0].data = departmentData;
-	options && departmentChart.setOption(options);
+ * @description: 饼图2
+ */
+const initEchartD = async () => {
+	const departDom = document.getElementById("monthDChart");
+	dChart = proxy.$echarts.init(departDom);
+	const options = usePieECharts.getCommonOptions().option;
+	options.series[0].data = dData;
+	options && dChart.setOption(options);
+	console.log("99999", dChart);
 	//随着屏幕大小调节图表
 	window.addEventListener("resize", () => {
 		setTimeout(() => {
-			departmentChart.resize();
+			dChart.resize();
 		}, 500);
 	});
-}
+	proxy.$emit("searchEnd");
+};
 
 /**
- * @description: 车型饼图切换
- */		
-const changeModel = (item: any)  => {
-	modelActive = item.value;
-	initModelData();
-}
+ * @description: 切换
+ */
+const changeModel = (item: any) => {
+	mActive = item.value;
+	initMData();
+};
 
 /**
- * @description: 部门饼图切换
- */		
+ * @description: 切换
+ */
 const changeDepartment = (item) => {
-	departmentActive = item.value;
-	initDepartmentData();
-}
+	dActive = item.value;
+	initDData();
+};
 </script>
 <style lang="less" scoped>
-.month-cost-pie-box {
+.month-pie-box {
 	width: 100%;
 	color: #000000;
-	border-bottom: 10px solid #F2F2F2;
+	border-bottom: 10px solid #f2f2f2;
 
 	.month-cost-pie {
 		flex: 1;
@@ -303,6 +349,33 @@ const changeDepartment = (item) => {
 	.hover-chart {
 		padding-top: 10px;
 		max-width: 150px;
+	}
+
+	// tabs 
+	.tabs-box {
+		height: 32px;
+		border: 1px solid #d9d9d9;
+		border-radius: 4px;
+		color: rgba(0, 0, 0, 0.45);
+		padding: 4px;
+
+		.tabs-item {
+			margin-right: 16px;
+			&:first-child {
+				padding-left: 16px;
+			}
+			&:last-child {
+				margin-right: 0px;
+				padding-right: 16px;
+			}
+			&.tabs-active {
+				border-radius: 4px;
+				background: #e8e8e8;
+				color: #000000;
+				padding: 0 16px;
+				line-height: 24px;
+			}
+		}
 	}
 }
 </style>

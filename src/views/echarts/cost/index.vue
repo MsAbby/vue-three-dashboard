@@ -1,3 +1,9 @@
+<!--
+ * @author: lishumin/GW00323781
+ * @date: 2024/01/26 14:09:09
+ * @description: 
+ * Copyright(c)2024 GWM.Co.Ltd.All rights reserved.
+-->
 <template>
 	<div class="cost-report">
 		<!-- time -->
@@ -5,10 +11,9 @@
 			<p style="color: #000000">时间：</p>
 			<a-month-picker
 				style="width: 200px"
-				v-model:value="dateTime"
+				v-model:value="time"
 				format="YYYY-MM"
 				placeholder="请选择月份"
-				@change="handleMonthChange"
 			/>
 			<a-button
 				type="primary"
@@ -21,51 +26,53 @@
 
 		<!-- bar -->
 		<MonthBar
-			v-if="dateTime && isSearch"
 			:month="month"
+			:isSearch="isSearch"
+			@searchEnd="searchEnd"
 		/>
 
 		<!-- pie -->
-		<!-- <MonthPie ref="pieRef" /> -->
+		<MonthPie
+			:month="month"
+			:isSearch="isSearch"
+			@searchEnd="searchEnd"
+			ref="pieRef"
+		/>
 	</div>
 </template>
 
 <script lang="ts" setup>
-import { getCurrentInstance, ref, Ref } from "vue";
+import { ref, Ref, onMounted } from "vue";
 import { Moment } from "moment";
 import MonthBar from "./monthBar.vue";
 import MonthPie from "./monthPie.vue";
 
-const { proxy }: any = getCurrentInstance();
-
-// 在 setup 中声明 ref
-const barRef: Ref<InstanceType<typeof MonthBar> | null> = ref(null);
-// const pieRef: Ref<InstanceType<typeof MonthPie> | null> = ref(null);
-
 // 时间设置为响应式
-const dateTime: Ref<Moment | null> = ref(null);
+const time: Ref<Moment | null> = ref(null);
 
 let month: string = "";
 // 是否开始搜索
-let isSearch: boolean = false;
+let isSearch = ref(false);
 
-// 默认设置为上个月
-dateTime.value = proxy.$moment().subtract(1, 'months');
+onMounted(() => {
+	// 默认设置为上个月
+	const currentDate = new Date();
+    currentDate.setMonth(currentDate.getMonth() - 1);
 
+});
+	
 // 搜索
 const handelSearch = () => {
-	isSearch = true;
-	console.log("查询");
-	console.log("查询1", proxy.$moment(dateTime.value).format("yyyy-MM"));
+	isSearch.value = true;
+	if (time.value) {
+		month = time.value.format('YYYY-MM');
+	}
 }
 
-// 变化月份
-const handleMonthChange = (val: Moment) => {
-	console.log("切换");
-	// console.log("1111", val);
-	// console.log(proxy.$moment(val).format('YYYY-MM'));
-	// month = value;
+const searchEnd = () => {
+	isSearch.value = false;
 }
+
 
 </script>
 

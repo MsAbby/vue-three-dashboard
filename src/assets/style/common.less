@@ -8,10 +8,126 @@
 .flex-x-center {
   display: flex;
   justify-content: center;
+  align-items: center;
+}
+
+.flex-x-start {
+  display: flex;
+  justify-content: start;
+  align-items: center;
 }
 
 // 水平两端对齐
 .flex-x-between {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+}
+
+// chat pie tooltip 自定义弹框
+.chart-tooltip-modal {
+	width: 824px;
+	height: 452px;
+	color: #323233;
+	
+	.modal-title {
+		width: 100%;
+		height: 55px;
+		padding: 0 24px;
+		border-bottom: 1px solid #DCDEE0;
+		.title {
+			line-height: 55px;
+			font-size: 16px;
+		}
+	}
+	.modal-body {
+		padding: 30px 24px 24px;
+		.modal-body-pie {
+			flex: 1;
+			height: 300px;
+		}
+		.sub-title {
+			width: 100%;
+			font-size: 15px;
+			margin-bottom: 30px;
+			line-height: 20px;
+			text-wrap: wrap;
+		}
+		.rank-list {
+			width: 267px;
+			line-height: 20px;
+			margin-left: 40px;
+			.rank-item {
+				margin: 24px 0;
+				height: 20px;
+				.rank-logo {
+					display: inline-block;
+					width: 20px;
+					height: 20px;
+					line-height: 20px;
+					border-radius: 100%;
+					color: #ffffff;
+					text-align: center;
+					margin-right: 8px;
+				}
+				.rank-name {
+					font-size: 14px;
+					text-wrap: wrap;
+					.name {
+						flex: 1;
+					}
+				}
+				.rank-value {
+					font-size: 14px;
+					padding-left: 10px;
+				}
+			}
+		}
+	}
+
+	@media screen and (max-width: 1100px) {
+		width: 600px;
+		height: 352px;
+		.modal-body {
+			.modal-body-pie {
+				height: 200px;
+			}
+			.sub-title {
+				font-size: 12px;
+			}
+			.rank-list {
+				width: 167px;
+				.rank-item {
+					margin: 10px 0;
+					.rank-name {
+						font-size: 12px;
+					}
+					.rank-value {
+						font-size: 12px;
+					}
+				}
+			}
+		}
+	}
+}
+
+// tooltip 自定义弹框
+.echarts-tooltip-rect {
+	display: inline-block;
+	margin-right: 4px;
+	border-radius: 2px;
+	width: 12px;
+	height: 12px;
+	&.circle0 {
+		background-color:#397FF3;
+	}
+	&.circle1 {
+		background-color:#4BC7E6;
+	}
+	&.circle2 {
+		background-color:#FF9B3F;
+	}
+	&.circle3 {
+		background-color:#8B66FE;
+	}
 }
