@@ -6,7 +6,7 @@
 		</div>
 	</div>
 </template>
-<script lang="ts" setup>
+<script lang="ts" setup name="monthLineSecond">
 import { getCurrentInstance, nextTick, defineProps, watch, ref, Ref } from "vue";
 
 const { proxy }: any = getCurrentInstance();
@@ -21,136 +21,460 @@ const props = defineProps({
 const isSearchReactive: Ref<boolean> = ref(props.isSearch);
 
 // watch
-watch(() => props.isSearch, (newVal) => {
-	isSearchReactive.value = newVal;
-	if (newVal) {
-		handelData()
+watch(
+	() => props.month,
+	(newVal) => {
+		if (newVal) {
+			handelData();
+		}
 	}
-});
+);
+watch(
+	() => props.isSearch,
+	(newVal) => {
+		isSearchReactive.value = newVal;
+		if (newVal) {
+			handelData();
+		}
+	}
+);
 
 let myChart: any = null;
-let isShow: boolean = false;
 let xList: Array<any> = [];
-let typeList: Array<any> = [];
-let resultList = {
-	"A": [],
-	"B": [],
-	"C": [],
-	"D": [],
-	"E": [],
-	"F": [],
-} as any;
-let dataList: Array<any> = [];
+let resultList = [] as any;
+let typeList = [] as any;
 
 const handelData = () => {
-	isShow = true;
 	xList = [];
-	typeList = [];
+	typeList = [] as any;
+	let colors = [
+		"#3A78F2",
+		"#FF953D",
+		"#FFCC58",
+		"#FDE105",
+		"#FB7C6C",
+		"#618CFF",
+		"#63C3FE",
+		"#15CE87",
+		"#C7E317",
+		"#47D468",
+	]
 	try {
 		// const res = await xxxxxxxx({month});
+		// const res = {
+		// 	code: "000000",
+		// 	data: {
+		// 			"组合A": [
+		// 				{ date: "2023-01-01", value: "100" },
+		// 				{ date: "2023-01-02", value: "100" },
+		// 				{ date: "2023-01-03", value: "100" },
+		// 				{ date: "2023-01-04", value: "100" },
+		// 				{ date: "2023-01-05", value: "100" },
+		// 				{ date: "2023-01-06", value: "100" },
+		// 				{ date: "2023-01-07", value: "100" },
+		// 				{ date: "2023-01-08", value: "100" },
+		// 			],
+		// 			"组合B": [
+		// 				{ date: "2023-01-01", value: "200" },
+		// 				{ date: "2023-01-02", value: "200" },
+		// 				{ date: "2023-01-03", value: "200" },
+		// 				{ date: "2023-01-04", value: "200" },
+		// 				{ date: "2023-01-05", value: "200" },
+		// 				{ date: "2023-01-06", value: "200" },
+		// 				{ date: "2023-01-07", value: "200" },
+		// 				{ date: "2023-01-08", value: "200" },
+		// 			],
+		// 			"组合c": [
+		// 				{ date: "2023-01-01", value: "300" },
+		// 				{ date: "2023-01-02", value: "300" },
+		// 				{ date: "2023-01-03", value: "300" },
+		// 				{ date: "2023-01-04", value: "300" },
+		// 				{ date: "2023-01-05", value: "300" },
+		// 				{ date: "2023-01-06", value: "300" },
+		// 				{ date: "2023-01-07", value: "300" },
+		// 				{ date: "2023-01-08", value: "300" },
+		// 			],
+		// 			"组合d": [
+		// 				{ date: "2023-01-01", value: "400" },
+		// 				{ date: "2023-01-02", value: "400" },
+		// 				{ date: "2023-01-03", value: "400" },
+		// 				{ date: "2023-01-04", value: "400" },
+		// 				{ date: "2023-01-05", value: "400" },
+		// 				{ date: "2023-01-06", value: "400" },
+		// 				{ date: "2023-01-07", value: "400" },
+		// 				{ date: "2023-01-08", value: "400" },
+		// 			],
+		// 			"组合e": [
+		// 				{ date: "2023-01-01", value: "500" },
+		// 				{ date: "2023-01-02", value: "500" },
+		// 				{ date: "2023-01-03", value: "500" },
+		// 				{ date: "2023-01-04", value: "500" },
+		// 				{ date: "2023-01-05", value: "500" },
+		// 				{ date: "2023-01-06", value: "500" },
+		// 				{ date: "2023-01-07", value: "500" },
+		// 				{ date: "2023-01-08", value: "500" },
+		// 			],
+		// 			"组合f": [
+		// 				{ date: "2023-01-01", value: "530" },
+		// 				{ date: "2023-01-02", value: "50" },
+		// 				{ date: "2023-01-03", value: "520" },
+		// 				{ date: "2023-01-04", value: "520" },
+		// 				{ date: "2023-01-05", value: "520" },
+		// 				{ date: "2023-01-06", value: "520" },
+		// 				{ date: "2023-01-07", value: "520" },
+		// 				{ date: "2023-01-08", value: "520" },
+		// 			],
+		// 			"组合g": [
+		// 				{ date: "2023-01-01", value: "630" },
+		// 				{ date: "2023-01-02", value: "60" },
+		// 				{ date: "2023-01-03", value: "620" },
+		// 				{ date: "2023-01-04", value: "620" },
+		// 				{ date: "2023-01-05", value: "620" },
+		// 				{ date: "2023-01-06", value: "620" },
+		// 				{ date: "2023-01-07", value: "620" },
+		// 				{ date: "2023-01-08", value: "620" },
+		// 			],
+		// 		},
+		// 	description: "SUCCESS",
+		// };
 		const res = {
 			code: "000000",
-			data: [
-				{
-					date: "2023-01-01",
-					"A": 100,
-					"B": 200,
-					"C": 300,
-					"D": 400,
-					"E": 500,
-					"F": 600,
+			data: {
+					"Abcd swewer ewr12": [
+						{ date: "2023-01-01", value: 100 },
+						{ date: "2023-01-02", value: 100 },
+						{ date: "2023-01-03", value: 100 },
+						{ date: "2023-01-04", value: 100 },
+						{ date: "2023-01-05", value: 100 },
+						{ date: "2023-01-06", value: 100 },
+						{ date: "2023-01-07", value: 100 },
+						{ date: "2023-01-08", value: 100},
+						{ date: "2023-01-09", value: 1000 },
+						{ date: "2023-01-10", value: 1000 },
+						{ date: "2023-01-11", value: 1000 },
+						{ date: "2023-01-12", value: 1000 },
+						{ date: "2023-01-13", value: 1000 },
+						{ date: "2023-01-14", value: 1000 },
+						{ date: "2023-01-15", value: 1000 },
+						{ date: "2023-01-16", value: 1000 },
+						{ date: "2023-01-17", value: 100 },
+						{ date: "2023-01-18", value: 1000 },
+						{ date: "2023-01-19", value: 1000 },
+						{ date: "2023-01-20", value: 1000 },
+						{ date: "2023-01-21", value: 1000 },
+						{ date: "2023-01-22", value: 1000 },
+						{ date: "2023-01-23", value: 1000 },
+						{ date: "2023-01-24", value: 1880 },
+						{ date: "2023-01-25", value: 1000 },
+						{ date: "2023-01-26", value: 1000 },
+						{ date: "2023-01-27", value: 1000 },
+						{ date: "2023-01-28", value: 1000 },
+						{ date: "2023-01-29", value: 1000 },
+						{ date: "2023-01-30", value: 1000 },
+					],
+					"排排排排排排排排B": [
+						{ date: "2023-01-01", value: 200},
+						{ date: "2023-01-02", value: 200},
+						{ date: "2023-01-03", value: 200},
+						{ date: "2023-01-04", value: 200},
+						{ date: "2023-01-05", value: 200},
+						{ date: "2023-01-06", value: 200},
+						{ date: "2023-01-07", value: 200},
+						{ date: "2023-01-08", value: 200},
+						{ date: "2023-01-09", value: 100 },
+						{ date: "2023-01-10", value: 1000 },
+						{ date: "2023-01-11", value: 1000 },
+						{ date: "2023-01-12", value: 1000 },
+						{ date: "2023-01-13", value: 1000 },
+						{ date: "2023-01-14", value: 1000 },
+						{ date: "2023-01-15", value: 1000 },
+						{ date: "2023-01-16", value: 1000 },
+						{ date: "2023-01-17", value: 100 },
+						{ date: "2023-01-18", value: 1000 },
+						{ date: "2023-01-19", value: 1000 },
+						{ date: "2023-01-20", value: 1000 },
+						{ date: "2023-01-21", value: 1000 },
+						{ date: "2023-01-22", value: 1900 },
+						{ date: "2023-01-23", value: 1000 },
+						{ date: "2023-01-24", value: 1000 },
+						{ date: "2023-01-25", value: 1000 },
+						{ date: "2023-01-26", value: 1000 },
+						{ date: "2023-01-27", value: 1000 },
+						{ date: "2023-01-28", value: 1000 },
+						{ date: "2023-01-29", value: 1000 },
+						{ date: "2023-01-30", value: 1000 },
+					],
+					"排排排排排排排排c": [
+						{ date: "2023-01-01", value: 300},
+						{ date: "2023-01-02", value: 300},
+						{ date: "2023-01-03", value: 300},
+						{ date: "2023-01-04", value: 300},
+						{ date: "2023-01-05", value: 300},
+						{ date: "2023-01-06", value: 300},
+						{ date: "2023-01-07", value: 300},
+						{ date: "2023-01-08", value: 300},
+						{ date: "2023-01-09", value: 100 },
+						{ date: "2023-01-10", value: 1000 },
+						{ date: "2023-01-11", value: 1000 },
+						{ date: "2023-01-12", value: 1000 },
+						{ date: "2023-01-13", value: 1000 },
+						{ date: "2023-01-14", value: 1000 },
+						{ date: "2023-01-15", value: 1000 },
+						{ date: "2023-01-16", value: 1000 },
+						{ date: "2023-01-17", value: 100 },
+						{ date: "2023-01-18", value: 1000 },
+						{ date: "2023-01-19", value: 1000 },
+						{ date: "2023-01-20", value: 1000 },
+						{ date: "2023-01-21", value: 1000 },
+						{ date: "2023-01-22", value: 1600 },
+						{ date: "2023-01-23", value: 1000 },
+						{ date: "2023-01-24", value: 1000 },
+						{ date: "2023-01-25", value: 1000 },
+						{ date: "2023-01-26", value: 1000 },
+						{ date: "2023-01-27", value: 1000 },
+						{ date: "2023-01-28", value: 1000 },
+						{ date: "2023-01-29", value: 1000 },
+						{ date: "2023-01-30", value: 1000 },
+					],
+					"排排排排排排排排d": [
+						{ date: "2023-01-01", value: 400},
+						{ date: "2023-01-02", value: 400},
+						{ date: "2023-01-03", value: 400},
+						{ date: "2023-01-04", value: 400},
+						{ date: "2023-01-05", value: 400},
+						{ date: "2023-01-06", value: 400},
+						{ date: "2023-01-07", value: 400},
+						{ date: "2023-01-08", value: 400},
+						{ date: "2023-01-09", value: 100 },
+						{ date: "2023-01-10", value: 1000 },
+						{ date: "2023-01-11", value: 1000 },
+						{ date: "2023-01-12", value: 1000 },
+						{ date: "2023-01-13", value: 1000 },
+						{ date: "2023-01-14", value: 1000 },
+						{ date: "2023-01-15", value: 1000 },
+						{ date: "2023-01-16", value: 1000 },
+						{ date: "2023-01-17", value: 100 },
+						{ date: "2023-01-18", value: 1000 },
+						{ date: "2023-01-19", value: 1000 },
+						{ date: "2023-01-20", value: 1000 },
+						{ date: "2023-01-21", value: 1000 },
+						{ date: "2023-01-22", value: 1300 },
+						{ date: "2023-01-23", value: 1000 },
+						{ date: "2023-01-24", value: 1000 },
+						{ date: "2023-01-25", value: 1000 },
+						{ date: "2023-01-26", value: 1000 },
+						{ date: "2023-01-27", value: 1000 },
+						{ date: "2023-01-28", value: 1000 },
+						{ date: "2023-01-29", value: 1000 },
+						{ date: "2023-01-30", value: 1000 },
+					],
+					"排排排排排排排排e": [
+						{ date: "2023-01-01", value: 500},
+						{ date: "2023-01-02", value: 500},
+						{ date: "2023-01-03", value: 500},
+						{ date: "2023-01-04", value: 500},
+						{ date: "2023-01-05", value: 500},
+						{ date: "2023-01-06", value: 500},
+						{ date: "2023-01-07", value: 500},
+						{ date: "2023-01-08", value: 500},
+						{ date: "2023-01-09", value: 100 },
+						{ date: "2023-01-10", value: 1000 },
+						{ date: "2023-01-11", value: 1000 },
+						{ date: "2023-01-12", value: 1000 },
+						{ date: "2023-01-13", value: 1000 },
+						{ date: "2023-01-14", value: 1000 },
+						{ date: "2023-01-15", value: 1000 },
+						{ date: "2023-01-16", value: 1000 },
+						{ date: "2023-01-17", value: 100 },
+						{ date: "2023-01-18", value: 1100 },
+						{ date: "2023-01-19", value: 1000 },
+						{ date: "2023-01-20", value: 1000 },
+						{ date: "2023-01-21", value: 1000 },
+						{ date: "2023-01-22", value: 1000 },
+						{ date: "2023-01-23", value: 1000 },
+						{ date: "2023-01-24", value: 1000 },
+						{ date: "2023-01-25", value: 1000 },
+						{ date: "2023-01-26", value: 1000 },
+						{ date: "2023-01-27", value: 1000 },
+						{ date: "2023-01-28", value: 1000 },
+						{ date: "2023-01-29", value: 1000 },
+						{ date: "2023-01-30", value: 1000 },
+					],
+					"排排排排排排排排f": [
+						{ date: "2023-01-01", value: 530 },
+						{ date: "2023-01-02", value: 50 },
+						{ date: "2023-01-03", value: 520 },
+						{ date: "2023-01-04", value: 520 },
+						{ date: "2023-01-05", value: 520 },
+						{ date: "2023-01-06", value: 520 },
+						{ date: "2023-01-07", value: 520 },
+						{ date: "2023-01-08", value: 520 },
+						{ date: "2023-01-09", value: 1000 },
+						{ date: "2023-01-10", value: 1000 },
+						{ date: "2023-01-11", value: 2000 },
+						{ date: "2023-01-12", value: 1000 },
+						{ date: "2023-01-13", value: 1000 },
+						{ date: "2023-01-14", value: 1000 },
+						{ date: "2023-01-15", value: 1000 },
+						{ date: "2023-01-16", value: 1000 },
+						{ date: "2023-01-17", value: 100 },
+						{ date: "2023-01-18", value: 1000 },
+						{ date: "2023-01-19", value: 1000 },
+						{ date: "2023-01-20", value: 1000 },
+						{ date: "2023-01-21", value: 1000 },
+						{ date: "2023-01-22", value: 1000 },
+						{ date: "2023-01-23", value: 1000 },
+						{ date: "2023-01-24", value: 1000 },
+						{ date: "2023-01-25", value: 1000 },
+						{ date: "2023-01-26", value: 1000 },
+						{ date: "2023-01-27", value: 1000 },
+						{ date: "2023-01-28", value: 1000 },
+						{ date: "2023-01-29", value: 1000 },
+						{ date: "2023-01-30", value: 1000 },
+					],
+					"排排排排排排排排g": [
+						{ date: "2023-01-01", value: 630 },
+						{ date: "2023-01-02", value: 60 },
+						{ date: "2023-01-03", value: 620 },
+						{ date: "2023-01-04", value: 620 },
+						{ date: "2023-01-05", value: 620 },
+						{ date: "2023-01-06", value: 620 },
+						{ date: "2023-01-07", value: 620 },
+						{ date: "2023-01-08", value: 620 },
+						{ date: "2023-01-09", value: 1000 },
+						{ date: "2023-01-10", value: 1000 },
+						{ date: "2023-01-11", value: 1000 },
+						{ date: "2023-01-12", value: 1000 },
+						{ date: "2023-01-13", value: 1000 },
+						{ date: "2023-01-14", value: 1000 },
+						{ date: "2023-01-15", value: 3000 },
+						{ date: "2023-01-16", value: 1000 },
+						{ date: "2023-01-17", value: 100 },
+						{ date: "2023-01-18", value: 1000 },
+						{ date: "2023-01-19", value: 1000 },
+						{ date: "2023-01-20", value: 1000 },
+						{ date: "2023-01-21", value: 1000 },
+						{ date: "2023-01-22", value: 1000 },
+						{ date: "2023-01-23", value: 1000 },
+						{ date: "2023-01-24", value: 1000 },
+						{ date: "2023-01-25", value: 1000 },
+						{ date: "2023-01-26", value: 1000 },
+						{ date: "2023-01-27", value: 1000 },
+						{ date: "2023-01-28", value: 1000 },
+						{ date: "2023-01-29", value: 1000 },
+						{ date: "2023-01-30", value: 1000 },
+					],
+					"排排排排排排排排gg": [
+						{ date: "2023-01-01", value: 630 },
+						{ date: "2023-01-02", value: 60 },
+						{ date: "2023-01-03", value: 620 },
+						{ date: "2023-01-04", value: 620 },
+						{ date: "2023-01-05", value: 620 },
+						{ date: "2023-01-06", value: 620 },
+						{ date: "2023-01-07", value: 620 },
+						{ date: "2023-01-08", value: 620 },
+						{ date: "2023-01-09", value: 1000 },
+						{ date: "2023-01-10", value: 1000 },
+						{ date: "2023-01-11", value: 1000 },
+						{ date: "2023-01-12", value: 1000 },
+						{ date: "2023-01-13", value: 1000 },
+						{ date: "2023-01-14", value: 1000 },
+						{ date: "2023-01-15", value: 3000 },
+						{ date: "2023-01-16", value: 1000 },
+						{ date: "2023-01-17", value: 100 },
+						{ date: "2023-01-18", value: 1000 },
+						{ date: "2023-01-19", value: 1000 },
+						{ date: "2023-01-20", value: 1000 },
+						{ date: "2023-01-21", value: 1000 },
+						{ date: "2023-01-22", value: 1000 },
+						{ date: "2023-01-23", value: 1000 },
+						{ date: "2023-01-24", value: 1000 },
+						{ date: "2023-01-25", value: 1000 },
+						{ date: "2023-01-26", value: 1000 },
+						{ date: "2023-01-27", value: 1000 },
+						{ date: "2023-01-28", value: 1000 },
+						{ date: "2023-01-29", value: 1000 },
+						{ date: "2023-01-30", value: 1000 },
+					],
+					"排排排排排排排排ggg": [
+						{ date: "2023-01-01", value: 130 },
+						{ date: "2023-01-02", value: 60 },
+						{ date: "2023-01-03", value: 620 },
+						{ date: "2023-01-04", value: 620 },
+						{ date: "2023-01-05", value: 620 },
+						{ date: "2023-01-06", value: 620 },
+						{ date: "2023-01-07", value: 620 },
+						{ date: "2023-01-08", value: 620 },
+						{ date: "2023-01-09", value: 1000 },
+						{ date: "2023-01-10", value: 1000 },
+						{ date: "2023-01-11", value: 1000 },
+						{ date: "2023-01-12", value: 1000 },
+						{ date: "2023-01-13", value: 1000 },
+						{ date: "2023-01-14", value: 1000 },
+						{ date: "2023-01-15", value: 3000 },
+						{ date: "2023-01-16", value: 1000 },
+						{ date: "2023-01-17", value: 100 },
+						{ date: "2023-01-18", value: 1000 },
+						{ date: "2023-01-19", value: 1000 },
+						{ date: "2023-01-20", value: 1000 },
+						{ date: "2023-01-21", value: 1000 },
+						{ date: "2023-01-22", value: 1000 },
+						{ date: "2023-01-23", value: 1000 },
+						{ date: "2023-01-24", value: 1000 },
+						{ date: "2023-01-25", value: 1000 },
+						{ date: "2023-01-26", value: 1000 },
+						{ date: "2023-01-27", value: 1000 },
+						{ date: "2023-01-28", value: 1000 },
+						{ date: "2023-01-29", value: 1000 },
+						{ date: "2023-01-30", value: 1000 },
+					],
 				},
-				{
-					date: "2023-01-02",
-					"A": 1200,
-					"B": 2200,
-					"C": 3200,
-					"D": 4200,
-					"E": 5200,
-					"F": 6200
-				},
-				{
-					date: "2023-01-03",
-					"A": 700,
-					"B": 800,
-					"C": 40,
-					"D": 200,
-					"E": 200,
-					"F": 1200
-				},
-				{
-					date: "2023-01-04",
-					"A": 1700,
-					"B": 1800,
-					"C": 640,
-					"D": 4200,
-					"E": 7200,
-					"F": 13200,
-				},
-				{
-					date: "2023-01-05",
-					"A": 300 ,
-					"B": 800,
-					"C": 6440,
-					"D": 1200,
-					"E": 200,
-					"F": 3200
-				},
-				{
-					date: "2023-01-06",
-					"A": 1300,
-					"B": 8200,
-					"C": 1440,
-					"D": 700 ,
-					"E": 400,
-					"F": 600
-				},
-				{
-					date: "2023-01-07",
-					"A": 3000,
-					"B": 3200,
-					"C": 440,
-					"D": 1700,
-					"E": 4300,
-					"F": 6000
-				},
-				{
-					date: "2023-01-08",
-					"A": 4000,
-					"B": 2200,
-					"C": 1440,
-					"D": 1800,
-					"E": 1300,
-					"F": 600
-				},
-				{
-					date: "2023-01-09",
-					"A": 4300,
-					"B": 2200,
-					"C": 6440,
-					"D": 1100,
-					"E": 1000,
-					"F": 6000
-				},
-			],
 			description: "SUCCESS",
 		};
 		if (res.code === "000000") {
 			proxy.$emit("searchEnd");
-			dataList = res.data;
-			if (dataList && dataList.length > 0) {
-				let typeList = Object.keys(dataList[0]).filter((key) => key !== 'date');
-				// 循环
-				dataList.forEach((item) => {
-					xList.push(item.date);
-					typeList.map(key => {
-						resultList[key].push(item[key])
-						return key
-					})
-				});
-				console.log("++++", typeList)
+			if (res.data) {
+				// 对象循环
+				let i = 0;
+				for (let key in res.data) {
+					const result = [] as any;
+					xList = [];
+					typeList.push(key);
+					res.data[key].map((item) => {
+						result.push(item.value);
+						xList.push(item.date);
+					});
+					let obj = {
+						name: key,
+						type: "line",
+						data: result,
+						stack: "total",
+						smooth: true,
+						areaStyle: {
+						normal: {
+								color: {
+									type: 'linear',
+									x: 0,
+									y: 0,
+									x2: 0,
+									y2: 1,
+									colorStops: [{
+										offset: 0,
+										color: 'rgba(0, 255, 255, 1)'
+									}, {
+										offset: 1,
+										color: colors[i]
+									}],
+								},
+								opacity: 0.5
+							}
+						}
+					};
+					i++;
+					resultList.push(obj);
+				}
 				nextTick(() => {
-					initEcharts(typeList);
+					initEcharts();
 				});
 			} else {
 				myChart && myChart.dispose();
@@ -161,27 +485,32 @@ const handelData = () => {
 	} catch (error) {
 		proxy.$Notice.error({ title: "捕获错误", desc: error });
 	} finally {
-		isShow = false;
 	}
 };
-const initEcharts = (list) => {
+const initEcharts = () => {
 	const chartDom = document.getElementById("lineChart");
 	myChart = proxy.$echarts.init(chartDom);
-	console.log("11", list, resultList)
-	const data = list.map(item => {
-		return {
-			name: item,
-			type: "line",
-			stack: 'Total',
-			areaStyle: {},
-			data: resultList[item]
-		};
-	})
 	const option = {
 		legend: {
-			data: list,
-			right:0 ,
-			orient:"vertical"
+			data: typeList,
+			right: 0 ,
+			orient:"vertical",
+			icon: 'rect',
+			itemWidth: 10,
+			itemHeight: 10,
+			top: 0,
+			textStyle: {
+				color: "#8C8B8C",
+			},
+			formatter: (name) => {
+				let max = 0
+				resultList.map(item => {
+					if (item.name === name) {
+						max = Math.max(...item.data);
+					}
+				})
+				return name + "最大值：" + max
+			},
 		},
 		tooltip: {
 			trigger: "axis",
@@ -198,7 +527,7 @@ const initEcharts = (list) => {
 		grid: {
 			top: "10",
 			left: "0",
-			right: "20",
+			right: "25%",
 			bottom: "20%",
 			containLabel: true,
 		},
@@ -264,7 +593,7 @@ const initEcharts = (list) => {
 				},
 			},
 		],
-		series: data,
+		series: resultList,
 	};
 	option && myChart.setOption(option);
 	//随着屏幕大小调节图表

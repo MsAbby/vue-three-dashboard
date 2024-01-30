@@ -79,7 +79,7 @@
 		</a-row>
 	</div>
 </template>
-<script lang="ts" setup>
+<script lang="ts" setup name="monthPieSecond">
 import { getCurrentInstance, nextTick, watch, Ref, ref } from "vue";
 import usePieEChartsOptions from "./usePieEChartsOptions";
 

@@ -21,40 +21,47 @@
 		</div>
 
 		<!-- bar -->
-		<a-row style="width: 100%; background-color: transparent;" :gutter="16">
-			<a-col :span="12">
-				<MonthLine
-					:month="month"
-					:isSearch="isSearch"
-					@searchEnd="searchEnd"
-				/>
-			</a-col>
-			<a-col :span="12">
-				<MonthBar
-					:month="month"
-					:isSearch="isSearch"
-					@searchEnd="searchEnd"
-				/>
-			</a-col>
-			
-		</a-row>
-		
-		<!-- pie -->
-		<MonthPie
+		<MonthLineSecond
 			:month="month"
 			:isSearch="isSearch"
 			@searchEnd="searchEnd"
-			ref="pieRef"
 		/>
+		
+		<MonthBarSecond
+			:month="month"
+			:isSearch="isSearch"
+			@searchEnd="searchEnd"
+		/>
+
+		<MonthBarThree
+			:month="month"
+			:isSearch="isSearch"
+			@searchEnd="searchEnd"
+		/>
+
+		<MonthLineThree
+			:month="month"
+			:isSearch="isSearch"
+			@searchEnd="searchEnd"
+		/>
+
+		<MonthBarFour
+			:month="month"
+			:isSearch="isSearch"
+			@searchEnd="searchEnd"
+		/>
+
 	</div>
 </template>
 
 <script lang="ts" setup>
 import { ref, Ref, onMounted } from "vue";
 import { Moment } from "moment";
-import MonthBar from "./monthBar.vue";
-import MonthLine from "./monthLine.vue";
-import MonthPie from "./monthPie.vue";
+import MonthBarSecond from "./monthBar.vue";
+import MonthLineSecond from "./monthLine.vue";
+import MonthBarThree from "./monthBarThree.vue";
+import MonthLineThree from "./monthLineThree.vue";
+import MonthBarFour from "./monthBarFour.vue";
 
 // 时间设置为响应式
 const time: Ref<Moment | null> = ref(null);

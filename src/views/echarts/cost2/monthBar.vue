@@ -2,12 +2,12 @@
 	<div class="bar-container">
 		<h3>月度数据</h3>
 		<div class="bar-box">
-			<div class="canvas-box" id="barChart"></div>
+			<div class="canvas-box" id="barChart1"></div>
 		</div>
 	</div>
 </template>
-<script lang="ts" setup>
-import { getCurrentInstance, nextTick, defineProps, watch, ref, Ref } from "vue";
+<script lang="ts" setup name="monthBarSecond">
+import { getCurrentInstance, nextTick, defineProps, watch, ref, Ref, onMounted } from "vue";
 
 const { proxy }: any = getCurrentInstance();
 
@@ -21,6 +21,11 @@ const props = defineProps({
 const isSearchReactive: Ref<boolean> = ref(props.isSearch);
 
 // watch
+watch(() => props.month, (newVal) => {
+	if (newVal) {
+		handelData()
+	}
+});
 watch(() => props.isSearch, (newVal) => {
 	isSearchReactive.value = newVal;
 	if (newVal) {
@@ -28,330 +33,318 @@ watch(() => props.isSearch, (newVal) => {
 	}
 });
 
+onMounted(() => {
+	console.log("hhhhhhhhhh",isSearchReactive)
+})
 let myChart: any = null;
-let isShow: boolean = false;
-let option: any = {};
 let xList: Array<any> = [];
 let yList: Array<any> = [];
-let dataList: Array<any> = [];
+let typeList: Array<any> = [];
+let resultList = [] as any;
 
 const handelData = () => {
 	console.log("monthReactive", props.month);
-	isShow = true;
 	xList = [];
 	yList = [];
+	typeList = [];
 	try {
-		// const res = await xxxxxxxx({month});
-		const res = {
+		let res = {
 			code: "000000",
-			data: [
-				{
-					name: "ABCD",
-					value: 71,
-				},
-				{
-					name: "ABCDEFG",
-					value: 35,
-				},
-				{
-					name: "ABCDEFG ABCDEFG",
-					value: 25,
-				},
-				{
-					name: "ABCDEFGG",
-					value: 18,
-				},
-				{
-					name: "ABCDEFGG1",
-					value: 18,
-				},
-				{
-					name: "ABCDEFGG56",
-					value: 18,
-				},
-				{
-					name: "ABCDEFGG56SDS",
-					value: 17,
-				},
-				{
-					name: "ABCDEFGG56SDSASDASD",
-					value: 17,
-				},
-				{
-					name: "AD",
-					value: 17,
-				},
-				{
-					name: "ABCDEFGG56SDSASDASD121",
-					value: 16,
-				},
-				{
-					name: "ABCDEFGG56SASD",
-					value: 15,
-				},
-				{
-					name: "ABCDRTERT",
-					value: 15,
-				},
-				{
-					name: "ABCDRTERT1",
-					value: 14,
-				},
-				{
-					name: "ABCDRTT",
-					value: 13,
-				},
-				{
-					name: "ABCDRTERTDGFDGFDG",
-					value: 13,
-				},
-				{
-					name: "ABCDRT",
-					value: 12,
-				},
-				{
-					name: "ABCDRTERTHEV",
-					value: 11,
-				},
-				{
-					name: "ABCDRTERT",
-					value: 10,
-				},
-				{
-					name: "ABCDRTERT121",
-					value: 9,
-				},
-				{
-					name: "ABCDRTERT76567",
-					value: 8,
-				},
-				{
-					name: "ABCDRTERTAS1",
-					value: 7,
-				},
-				{
-					name: "ABCDRTEQWE",
-					value: 6,
-				},
-				{
-					name: "ABVFG",
-					value: 6,
-				},
-				{
-					name: "ABCDRTERT545",
-					value: 6,
-				},
-				{
-					name: "ABCDR000",
-					value: 6,
-				},
-				{
-					name: "A07",
-					value: 5,
-				},
-				{
-					name: "ABCD090",
-					value: 5,
-				},
-				{
-					name: "ABCD090DASDSDSGHGH",
-					value: 4,
-				},
-				{
-					name: "ABCD090DASDSDSGHGH788",
-					value: 4,
-				},
-				{
-					name: "ABCD090DASD12",
-					value: 4,
-				},
-				{
-					name: "ASSDSDSDS",
-					value: 3,
-				},
-				{
-					name: "DFGDFGDFGF",
-					value: 3,
-				},
-				{
-					name: "434DFGSDDDSFDSF1",
-					value: 3,
-				},
-				{
-					name: "FGJGJGSD",
-					value: 3,
-				},
-				{
-					name: "RWXCVCGERFSFFD",
-					value: 3,
-				},
-				{
-					name: "DFDS234",
-					value: 3,
-				},
-				{
-					name: "SDFSFSGSD32",
-					value: 3,
-				},
-				{
-					name: "SDFSFDSFDSFGHFGJHGJH",
-					value: 3,
-				},
-				{
-					name: "DSF",
-					value: 2,
-				},
-				{
-					name: "FSDSDFTR6546",
-					value: 2,
-				},
-				{
-					name: "DFGFDGGHJ87697",
-					value: 2,
-				},
-				{
-					name: "SDSADAS23424",
-					value: 2,
-				},
-				{
-					name: "DFSF67876HGHFGH",
-					value: 2,
-				},
-				{
-					name: "SDFSDGHJJH345FFF",
-					value: 2,
-				},
-				{
-					name: "12FDF5TS",
-					value: 2,
-				},
-				{
-					name: "FDGDJHKJOFBVCBVBBXCV",
-					value: 2,
-				},
-				{
-					name: "DSFDSF2",
-					value: 2,
-				},
-				{
-					name: "SDF5YB",
-					value: 2,
-				},
-				{
-					name: "FGJGHKJHKYDFG",
-					value: 2,
-				},
-				{
-					name: "WQEVCXVNH",
-					value: 2,
-				},
-				{
-					name: "DFG GHYTDF",
-					value: 2,
-				},
-				{
-					name: "345VBVFCBV DF",
-					value: 1,
-				},
-				{
-					name: "SDFVC GHJKGF",
-					value: 1,
-				},
-				{
-					name: "SDFSDF3SV  FGHFGGFDGF",
-					value: 1,
-				},
-				{
-					name: "长SDFVBH p06",
-					value: 1,
-				},
-				{
-					name: "WDSFFD F PHEV",
-					value: 1,
-				},
-				{
-					name: "拉DSFDFDR1",
-					value: 1,
-				},
-				{
-					name: "343 SDF45",
-					value: 1,
-				},
-				{
-					name: "DSFDSJK",
-					value: 1,
-				},
-				{
-					name: "WSDFEY SDFDFDSF",
-					value: 1,
-				},
-				{
-					name: "323 SDASDSADS-HJH",
-					value: 1,
-				},
-				{
-					name: "565FGX DFD FSDF",
-					value: 1,
-				},
-				{
-					name: "SDF-DSFNHJH",
-					value: 1,
-				},
-				{
-					name: "DFFD",
-					value: 1,
-				},
-				{
-					name: "SDFSDSGSG GDFGF",
-					value: 1,
-				},
-				{
-					name: "P04",
-					value: 1,
-				},
-				{
-					name: "SDFKJKHG-23",
-					value: 1,
-				},
-				{
-					name: "HGHKJHGHJFDFG 23",
-					value: 1,
-				},
-				{
-					name: "FSGHJH",
-					value: 1,
-				},
-				{
-					name: "HKLCVX D",
-					value: 1,
-				},
-				{
-					name: "SDF SDFD",
-					value: 1,
-				},
-				{
-					name: "DFSF  FDV VV5",
-					value: 1,
-				},
-				{
-					name: "PIKJHCVSC",
-					value: 1,
-				},
-				{
-					name: "ASD 343",
-					value: 1,
-				},
-			],
-			description: "SUCCESS",
+			data: {},
+			description: "",
 		};
+			res = {
+				code: "000000",
+				data: {
+					"牌牌A": [
+						{ date: "2023-01-01", value: "100" },
+						{ date: "2023-01-02", value: "100" },
+						{ date: "2023-01-03", value: "100" },
+						{ date: "2023-01-04", value: "100" },
+						{ date: "2023-01-05", value: "100" },
+						{ date: "2023-01-06", value: "100" },
+						{ date: "2023-01-07", value: "100" },
+						{ date: "2023-01-08", value: "100" },
+						{ date: "2023-01-09", value: 100 },
+						{ date: "2023-01-10", value: 1000 },
+						{ date: "2023-01-11", value: 1000 },
+						{ date: "2023-01-12", value: 1000 },
+						{ date: "2023-01-13", value: 1000 },
+						{ date: "2023-01-14", value: 1000 },
+						{ date: "2023-01-15", value: 3000 },
+						{ date: "2023-01-16", value: 1000 },
+						{ date: "2023-01-17", value: 100 },
+						{ date: "2023-01-18", value: 1000 },
+						{ date: "2023-01-19", value: 1000 },
+						{ date: "2023-01-20", value: 1000 },
+						{ date: "2023-01-21", value: 1000 },
+						{ date: "2023-01-22", value: 1000 },
+						{ date: "2023-01-23", value: 1000 },
+						{ date: "2023-01-24", value: 1000 },
+						{ date: "2023-01-25", value: 1000 },
+						{ date: "2023-01-26", value: 1000 },
+						{ date: "2023-01-27", value: 1000 },
+						{ date: "2023-01-28", value: 1000 },
+						{ date: "2023-01-29", value: 1000 },
+						{ date: "2023-01-30", value: 1000 },
+					],
+					"牌牌B": [
+						{ date: "2023-01-01", value: "200" },
+						{ date: "2023-01-02", value: "200" },
+						{ date: "2023-01-03", value: "200" },
+						{ date: "2023-01-04", value: "200" },
+						{ date: "2023-01-05", value: "200" },
+						{ date: "2023-01-06", value: "200" },
+						{ date: "2023-01-07", value: "200" },
+						{ date: "2023-01-08", value: "200" },
+						{ date: "2023-01-09", value: 100 },
+						{ date: "2023-01-10", value: 1000 },
+						{ date: "2023-01-11", value: 1000 },
+						{ date: "2023-01-12", value: 1000 },
+						{ date: "2023-01-13", value: 1000 },
+						{ date: "2023-01-14", value: 1000 },
+						{ date: "2023-01-15", value: 3000 },
+						{ date: "2023-01-16", value: 1000 },
+						{ date: "2023-01-17", value: 100 },
+						{ date: "2023-01-18", value: 1000 },
+						{ date: "2023-01-19", value: 1000 },
+						{ date: "2023-01-20", value: 1000 },
+						{ date: "2023-01-21", value: 1000 },
+						{ date: "2023-01-22", value: 1000 },
+						{ date: "2023-01-23", value: 1000 },
+						{ date: "2023-01-24", value: 1000 },
+						{ date: "2023-01-25", value: 1000 },
+						{ date: "2023-01-26", value: 1000 },
+						{ date: "2023-01-27", value: 1000 },
+						{ date: "2023-01-28", value: 1000 },
+						{ date: "2023-01-29", value: 1000 },
+						{ date: "2023-01-30", value: 1000 },
+					],
+					"牌牌c": [
+						{ date: "2023-01-01", value: "300" },
+						{ date: "2023-01-02", value: "300" },
+						{ date: "2023-01-03", value: "300" },
+						{ date: "2023-01-04", value: "300" },
+						{ date: "2023-01-05", value: "300" },
+						{ date: "2023-01-06", value: "300" },
+						{ date: "2023-01-07", value: "300" },
+						{ date: "2023-01-08", value: "300" },
+						{ date: "2023-01-09", value: 100 },
+						{ date: "2023-01-10", value: 1000 },
+						{ date: "2023-01-11", value: 1000 },
+						{ date: "2023-01-12", value: 1000 },
+						{ date: "2023-01-13", value: 1000 },
+						{ date: "2023-01-14", value: 1000 },
+						{ date: "2023-01-15", value: 3000 },
+						{ date: "2023-01-16", value: 1000 },
+						{ date: "2023-01-17", value: 100 },
+						{ date: "2023-01-18", value: 1000 },
+						{ date: "2023-01-19", value: 1000 },
+						{ date: "2023-01-20", value: 1000 },
+						{ date: "2023-01-21", value: 1000 },
+						{ date: "2023-01-22", value: 1000 },
+						{ date: "2023-01-23", value: 1000 },
+						{ date: "2023-01-24", value: 1000 },
+						{ date: "2023-01-25", value: 1000 },
+						{ date: "2023-01-26", value: 1000 },
+						{ date: "2023-01-27", value: 1000 },
+						{ date: "2023-01-28", value: 1000 },
+						{ date: "2023-01-29", value: 1000 },
+						{ date: "2023-01-30", value: 1000 },
+					],
+					"牌牌d": [
+						{ date: "2023-01-01", value: "400" },
+						{ date: "2023-01-02", value: "400" },
+						{ date: "2023-01-03", value: "400" },
+						{ date: "2023-01-04", value: "400" },
+						{ date: "2023-01-05", value: "400" },
+						{ date: "2023-01-06", value: "400" },
+						{ date: "2023-01-07", value: "400" },
+						{ date: "2023-01-08", value: "400" },
+						{ date: "2023-01-09", value: 100 },
+						{ date: "2023-01-10", value: 1000 },
+						{ date: "2023-01-11", value: 1000 },
+						{ date: "2023-01-12", value: 1000 },
+						{ date: "2023-01-13", value: 1000 },
+						{ date: "2023-01-14", value: 1000 },
+						{ date: "2023-01-15", value: 3000 },
+						{ date: "2023-01-16", value: 1000 },
+						{ date: "2023-01-17", value: 100 },
+						{ date: "2023-01-18", value: 1000 },
+						{ date: "2023-01-19", value: 1000 },
+						{ date: "2023-01-20", value: 1000 },
+						{ date: "2023-01-21", value: 1000 },
+						{ date: "2023-01-22", value: 1000 },
+						{ date: "2023-01-23", value: 1000 },
+						{ date: "2023-01-24", value: 1000 },
+						{ date: "2023-01-25", value: 1000 },
+						{ date: "2023-01-26", value: 1000 },
+						{ date: "2023-01-27", value: 1000 },
+						{ date: "2023-01-28", value: 1000 },
+						{ date: "2023-01-29", value: 1000 },
+						{ date: "2023-01-30", value: 1000 },
+					],
+					"牌牌e": [
+						{ date: "2023-01-01", value: "500" },
+						{ date: "2023-01-02", value: "500" },
+						{ date: "2023-01-03", value: "500" },
+						{ date: "2023-01-04", value: "500" },
+						{ date: "2023-01-05", value: "500" },
+						{ date: "2023-01-06", value: "500" },
+						{ date: "2023-01-07", value: "500" },
+						{ date: "2023-01-08", value: "500" },
+						{ date: "2023-01-09", value: 100 },
+						{ date: "2023-01-10", value: 1000 },
+						{ date: "2023-01-11", value: 1000 },
+						{ date: "2023-01-12", value: 1000 },
+						{ date: "2023-01-13", value: 1000 },
+						{ date: "2023-01-14", value: 1000 },
+						{ date: "2023-01-15", value: 3000 },
+						{ date: "2023-01-16", value: 1000 },
+						{ date: "2023-01-17", value: 100 },
+						{ date: "2023-01-18", value: 1000 },
+						{ date: "2023-01-19", value: 1000 },
+						{ date: "2023-01-20", value: 1000 },
+						{ date: "2023-01-21", value: 1000 },
+						{ date: "2023-01-22", value: 1000 },
+						{ date: "2023-01-23", value: 1000 },
+						{ date: "2023-01-24", value: 1000 },
+						{ date: "2023-01-25", value: 1000 },
+						{ date: "2023-01-26", value: 1000 },
+						{ date: "2023-01-27", value: 1000 },
+						{ date: "2023-01-28", value: 1000 },
+						{ date: "2023-01-29", value: 1000 },
+						{ date: "2023-01-30", value: 1000 },
+					],
+					"牌牌f": [
+						{ date: "2023-01-01", value: "530" },
+						{ date: "2023-01-02", value: "50" },
+						{ date: "2023-01-03", value: "520" },
+						{ date: "2023-01-04", value: "520" },
+						{ date: "2023-01-05", value: "520" },
+						{ date: "2023-01-06", value: "520" },
+						{ date: "2023-01-07", value: "520" },
+						{ date: "2023-01-08", value: "520" },
+						{ date: "2023-01-09", value: 100 },
+						{ date: "2023-01-10", value: 1000 },
+						{ date: "2023-01-11", value: 1000 },
+						{ date: "2023-01-12", value: 1000 },
+						{ date: "2023-01-13", value: 1000 },
+						{ date: "2023-01-14", value: 1000 },
+						{ date: "2023-01-15", value: 3000 },
+						{ date: "2023-01-16", value: 1000 },
+						{ date: "2023-01-17", value: 100 },
+						{ date: "2023-01-18", value: 1000 },
+						{ date: "2023-01-19", value: 1000 },
+						{ date: "2023-01-20", value: 1000 },
+						{ date: "2023-01-21", value: 1000 },
+						{ date: "2023-01-22", value: 1000 },
+						{ date: "2023-01-23", value: 1000 },
+						{ date: "2023-01-24", value: 1000 },
+						{ date: "2023-01-25", value: 1000 },
+						{ date: "2023-01-26", value: 1000 },
+						{ date: "2023-01-27", value: 1000 },
+						{ date: "2023-01-28", value: 1000 },
+						{ date: "2023-01-29", value: 1000 },
+						{ date: "2023-01-30", value: 1000 },
+					],
+					"牌牌g": [
+						{ date: "2023-01-01", value: "630" },
+						{ date: "2023-01-02", value: "60" },
+						{ date: "2023-01-03", value: "620" },
+						{ date: "2023-01-04", value: "620" },
+						{ date: "2023-01-05", value: "620" },
+						{ date: "2023-01-06", value: "620" },
+						{ date: "2023-01-07", value: "620" },
+						{ date: "2023-01-08", value: "620" },
+						{ date: "2023-01-09", value: 100 },
+						{ date: "2023-01-10", value: 1000 },
+						{ date: "2023-01-11", value: 1000 },
+						{ date: "2023-01-12", value: 1000 },
+						{ date: "2023-01-13", value: 1000 },
+						{ date: "2023-01-14", value: 1000 },
+						{ date: "2023-01-15", value: 3000 },
+						{ date: "2023-01-16", value: 1000 },
+						{ date: "2023-01-17", value: 100 },
+						{ date: "2023-01-18", value: 1000 },
+						{ date: "2023-01-19", value: 1000 },
+						{ date: "2023-01-20", value: 1000 },
+						{ date: "2023-01-21", value: 1000 },
+						{ date: "2023-01-22", value: 1000 },
+						{ date: "2023-01-23", value: 1000 },
+						{ date: "2023-01-24", value: 1000 },
+						{ date: "2023-01-25", value: 1000 },
+						{ date: "2023-01-26", value: 1000 },
+						{ date: "2023-01-27", value: 1000 },
+						{ date: "2023-01-28", value: 1000 },
+						{ date: "2023-01-29", value: 1000 },
+						{ date: "2023-01-30", value: 1000 },
+					],
+				},
+				description: "SUCCESS",
+			};
+			// res = {
+			// 	code: "000000",
+			// 	data: {
+			// 		"ggggggggggg": [
+			// 			{ date: "2023-01-01", value: "100" },
+			// 			{ date: "2023-01-02", value: "100" },
+			// 			{ date: "2023-01-03", value: "100" },
+			// 			{ date: "2023-01-04", value: "100" },
+			// 			{ date: "2023-01-05", value: "100" },
+			// 			{ date: "2023-01-06", value: "100" },
+			// 			{ date: "2023-01-07", value: "100" },
+			// 			{ date: "2023-01-08", value: "100" },
+			// 		],
+			// 	},
+			// 	description: "SUCCESS",
+			// };
+
 		if (res.code === "000000") {
+			const list = JSON.parse(JSON.stringify(res.data));
 			proxy.$emit("searchEnd");
-			dataList = res.data;
-			if (dataList && dataList.length > 0) {
-				dataList.forEach((item) => {
-					xList.push(item.name);
-					yList.push(item.value);
-				});
+			if (list) {
+				console.log("2222", res.data)
+				// 对象循环
+				for (let key in res.data) {
+					const result = [] as any;
+					xList = [];
+					typeList.push(key);
+					res.data[key].map((item) => {
+						result.push(item.value);
+						xList.push(item.date);
+					});
+					let obj = {
+						name: key,
+						type: "bar",
+						data: result,
+						stack: "total",
+						markLine: {
+							symbolSize: 0, // 不显示标记点
+							label: {
+								show: true,
+								position: 'end',
+								formatter: '{c}', // 格式化标记线文本
+								textStyle: {
+									color: '#000',
+									fontWeight: 'bold'
+								}
+							},
+							lineStyle: {
+								normal: {
+									width: 2,
+									type: 'solid',
+									color: '#ff0000' // 红色
+								}
+							},
+							data: [{
+								name: 'Y 轴值为 100 的水平线',
+								yAxis: 300
+							}]
+						}
+					};
+					resultList.push(obj);
+				}
 				nextTick(() => {
 					initEcharts();
 				});
@@ -364,14 +357,34 @@ const handelData = () => {
 	} catch (error) {
 		proxy.$Notice.error({ title: "捕获错误", desc: error });
 	} finally {
-		isShow = false;
 	}
 };
 const initEcharts = () => {
-	const chartDom = document.getElementById("barChart");
+	const chartDom = document.getElementById("barChart1");
 	myChart = proxy.$echarts.init(chartDom);
 
 	const option = {
+		legend: {
+			data: typeList,
+			right: 0 ,
+			orient:"vertical",
+			icon: 'rect',
+			itemWidth: 10,
+			itemHeight: 10,
+			top: 0,
+			textStyle: {
+				color: "#8C8B8C",
+			},
+			formatter: (name) => {
+				let max = 0
+				resultList.map(item => {
+					if (item.name === name) {
+						max = Math.max(...item.data);
+					}
+				})
+				return name + "：" + max
+			},
+		},
 		tooltip: {
 			trigger: "axis",
 			axisPointer: {
@@ -389,7 +402,7 @@ const initEcharts = () => {
 		grid: {
 			top: "10",
 			left: "0",
-			right: "20",
+			right: "20%",
 			bottom: "20%",
 			containLabel: true,
 		},
@@ -455,38 +468,7 @@ const initEcharts = () => {
 				},
 			},
 		],
-		series: [
-			{
-				name: "Direct",
-				type: "bar",
-				barWidth: "16",
-				background: "#3A78F2",
-				data: yList,
-				itemStyle: {
-					color: "#3A78F2", // 定义柱子颜色
-				},
-			},
-		],
-		dataZoom: [
-			{
-				// 是否显示下滑块
-				show: true,
-				// 是否展示滚动条两边显示的信息
-				showDetail: false,
-				// 下滑块距离x轴底部的距离
-				bottom: 20,
-				// 下滑块手柄的高度调节
-				height: 20,
-				// 类型, 滑动块插件
-				type: "slider",
-				// 选择的x轴
-				xAxisIndex: [0],
-				// 初始数据显示多少
-				start: 0,
-				// 初始数据最多显示多少
-				end: xList.length > 35 ? 25 : 100,
-			},
-		],
+		series: resultList,
 	};
 	option && myChart.setOption(option);
 	//随着屏幕大小调节图表
