@@ -4,6 +4,17 @@
 		<div class="bar-box">
 			<div class="canvas-box" id="barChartthree"></div>
 		</div>
+		<a-modal
+			v-model:open="visible"
+			title="Basic Modal"
+			width="60%"
+			:mask="true"
+			:footer="null"
+			>
+			<div class="bar-box" style="width: 100%; height: 600px;">
+				<div  style="width: 100%; height: 550px;" id="barChartModal"></div>
+			</div>
+		</a-modal>
 	</div>
 </template>
 <script lang="ts" setup name="MonthBarThree">
@@ -45,9 +56,12 @@ watch(
 		}
 	}
 );
-
+let visible = ref(false);
 let myChart: any = null;
+let modalChart: any = null;
 let xList: Array<any> = [];
+let	modalxList: Array<any> = [];
+let	modalSerisList: Array<any> = [];
 let yList: {
 	a: [],
 	b: [],
@@ -185,6 +199,7 @@ const handelData = () => {
 	} finally {
 	}
 };
+
 const initEcharts = () => {
 	const chartDom = document.getElementById("barChartthree");
 	myChart = proxy.$echarts.init(chartDom);
@@ -196,9 +211,18 @@ const initEcharts = () => {
 	const option = {
 		tooltip: {
 			trigger: 'axis',
+			axisPointer: {
+				type: "shadow",
+				shadowStyle: {
+					color: "rgba(57, 127, 243, 0.1)"
+				},
+			},
+			// 触发方式 mousemove, click, none, mousemove|click
+			triggerOn: "mousemove",
+			// item 图形触发， axis 坐标轴触发， none 不触发
+			// trigger: "item",
 			formatter: (params) => {
-				console.log("+++", params, params[0])
-				const str = `<strong>${params[0].name}</strong></br>
+				const str = `<strong>${params.name}</strong></br>
 							<p>NTSP</p>
 							<p>${params[0].seriesName} ： ${params[0].value}</p>
 							<p>${params[2].seriesName} ： ${params[2].value}</p>
@@ -342,6 +366,159 @@ const initEcharts = () => {
 		setTimeout(() => {
 			myChart.resize();
 		}, 500);
+	});
+
+	myChart.on("click", (params) => {
+		visible.value = true;
+		modalxList = [];
+		modalSerisList = [];
+		
+			const resModal = [
+				{
+					name: "总",
+					value: [
+						{name: "车车01111111111", value: 120},
+						{name: "车车02222222222222", value: 220},
+						{name: "车车033333333333333", value: 120},
+						{name: "车车4444444444", value: 120},
+						{name: "车车5555555555", value: 120},
+						{name: "车车9999999999", value: 420},
+						{name: "车车100000000", value: 220},
+						{name: "车车1000000002323", value: 220},
+						{name: "车车1000000002323", value: 1220},
+					]
+				},
+				{
+					name: "呆阿呆",
+					value: [
+						{name: "车车01111111111", value: 220},
+						{name: "车车02222222222222", value: 220},
+						{name: "车车033333333333333", value: 120},
+						{name: "车车4444444444", value: 1330},
+						{name: "车车5555555555", value: 120},
+						{name: "车车9999999999", value: 420},
+						{name: "车车100000000", value: 220},
+						{name: "车车1000000002323", value: 220},
+						{name: "车车1000000002323", value: 1220},
+					]
+				},
+				{
+					name: "村村",
+					value: [
+						{name: "车车01111111111", value: 2120},
+						{name: "车车02222222222222", value: 220},
+						{name: "车车033333333333333", value: 120},
+						{name: "车车4444444444", value: 1330},
+						{name: "车车5555555555", value: 1120},
+						{name: "车车9999999999", value: 420},
+						{name: "车车100000000", value: 1120},
+						{name: "车车1000000002323", value: 220},
+						{name: "车车1000000002323", value: 1220},
+					]
+				},
+			];
+			resModal.map((item, index) => {
+				if (index === 0) {
+					modalxList = item.value.map(child => {
+						return child.name;
+					}) 
+				}
+				const obj = {
+					name: item.name,
+					type: 'bar',
+					data: item.value,
+					barGap: 0,
+					barWidth: 8,
+					emphasis: {
+						focus: 'series'
+					},
+				}
+				modalSerisList.push(obj)
+			});
+			nextTick(() => {
+				setTooltipEchart(params)
+			});
+	})
+};
+
+const setTooltipEchart = async (parmas) => {
+	const chartDom = document.getElementById("barChartModal");
+	modalChart = proxy.$echarts.init(chartDom);
+	console.log(modalChart, "----")
+	const seriesLabel = {
+		show: true,
+		fontSize: 10,
+	};
+	console.log(modalSerisList)
+	const options = {
+		// tooltip: {
+		// 	trigger: 'axis',
+		// 	axisPointer: {
+		// 		type: "shadow",
+		// 		shadowStyle: {
+		// 			color: "rgba(57, 127, 243, 0.1)"
+		// 		},
+		// 	},
+		// 	triggerOn: "mousemove",
+		// 	// item 图形触发， axis 坐标轴触发， none 不触发
+		// 	// trigger: "item",
+		// },
+		grid: {
+			top: "100",
+			left: "10%",
+			right: "20",
+			bottom: "20%",
+			containLabel: true,
+		},
+		xAxis: {
+			type: "category",
+			data: modalxList,
+			axisLabel: {
+				rotate: "-60",
+				// 文字颜色
+				color: "#666666",
+				// 文字大小
+				fontSize: 12,
+			},
+
+		},
+		yAxis: {
+			type: "value",
+		},
+		dataZoom: [
+			{	
+				// 是否显示下滑块
+				show: true,
+				// 是否展示滚动条两边显示的信息
+				showDetail: false,
+				// 下滑块距离x轴底部的距离
+				bottom: 20,
+				// 下滑块手柄的高度调节
+				height: 20,
+				// 类型, 滑动块插件
+				type: "slider",
+				// 选择的x轴
+				xAxisIndex: [0],
+				// 初始数据显示多少
+				start: 0,
+				// 初始数据最多显示多少
+				end: xList.length > 35 ? 25 : 100,
+			},
+			{
+				type: 'inside',
+				yAxisIndex: 0,
+				zoomOnMouseWheel: false,  //滚轮是否触发缩放
+				moveOnMouseMove: true,  //鼠标滚轮触发滚动
+				moveOnMouseWheel: true
+			}
+		],
+		series: modalSerisList
+	};
+
+	options && modalChart.setOption(options);
+	// 随着屏幕大小调节图表
+	window.addEventListener("resize", () => {
+		modalChart.resize();
 	});
 };
 </script>

@@ -16,7 +16,8 @@ import {
 	Upload,
 	Spin,
 	Row,
-	Col
+	Col,
+	Modal,
 } from "ant-design-vue";
 
 
@@ -36,7 +37,8 @@ const components = [
 	Upload,
 	Spin,
 	Row,
-	Col
+	Col,
+	Modal
 ];
 
 export default function setupAtnd(app: any) {
