@@ -377,43 +377,43 @@ const initEcharts = () => {
 				{
 					name: "总",
 					value: [
-						{name: "车车01111111111", value: 120},
-						{name: "车车02222222222222", value: 220},
-						{name: "车车033333333333333", value: 120},
-						{name: "车车4444444444", value: 120},
-						{name: "车车5555555555", value: 120},
-						{name: "车车9999999999", value: 420},
-						{name: "车车100000000", value: 220},
-						{name: "车车1000000002323", value: 220},
-						{name: "车车1000000002323", value: 1220},
+						{name: "车车01111111111", value: 120, xx: 100, yy: 200, zz:1000, ff:2000},
+						{name: "车车02222222222222", value: 220,  xx: 100, yy: 200, zz:1000, ff:2000},
+						{name: "车车033333333333333", value: 120,  xx: 100, yy: 200, zz:1000, ff:2000},
+						{name: "车车4444444444", value: 120,  xx: 100, yy: 200, zz:1000, ff:2000},
+						{name: "车车5555555555", value: 120,  xx: 100, yy: 200, zz:1000, ff:2000},
+						{name: "车车9999999999", value: 420,  xx: 100, yy: 200, zz:1000, ff:2000},
+						{name: "车车100000000", value: 220,  xx: 100, yy: 200, zz:1000, ff:2000},
+						{name: "车车1000000002323", value: 220, xx: 100, yy: 200, zz:1000, ff:2000},
+						{name: "车车1000000002323", value: 1220, xx: 100, yy: 200, zz:1000, ff:2000},
 					]
 				},
 				{
 					name: "呆阿呆",
 					value: [
-						{name: "车车01111111111", value: 220},
-						{name: "车车02222222222222", value: 220},
-						{name: "车车033333333333333", value: 120},
-						{name: "车车4444444444", value: 1330},
-						{name: "车车5555555555", value: 120},
-						{name: "车车9999999999", value: 420},
-						{name: "车车100000000", value: 220},
-						{name: "车车1000000002323", value: 220},
-						{name: "车车1000000002323", value: 1220},
+						{name: "车车01111111111", value: 220, xx: 100, yy: 200, zz:1000, ff:2000},
+						{name: "车车02222222222222", value: 220, xx: 100, yy: 200, zz:1000, ff:2000},
+						{name: "车车033333333333333", value: 120, xx: 100, yy: 200, zz:1000, ff:2000},
+						{name: "车车4444444444", value: 1330, xx: 100, yy: 200, zz:1000, ff:2000},
+						{name: "车车5555555555", value: 120, xx: 100, yy: 200, zz:1000, ff:2000},
+						{name: "车车9999999999", value: 420, xx: 100, yy: 200, zz:1000, ff:2000},
+						{name: "车车100000000", value: 220, xx: 100, yy: 200, zz:1000, ff:2000},
+						{name: "车车1000000002323", value: 220, xx: 100, yy: 200, zz:1000, ff:2000},
+						{name: "车车1000000002323", value: 1220, xx: 100, yy: 200, zz:1000, ff:2000},
 					]
 				},
 				{
 					name: "村村",
 					value: [
-						{name: "车车01111111111", value: 2120},
-						{name: "车车02222222222222", value: 220},
-						{name: "车车033333333333333", value: 120},
-						{name: "车车4444444444", value: 1330},
-						{name: "车车5555555555", value: 1120},
-						{name: "车车9999999999", value: 420},
-						{name: "车车100000000", value: 1120},
-						{name: "车车1000000002323", value: 220},
-						{name: "车车1000000002323", value: 1220},
+						{name: "车车01111111111", value: 2120, xx: 100, yy: 200, zz:1000, ff:2000},
+						{name: "车车02222222222222", value: 220, xx: 100, yy: 200, zz:1000, ff:2000},
+						{name: "车车033333333333333", value: 120, xx: 100, yy: 200, zz:1000, ff:2000},
+						{name: "车车4444444444", value: 1330, xx: 100, yy: 200, zz:1000, ff:2000},
+						{name: "车车5555555555", value: 1120, xx: 100, yy: 200, zz:1000, ff:2000},
+						{name: "车车9999999999", value: 420, xx: 100, yy: 200, zz:1000, ff:2000},
+						{name: "车车100000000", value: 1120, xx: 100, yy: 200, zz:1000, ff:2000},
+						{name: "车车1000000002323", value: 220, xx: 100, yy: 200, zz:1000, ff:2000},
+						{name: "车车1000000002323", value: 1220, xx: 100, yy: 200, zz:1000, ff:2000},
 					]
 				},
 			];
@@ -451,18 +451,33 @@ const setTooltipEchart = async (parmas) => {
 	};
 	console.log(modalSerisList)
 	const options = {
-		// tooltip: {
-		// 	trigger: 'axis',
-		// 	axisPointer: {
-		// 		type: "shadow",
-		// 		shadowStyle: {
-		// 			color: "rgba(57, 127, 243, 0.1)"
-		// 		},
-		// 	},
-		// 	triggerOn: "mousemove",
-		// 	// item 图形触发， axis 坐标轴触发， none 不触发
-		// 	// trigger: "item",
-		// },
+		tooltip: {
+			trigger: 'axis',
+			axisPointer: {
+				type: "shadow",
+				shadowStyle: {
+					color: "rgba(57, 127, 243, 0.1)"
+				},
+			},
+			triggerOn: "mousemove",
+			// item 图形触发， axis 坐标轴触发， none 不触发
+			// trigger: "item",
+			formatter: (params) => {
+				console.log(params)
+				const str = `
+					<strong>${params.data.name}</strong></br>
+					<p>${params[0].seriesName} ： ${params[0].data.value}</p>
+					<p>${params[1].seriesName} ： ${params[1].data.value}</p>
+					<p>${params[2].seriesName} ： ${params[2].data.value}</p>
+					<strong>其中</strong></br>
+					<p>皱皱： ${params[0].data.value}</p>
+					<p>呆呆 ： ${params[1].data.value}</p>
+					<p>存词呢 ： ${params[2].data.value}</p>
+					<p>其他 ： ${params[2].data.value}</p>
+				`
+				return str;
+			}
+		},
 		grid: {
 			top: "100",
 			left: "10%",
