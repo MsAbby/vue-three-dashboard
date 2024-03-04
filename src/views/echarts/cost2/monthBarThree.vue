@@ -252,12 +252,24 @@ const initEcharts = () => {
 		},
 		dataZoom: [
 			{	
+				backgroundColor: "#F5F5F5",
+				borderColor: "#F5F5F5",
+				fillerColor: "rgba(0, 0, 0, 0.2)",
+				dataBackground: {
+					lineStyle: {
+						backgroundColor: "#F5F5F5",
+					}
+					// areaStyle: {
+					// 	color: "rgba(0, 0, 0, 0.8)"
+					// }
+				},
 				// 垂直方向
 				orient: 'vertical',
 				// 是否显示下滑块
 				show: true,
 				// 是否展示滚动条两边显示的信息
 				showDetail: false,
+				width: 18,
 				// 下滑块手柄的高度调节
 				height: 300,
 				// 类型, 滑动块插件
@@ -375,7 +387,7 @@ const initEcharts = () => {
 		
 			const resModal = [
 				{
-					name: "总",
+					name: "总成本",
 					value: [
 						{name: "车车01111111111", value: 120, xx: 100, yy: 200, zz:1000, ff:2000},
 						{name: "车车02222222222222", value: 220,  xx: 100, yy: 200, zz:1000, ff:2000},
@@ -389,7 +401,7 @@ const initEcharts = () => {
 					]
 				},
 				{
-					name: "呆阿呆",
+					name: "带宽成本",
 					value: [
 						{name: "车车01111111111", value: 220, xx: 100, yy: 200, zz:1000, ff:2000},
 						{name: "车车02222222222222", value: 220, xx: 100, yy: 200, zz:1000, ff:2000},
@@ -403,7 +415,7 @@ const initEcharts = () => {
 					]
 				},
 				{
-					name: "村村",
+					name: "存储成本",
 					value: [
 						{name: "车车01111111111", value: 2120, xx: 100, yy: 200, zz:1000, ff:2000},
 						{name: "车车02222222222222", value: 220, xx: 100, yy: 200, zz:1000, ff:2000},

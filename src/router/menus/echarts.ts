@@ -34,6 +34,15 @@ const echartsRouter = {
         icon: 'icon-code',
       },
     },
+    {
+      path: '/cost4',
+      name: 'echarts-cost4',
+      component: () => import('@/views/echarts/cost4/index.vue'),
+      meta: {
+        title: '案例四',
+        icon: 'icon-code',
+      },
+    },
   ]
 }
 

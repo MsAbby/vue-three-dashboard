@@ -72,6 +72,7 @@ const searchEnd = () => {
 </script>
 
 <style lang="less" scoped>
+
 .cost-report {
 	.date-box {
 		padding: 30px 0 10px 0;

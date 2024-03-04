@@ -1,6 +1,6 @@
 <template>
 	<div class="line-container">
-		<h3>月度数据</h3>
+		<h3>折线图-01</h3>
 		<div class="bar-box">
 			<div class="canvas-box" id="lineChart"></div>
 		</div>
@@ -61,20 +61,16 @@ const handelData = () => {
 	xxdList = [];
 	legendList = [] as any;
 	const colors = [
-		"#3A78F2",
-		"#FF953D",
-		"#D80000",
-		"#EE66FF",
-		"#70008F",
-		"#B9A5A3",
-		"#36CE9E",
-		"#FFC005",
-		"#EE6666",
-		"#8B5CFF",
-		"#00CA69",
-		"#15CE87",
-		"#C7E317",
-		"#47D468",
+		"#397FF3",
+		"#9EBFFF",
+		"#4BC7E6",
+		"#C7F4FF",
+		"#82E4BB",
+		"#FFCC58",
+		"#FD904B",
+		"#AA8FFF",
+		"#D6C9FF",
+		"#7189B5",
 	];
 	const res = {
 		code: "000000",
@@ -226,6 +222,69 @@ const handelData = () => {
 					{date: "2023-01-15", value: 8030, platfom: "ntsp", type: "项项合合代码"},
 				]
 			},
+			{
+				name: "排排排排排排排排AAAAAAA",
+				max: 5340,
+				value: [
+					{date: "2023-01-01", value: 1150, platfom: "ntsp", type: "项项合合代码"},
+					{date: "2023-01-02", value: 2250, platfom: "ntsp", type: "项项合合代码"},
+					{date: "2023-01-03", value: 3250, platfom: "ntsp", type: "项项合合代码"},
+					{date: "2023-01-04", value: 5130, platfom: "ntsp", type: "项项合合代码"},
+					{date: "2023-01-05", value: 2150, platfom: "ntsp", type: "项项合合代码"},
+					{date: "2023-01-06", value: 5230, platfom: "ntsp", type: "项项合合代码"},
+					{date: "2023-01-07", value: 5230, platfom: "ntsp", type: "项项合合代码"},
+					{date: "2023-01-08", value: 5340, platfom: "ntsp", type: "项项合合代码"},
+					{date: "2023-01-09", value: 5310, platfom: "ntsp", type: "项项合合代码"},
+					{date: "2023-01-10", value: 530, platfom: "ntsp", type: "项项合合代码"},
+					{date: "2023-01-11", value: 5310, platfom: "ntsp", type: "项项合合代码"},
+					{date: "2023-01-12", value: 530, platfom: "ntsp", type: "项项合合代码"},
+					{date: "2023-01-13", value: 530, platfom: "ntsp", type: "项项合合代码"},
+					{date: "2023-01-14", value: 530, platfom: "ntsp", type: "项项合合代码"},
+					{date: "2023-01-15", value: 2660, platfom: "ntsp", type: "项项合合代码"},
+				]
+			},
+			{
+				name: "排排排排排排排排fBBBBBBBB",
+				max: 3620,
+				value: [
+					{date: "2023-01-01", value: 1620, platfom: "gtsp", type: "项项合合代码"},
+					{date: "2023-01-02", value: 2620, platfom: "gtsp", type: "项项合合代码"},
+					{date: "2023-01-03", value: 3160, platfom: "gtsp", type: "项项合合代码"},
+					{date: "2023-01-04", value: 4620, platfom: "gtsp", type: "项项合合代码"},
+					{date: "2023-01-05", value: 2160, platfom: "gtsp", type: "项项合合代码"},
+					{date: "2023-01-06", value: 960, platfom: "gtsp", type: "项项合合代码"},
+					{date: "2023-01-07", value: 630, platfom: "gtsp", type: "项项合合代码"},
+					{date: "2023-01-08", value: 3620, platfom: "gtsp", type: "项项合合代码"},
+					{date: "2023-01-09", value: 3160, platfom: "gtsp", type: "项项合合代码"},
+					{date: "2023-01-10", value: 360, platfom: "gtsp", type: "项项合合代码"},
+					{date: "2023-01-11", value: 3260, platfom: "gtsp", type: "项项合合代码"},
+					{date: "2023-01-12", value: 3620, platfom: "gtsp", type: "项项合合代码"},
+					{date: "2023-01-13", value: 360, platfom: "gtsp", type: "项项合合代码"},
+					{date: "2023-01-14", value: 360, platfom: "gtsp", type: "项项合合代码"},
+					{date: "2023-01-15", value: 1660, platfom: "gtsp", type: "项项合合代码"},
+				]
+			},
+			{
+				name: "xings排排排CCCCCCC",
+				max: 6330,
+				value: [
+					{date: "2023-01-01", value: 1701, platfom: "ntsp", type: "项项合合代码"},
+					{date: "2023-01-02", value: 2701, platfom: "ntsp", type: "项项合合代码"},
+					{date: "2023-01-03", value: 3701, platfom: "ntsp", type: "项项合合代码"},
+					{date: "2023-01-04", value: 4270, platfom: "ntsp", type: "项项合合代码"},
+					{date: "2023-01-05", value: 2701, platfom: "ntsp", type: "项项合合代码"},
+					{date: "2023-01-06", value: 2990, platfom: "ntsp", type: "项项合合代码"},
+					{date: "2023-01-07", value: 1290, platfom: "ntsp", type: "项项合合代码"},
+					{date: "2023-01-08", value: 3230, platfom: "ntsp", type: "项项合合代码"},
+					{date: "2023-01-09", value: 3360, platfom: "ntsp", type: "项项合合代码"},
+					{date: "2023-01-10", value: 330, platfom: "ntsp", type: "项项合合代码"},
+					{date: "2023-01-11", value: 330, platfom: "ntsp", type: "项项合合代码"},
+					{date: "2023-01-12", value: 330, platfom: "ntsp", type: "项项合合代码"},
+					{date: "2023-01-13", value: 6330, platfom: "ntsp", type: "项项合合代码"},
+					{date: "2023-01-14", value: 3230, platfom: "ntsp", type: "项项合合代码"},
+					{date: "2023-01-15", value: 1030, platfom: "ntsp", type: "项项合合代码"},
+				]
+			},
 		],
 		description: "SUCCESS",
 	};
@@ -249,6 +308,7 @@ const handelData = () => {
 					type: "line",
 					data: item.value,
 					smooth: true,
+					showSymbol: false,
 					itemStyle: {
 						color: colors[index],
 					},
@@ -295,6 +355,7 @@ const initEcharts = () => {
 			itemHeight: 10,
 			top: 0,
 			data: legendList,
+			width: 130,
 			textStyle: {
 				color: "#8C8B8C",
 			},
@@ -319,7 +380,7 @@ const initEcharts = () => {
 		grid: {
 			top: "10",
 			left: "0",
-			right: "25%",
+			right: "10%",
 			bottom: "20%",
 			containLabel: true,
 		},

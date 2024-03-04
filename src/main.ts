@@ -1,4 +1,5 @@
 
+
 import { createApp } from 'vue'
 import App from './App.vue'
 import { initRouter } from './router'
@@ -12,6 +13,9 @@ import 'ant-design-vue/dist/reset.css';
 import './style.css'
 import './assets/style/reset.less'
 import './assets/style/common.less'
+
+import VCalendar from 'v-calendar';
+import 'v-calendar/style.css';
 
 /*
 ** 写法： app.use(router)
@@ -30,4 +34,5 @@ app.config.globalProperties.$moment = moment;
 initRouter(app)
 setupAtnd(app)
 app.use(store)
+app.use(VCalendar, {})
 app.mount('#app')

@@ -203,6 +203,48 @@ const handelData = () => {
 				{date: "2023-01-15", value: 8030, platfom: "ntsp", type: "项项合合代码"},
 			]
 		},
+		{
+			name: "xings排排排asdsadasdsd",
+			max: 8030,
+			value: [
+				{date: "2023-01-01", value: 1170, platfom: "ntsp", type: "项项合合代码"},
+				{date: "2023-01-02", value: 2270, platfom: "ntsp", type: "项项合合代码"},
+				{date: "2023-01-03", value: 3170, platfom: "ntsp", type: "项项合合代码"},
+				{date: "2023-01-04", value: 270, platfom: "ntsp", type: "项项合合代码"},
+				{date: "2023-01-05", value: 2730, platfom: "ntsp", type: "项项合合代码"},
+				{date: "2023-01-06", value: 990, platfom: "ntsp", type: "项项合合代码"},
+				{date: "2023-01-07", value: 1190, platfom: "ntsp", type: "项项合合代码"},
+				{date: "2023-01-08", value: 3230, platfom: "ntsp", type: "项项合合代码"},
+				{date: "2023-01-09", value: 3330, platfom: "ntsp", type: "项项合合代码"},
+				{date: "2023-01-10", value: 3130, platfom: "ntsp", type: "项项合合代码"},
+				{date: "2023-01-11", value: 3330, platfom: "ntsp", type: "项项合合代码"},
+				{date: "2023-01-12", value: 3630, platfom: "ntsp", type: "项项合合代码"},
+				{date: "2023-01-13", value: 3230, platfom: "ntsp", type: "项项合合代码"},
+				{date: "2023-01-14", value: 3230, platfom: "ntsp", type: "项项合合代码"},
+				{date: "2023-01-15", value: 8030, platfom: "ntsp", type: "项项合合代码"},
+			]
+		},
+		{
+			name: "xings排排排lasdjasaccc",
+			max: 8030,
+			value: [
+				{date: "2023-01-01", value: 1701, platfom: "ntsp", type: "项项合合代码"},
+				{date: "2023-01-02", value: 2702, platfom: "ntsp", type: "项项合合代码"},
+				{date: "2023-01-03", value: 3702, platfom: "ntsp", type: "项项合合代码"},
+				{date: "2023-01-04", value: 4070, platfom: "ntsp", type: "项项合合代码"},
+				{date: "2023-01-05", value: 2710, platfom: "ntsp", type: "项项合合代码"},
+				{date: "2023-01-06", value: 990, platfom: "ntsp", type: "项项合合代码"},
+				{date: "2023-01-07", value: 1910, platfom: "ntsp", type: "项项合合代码"},
+				{date: "2023-01-08", value: 3310, platfom: "ntsp", type: "项项合合代码"},
+				{date: "2023-01-09", value: 330, platfom: "ntsp", type: "项项合合代码"},
+				{date: "2023-01-10", value: 3130, platfom: "ntsp", type: "项项合合代码"},
+				{date: "2023-01-11", value: 3030, platfom: "ntsp", type: "项项合合代码"},
+				{date: "2023-01-12", value: 330, platfom: "ntsp", type: "项项合合代码"},
+				{date: "2023-01-13", value: 330, platfom: "ntsp", type: "项项合合代码"},
+				{date: "2023-01-14", value: 3230, platfom: "ntsp", type: "项项合合代码"},
+				{date: "2023-01-15", value: 8030, platfom: "ntsp", type: "项项合合代码"},
+			]
+		},
 	],
 		description: "",
 	}
@@ -222,7 +264,7 @@ const handelData = () => {
 						return item.date
 					})
 				}
-				legendList.push(item.name);
+				legendList.push({name: item.name, value: item.value});
 				let obj = {
 					name: item.name,
 					type: "bar",
@@ -261,16 +303,65 @@ const initEcharts = () => {
 			"#47D468",
 		],
 		legend: {
-			data: legendList,
-			right: 0 ,
-			orient:"vertical",
-			icon: 'rect',
-			itemWidth: 10,
-			itemHeight: 10,
-			top: 0,
-			textStyle: {
-				color: "#8C8B8C",
-			},
+			orient: 'vertical',
+    x: '6%',
+    y: 'bottom',
+    bottom: 0,
+    itemGap: 17,
+    itemWidth: 12,
+    icon: 'circle',
+    textStyle: {
+      width: 100,
+      rich: {
+        a: {
+          align: 'left',
+          fontSize: 14,
+          width: '100%',
+          verticalAlign: 'bottom',
+          fontFamily: 'sans-serif',
+          color: '#000000a5'
+        },
+        b: {
+          align: 'left',
+          height: 17,
+          width: '1%',
+          backgroundColor: 'rgb(204, 204, 204)',
+          verticalAlign: 'bottom',
+        },
+        c: {
+          align: 'left',
+          fontSize: 14,
+          width: '100%',
+          verticalAlign: 'bottom',
+          fontFamily: '"Arial Normal", "Arial", sans-serif',
+          color: 'rgb(204, 204, 204)'
+        },
+        d: {
+          align: 'left',
+          fontSize: 14,
+          width: '100%',
+          verticalAlign: 'bottom',
+          fontFamily: '"Arial Normal", "Arial", sans-serif',
+          color: '#000000a5'
+        }
+      },
+	},
+          formatter: function(name) {	// 添加
+            let target
+            for (let i = 0; i < legendList.length; i++) {
+              if (legendList[i].name === name) {
+				console.log(legendList[i])
+					const demo = legendList[i].value.filter(child => child.value)
+                target = Math.max(demo)
+				console.log(target)
+              }
+            }
+            var arr = [
+              '{a|' + name + '}',
+              '{b|' + target +'}',
+            ]
+            return arr.join('  ')
+          },
 		},
 		tooltip: {
 			trigger: "axis",
@@ -288,6 +379,7 @@ const initEcharts = () => {
 				return str;
 			},
 		},
+		
 		// 图示空白间距
 		grid: {
 			top: "10",
