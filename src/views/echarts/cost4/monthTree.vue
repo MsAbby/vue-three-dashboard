@@ -61,28 +61,43 @@ const handelData = () => {
 		data: {
 			name: "flare",
 			children: [
+			{
+					name: "analytics-轻武器恶趣味",
+					value: 10000,
+					children: [
+						{
+							name: "cluster",
+							value: 3938
+						},
+					],
+				},
+				{
+					name: "analytics-1212",
+					value: 10000,
+					children: [
+						{
+							name: "cluster",
+							value: 3938
+						},
+					],
+				},
+				{
+					name: "analytics-是对的",
+					value: 10000,
+					children: [
+						{
+							name: "cluster",
+							value: 3938
+						},
+					],
+				},
 				{
 					name: "analytics",
 					value: 10000,
 					children: [
 						{
 							name: "cluster",
-							children: [
-								{ name: "AgglomerativeCluster", value: 3938 },
-								{ name: "CommunityStructure", value: 3812 },
-							],
-						},
-						{
-							name: "graph",
-							children: [
-								{ name: "BetweennessCentrality", value: 3534 },
-								{ name: "LinkDistance", value: 5731 },
-								{ name: "MaxFlowMinCut", value: 7840 },
-							],
-						},
-						{
-							name: "optimization",
-							children: [{ name: "AspectRatioBanker", value: 7074 }],
+							value: 3938
 						},
 					],
 				},
@@ -90,19 +105,7 @@ const handelData = () => {
 					name: "data",
 					value: 10000,
 					children: [
-						{
-							name: "converters",
-							children: [
-								{ name: "Converters", value: 721 },
-								{ name: "DelimitedTextConverter", value: 4294 },
-								{ name: "GraphMLConverter", value: 9800 },
-								{ name: "IDataConverter", value: 1314 },
-								{ name: "JSONConverter", value: 2220 },
-							],
-						},
 						{ name: "DataField", value: 1759 },
-						{ name: "DataSchema", value: 2165 },
-						{ name: "DataSet", value: 586 },
 					]
 				},
 				{
@@ -117,59 +120,43 @@ const handelData = () => {
 					name: "query",
 					value: 10000,
 					children: [
-						{ name: "AggregateExpression", value: 1616 },
 						{ name: "And", value: 1027 },
 						{ name: "Arithmetic", value: 3891 },
-						{ name: "Average", value: 891 },
 						{ name: "BinaryExpression", value: 2893 },
-						{ name: "Comparison", value: 5103 },
-						{ name: "CompositeExpression", value: 3677 },
-						{ name: "Count", value: 781 },
-						{ name: "DateUtil", value: 4141 },
-						{ name: "Distinct", value: 933 },
-						{ name: "Expression", value: 5130 },
-						{ name: "ExpressionIterator", value: 3617 },
-						{ name: "Fn", value: 3240 },
-						{ name: "If", value: 2732 },
+					],
+				},
+				{
+					name: "主动鲍勃",
+					value: 10000,
+					children: [
 						{
-							name: "methods",
-							value: 10000,
-							children: [
-								{ name: "add", value: 593 },
-								{ name: "and", value: 330 },
-								{ name: "average", value: 287 },
-								{ name: "count", value: 277 },
-								{ name: "distinct", value: 292 },
-								{ name: "div", value: 595 },
-								{ name: "eq", value: 594 },
-								{ name: "fn", value: 460 },
-								{ name: "gt", value: 603 },
-								{ name: "gte", value: 625 },
-								{ name: "iff", value: 748 },
-								{ name: "isa", value: 461 },
-								{ name: "lt", value: 597 },
-								{ name: "lte", value: 619 },
-								{ name: "max", value: 283 },
-								{ name: "min", value: 283 },
-								{ name: "mod", value: 591 },
-								{ name: "mul", value: 603 },
-								{ name: "neq", value: 599 },
-								{ name: "not", value: 386 },
-								{ name: "or", value: 323 },
-								{ name: "orderby", value: 307 },
-								{ name: "range", value: 772 },
-								{ name: "select", value: 296 },
-								{ name: "stddev", value: 363 },
-								{ name: "sub", value: 600 },
-								{ name: "sum", value: 280 },
-								{ name: "update", value: 307 },
-								{ name: "variance", value: 335 },
-								{ name: "where", value: 299 },
-								{ name: "xor", value: 354 },
-								{ name: "-", value: 264 },
-							],
+							name: "cluster",
+							value: 1027
 						},
-						{ name: "Minimum", value: 843 },
+						{
+							name: "graph",
+							value: 3534
+						},
+					],
+				},
+				{
+					name: "此洞鲍勃",
+					value: 10000,
+					children: [
+						{
+							name: "cluster",
+							value: 1027
+						},
+					],
+				},
+				{
+					name: "鲍勃--撒上熟的",
+					value: 1000,
+					children: [
+						{
+							name: "cluster",
+							value: 1027
+						},
 					],
 				},
 			],
@@ -209,7 +196,7 @@ const initEcharts = () => {
           data: [resultList],
           top: '1%',
           left: '7%',
-          bottom: '1%',
+          bottom: '50',
           right: '20%',
           symbolSize: 15,
           label: {
@@ -274,12 +261,12 @@ const initEcharts = () => {
 	}
 	.canvas-box {
 		width: 100%;
-		height: 450px;
+		height: 400px;
 	}
 
 	.empty {
 		text-align: center;
-		line-height: 360px;
+		line-height: 320px;
 		color: #666666;
 	}
 }

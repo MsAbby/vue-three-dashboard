@@ -111,6 +111,16 @@ let option2 = {
 		"#C7E317",
 		"#47D468",
 	],
+	title: {
+		text: "一级涨涨占比",
+		left: "center",
+		top: "45%",
+		textStyle:{
+			color: "#000000",
+			fontSize: 14,
+			align: "center"
+		}
+	},
 	series: [
 		{
 			name: "姓名",
@@ -135,19 +145,6 @@ let option2 = {
 				// }
 				formatter: "{b}: {c}  ({d}%)",
 				lineHeight: 14,
-				rich: {
-					value: {
-						fontSize: 14,
-						color: "#333",
-						fontWeight: "bold",
-						padding: [0, 0, 0, 0],
-					},
-					name: {
-						fontSize: 14,
-						color: "#333",
-						padding: [8, 0, 0, 0],
-					},
-				},
 			},
 			// 引导线
 			labelLine: {
@@ -166,6 +163,8 @@ let option2 = {
 				label: {
 					show: true,
 					fontSize: "14",
+					scale: true,
+					scaleSize: 36,
 					fontWeight: "bold",
 					formatter: "{b}\n（{d}%）",
 				},
@@ -615,8 +614,9 @@ const initEchartM = async () => {
 	mChart = proxy.$echarts.init(modelDom);
 	const options = option2 as any;
 	options.series[0].data = mData;
+	options.title.text = "一级涨涨占比",
+	options.title.textStyle.fontSize = 18
 	options && mChart.setOption(options);
-	console.log("000000", mChart);
 	//随着屏幕大小调节图表
 	window.addEventListener("resize", () => {
 		setTimeout(() => {
@@ -636,6 +636,12 @@ const initEchartD = async () => {
 	dChart = proxy.$echarts.init(departDom);
 	const options = option2 as any;
 	options.series[0].data = dData;
+	options.title.text = "二级涨涨占比",
+	options.title.textStyle.fontSize = 14
+	options.series[0].label = {
+		formatter: "{b}: \n {c}  ({d}%)",
+		lineHeight: 14,
+	},
 	options && dChart.setOption(options);
 	//随着屏幕大小调节图表
 	window.addEventListener("resize", () => {
@@ -687,7 +693,7 @@ const changeModel = (item: any) => {
 			}
 			.echart {
 				width: 100%;
-				height: 320px;
+				height: 360px;
 			}
 		}
 		@media screen and (max-width: 1320px) {

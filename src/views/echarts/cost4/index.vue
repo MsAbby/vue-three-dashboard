@@ -138,15 +138,13 @@ const searchEnd = () => {
 <style lang="less" scoped>
 .second-box {
 	flex: 3;
-	height: 140px;
-	background: linear-gradient(#DFEBFF, #F7F9FF);
-	margin-right: 12px;
 	border-radius: 6px;
 	margin-bottom: 20px;
 	padding: 16px 0;
 	.four-content {
-		border-right: 1px solid #ffffff;
-		padding: 0 20px;
+		border-right: 16px solid #f6f6f6;
+		background: #ffffff;
+		padding: 16px;
 		&:last-child {
 			border-right: 1px solid transparent;
 		}

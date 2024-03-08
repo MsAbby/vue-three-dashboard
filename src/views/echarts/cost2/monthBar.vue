@@ -303,66 +303,19 @@ const initEcharts = () => {
 			"#47D468",
 		],
 		legend: {
-			orient: 'vertical',
-    x: '6%',
-    y: 'bottom',
-    bottom: 0,
-    itemGap: 17,
-    itemWidth: 12,
-    icon: 'circle',
-    textStyle: {
-      width: 100,
-      rich: {
-        a: {
-          align: 'left',
-          fontSize: 14,
-          width: '100%',
-          verticalAlign: 'bottom',
-          fontFamily: 'sans-serif',
-          color: '#000000a5'
-        },
-        b: {
-          align: 'left',
-          height: 17,
-          width: '1%',
-          backgroundColor: 'rgb(204, 204, 204)',
-          verticalAlign: 'bottom',
-        },
-        c: {
-          align: 'left',
-          fontSize: 14,
-          width: '100%',
-          verticalAlign: 'bottom',
-          fontFamily: '"Arial Normal", "Arial", sans-serif',
-          color: 'rgb(204, 204, 204)'
-        },
-        d: {
-          align: 'left',
-          fontSize: 14,
-          width: '100%',
-          verticalAlign: 'bottom',
-          fontFamily: '"Arial Normal", "Arial", sans-serif',
-          color: '#000000a5'
-        }
-      },
-	},
-          formatter: function(name) {	// 添加
-            let target
-            for (let i = 0; i < legendList.length; i++) {
-              if (legendList[i].name === name) {
-				console.log(legendList[i])
-					const demo = legendList[i].value.filter(child => child.value)
-                target = Math.max(demo)
-				console.log(target)
-              }
-            }
-            var arr = [
-              '{a|' + name + '}',
-              '{b|' + target +'}',
-            ]
-            return arr.join('  ')
-          },
+			right: 0 ,
+			orient:"vertical",
+			icon: 'rect',
+			itemWidth: 10,
+			itemHeight: 10,
+			top: 0,
+			data: legendList,
+			width: 130,
+			textStyle: {
+				color: "#8C8B8C",
+			},
 		},
+        
 		tooltip: {
 			trigger: "axis",
 			axisPointer: {
