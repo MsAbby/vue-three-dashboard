@@ -1,9 +1,4 @@
-<!--
- * @author: lishumin/GW00323781
- * @date: 2023/09/06 13:13:24
- * @description: 
- * Copyright(c)2024 GWM.Co.Ltd.All rights reserved.
--->
+
 
 <!-- 需求分类 -->
 <template>
