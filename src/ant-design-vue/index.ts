@@ -19,7 +19,8 @@ import {
 	Col,
 	Modal,
 	Table,
-	Popconfirm
+	Popconfirm,
+	Popover
 } from "ant-design-vue";
 
 
@@ -42,7 +43,8 @@ const components = [
 	Col,
 	Modal,
 	Table,
-	Popconfirm
+	Popconfirm,
+	Popover
 ];
 
 export default function setupAtnd(app: any) {
