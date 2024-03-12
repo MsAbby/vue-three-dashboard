@@ -1,3 +1,4 @@
+
 <template>
 	<template v-for="item in menuRouter" :key="item.path">
 		<!-- 一级菜单: 无子菜单 -->
@@ -27,8 +28,6 @@
 <script lang="ts" setup name="SubMenu">
 import { computed } from "vue";
 import { useStore } from "vuex";
-
-const whiteColors = ["#fff", "#ffffff", "#FFF", "#FFF", "rgb(255, 255, 255)"];
 
 defineProps({
 	menuRouter: {

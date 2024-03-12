@@ -20,7 +20,9 @@ import {
 	Modal,
 	Table,
 	Popconfirm,
-	Popover
+	Popover,
+	Tooltip,
+	Breadcrumb
 } from "ant-design-vue";
 
 
@@ -44,7 +46,9 @@ const components = [
 	Modal,
 	Table,
 	Popconfirm,
-	Popover
+	Popover,
+	Tooltip,
+	Breadcrumb
 ];
 
 export default function setupAtnd(app: any) {

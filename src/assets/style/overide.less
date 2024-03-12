@@ -1,0 +1,64 @@
+@import "./variable.less";
+
+/* 覆盖菜单背景色 */
+.ant-menu-light {
+	background-color: @bg-gray-F3F4F6;
+}
+
+/* 覆盖菜单项文字颜色 */
+.ant-menu-light .ant-menu-item {
+    color: @color-black-85;
+}
+
+/* 覆盖选中的菜单项文字颜色 */
+.ant-menu-light .ant-menu-item-selected {
+	color: @color-red-main;
+}
+
+/* 覆盖悬浮的菜单项文字颜色 */
+.ant-menu-light .ant-menu-item:hover {
+	color: @color-red-main;
+}
+
+/* 覆盖选中的菜单项文字父级文字颜色 */
+.ant-menu-light .ant-menu-title-content .router-link-active {
+    color: @color-red-main;
+}
+
+/* 覆盖菜单项文字颜色 */
+.ant-menu-light .ant-menu-title-content a {
+    color: @color-black-85;
+}
+
+.ant-menu-light .ant-menu-item-selected {
+    background-color: transparent;
+}
+
+.ant-menu-light.ant-menu-inline .ant-menu-sub.ant-menu-inline {
+    background-color: transparent;
+}
+
+.ant-menu-light .ant-menu-submenu-selected .ant-menu-submenu-title {
+    background-color: @bg-gray-A2A3A6;
+    color: @color-black-85;
+}
+
+// 菜单右边线条
+.ant-menu-light.ant-menu-root.ant-menu-inline {
+    border: 1px solid transparent;
+}
+
+
+.ant-layout {
+    background-color: @bg-gray-F3F4F6;
+}
+
+
+
+/* 如果你使用了 Ant Design Vue 的主题，可以使用下面的方式来覆盖 */
+// .ant-design-vue-theme {
+// 	--menu-color: #Your-Menu-Color; /* 菜单颜色 */
+// 	--menu-bg: #Your-Menu-Background-Color; /* 菜单背景色 */
+// 	--menu-item-color-active: #Your-Menu-Item-Selected-Color; /* 选中的菜单项颜色 */
+// 	--menu-item-color-hover: #Your-Menu-Item-Hover-Color; /* 悬浮的菜单项颜色 */
+// }

@@ -1,10 +1,20 @@
+
 <template>
 	<div class="layout">
+		<!-- 头部 -->
+		<a-layout-header
+			class="header"
+			style="background: #fff;
+			padding: 0"
+		>
+			<layout-header v-model:collapsed="collapsed" />
+		</a-layout-header>
+		<!-- 主体部分 -->
 		<a-layout style="width: 100%; height: 100%; " theme="light">
 			<!-- 左侧边栏 -->
 			<a-layout-sider
 				width="256"
-				style="background: #fff;"
+				style="background: #F3F4F6;"
 			 	v-model:collapsed="collapsed"
 				:trigger="null"
 				collapsible
@@ -13,14 +23,7 @@
 			</a-layout-sider>
 			<!-- 右侧内容 -->
 			<a-layout>
-				<!-- 头部 -->
-				<a-layout-header
-					class="header"
-					style="background: #fff;
-					padding: 0"
-				>
-					<layout-header v-model:collapsed="collapsed" />
-				</a-layout-header>
+				<breadcrumb></breadcrumb>
 				<!-- 内容 -->
                 <a-layout-content
 					class="container"
@@ -39,6 +42,7 @@
  **    toRef:  针对一个响应式对象（reactive 封装）的 prop（属性）创建一个ref
  */
 import { reactive, toRef, ref } from "vue";
+import breadcrumb from "./breadcrumb/index.vue";
 import layoutSidebar from './sidebar/index.vue'
 // import layoutTabs from './tabs/tabs.vue'
 import layoutHeader from './header/index.vue'

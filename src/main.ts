@@ -11,8 +11,7 @@ import echarts from "./plugins/echarts/index";
 import moment from "moment"
 import 'ant-design-vue/dist/reset.css';
 import './style.css'
-import './assets/style/reset.less'
-import './assets/style/common.less'
+import './assets/style/index.less'
 
 import VCalendar from 'v-calendar';
 import 'v-calendar/style.css';
