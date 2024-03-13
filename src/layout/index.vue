@@ -7,7 +7,7 @@
 			style="background: #fff;
 			padding: 0"
 		>
-			<layout-header v-model:collapsed="collapsed" />
+			<HeaderBar v-model:collapsed="collapsed" />
 		</a-layout-header>
 		<!-- 主体部分 -->
 		<a-layout style="width: 100%; height: 100%; " theme="light">
@@ -22,16 +22,23 @@
 				<layout-sidebar :collapsed="collapsed" />
 			</a-layout-sider>
 			<!-- 右侧内容 -->
-			<a-layout>
-				<breadcrumb></breadcrumb>
-				<!-- 内容 -->
-                <a-layout-content
-					class="container"
-                    :style="{ margin: '24px 16px', minHeight: '280px' }"
-                >
-					<router-view ></router-view>
-                </a-layout-content>
-			</a-layout>
+			<a-layout-content
+				class="container"
+				:style="{ margin: '24px 16px', minHeight: '280px' }"
+			>	
+				<!-- 面包屑 -->
+				<Breadcrumb />
+				<!-- 顶部tab -->
+				<TabBar />
+				<!-- 内容切换 -->
+				<div class="main__container">
+					<router-view v-slot="{ Component }">
+						<keep-alive :include="includeList">
+							<component :is="Component" />
+						</keep-alive>
+					</router-view>
+				</div>
+			</a-layout-content>
 		</a-layout>
 	</div>
 </template>
@@ -42,10 +49,16 @@
  **    toRef:  针对一个响应式对象（reactive 封装）的 prop（属性）创建一个ref
  */
 import { reactive, toRef, ref } from "vue";
-import breadcrumb from "./breadcrumb/index.vue";
-import layoutSidebar from './sidebar/index.vue'
+import Breadcrumb from "./breadcrumb/index.vue";
+import layoutSidebar from './sideBar/index.vue'
 // import layoutTabs from './tabs/tabs.vue'
-import layoutHeader from './header/index.vue'
+import HeaderBar from './headerBar/index.vue'
+import TabBar from './tabBar/index.vue'
+import { useCacheMenuStore } from "../store/keepAlive";
+
+// const cacheMenuStore = useCacheMenuStore();
+// 缓存的路由页面
+// const includeList = ref(cacheMenuStore.includeList);
 
 const collapsed = ref<boolean>(false);
 

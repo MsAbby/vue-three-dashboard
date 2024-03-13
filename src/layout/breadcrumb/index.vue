@@ -7,7 +7,7 @@
 		</a-breadcrumb>
 	</div>
 </template>
-<script lang="ts" setup name="breadcrumb">
+<script lang="ts" setup name="Breadcrumb">
 import { computed } from "vue";
 import { useStore } from "vuex";
 

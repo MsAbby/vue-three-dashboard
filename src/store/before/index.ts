@@ -1,3 +1,12 @@
+/*
+ * @author: lishumin/GW00323781
+ * @date: 2023/09/06 13:13:24
+ * @description: 
+ * Copyright(c)2024 GWM.Co.Ltd.All rights reserved.
+ */
+
+
+
 import { createStore } from 'vuex';
 
 // 为了减少一个个导入module

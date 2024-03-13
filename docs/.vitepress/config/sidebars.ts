@@ -29,6 +29,20 @@ export const sidebar = {
                 ]
             }
         ]
+    },
+    {
+        text: '组件',
+        items: [
+            {
+                text: "面包屑",
+                link: '/page/sidebar/guide/component/breadcrumb'
+            },
+            {
+                text: "tab标签",
+                link: '/page/sidebar/guide/component/tab'
+                
+            },
+        ]
     }
 ]
 }

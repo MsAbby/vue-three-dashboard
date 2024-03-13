@@ -22,7 +22,8 @@ import {
 	Popconfirm,
 	Popover,
 	Tooltip,
-	Breadcrumb
+	Breadcrumb,
+	Tabs
 } from "ant-design-vue";
 
 
@@ -48,7 +49,8 @@ const components = [
 	Popconfirm,
 	Popover,
 	Tooltip,
-	Breadcrumb
+	Breadcrumb,
+	Tabs
 ];
 
 export default function setupAtnd(app: any) {

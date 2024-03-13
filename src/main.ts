@@ -1,9 +1,10 @@
 
 
 import { createApp } from 'vue'
+import { createPinia } from 'pinia'
 import App from './App.vue'
 import { initRouter } from './router'
-import store from './store'
+import store from './store/before'
 import setupAtnd from './ant-design-vue/index'
 // 引入echarts
 import echarts from "./plugins/echarts/index";
@@ -22,7 +23,9 @@ import 'v-calendar/style.css';
 ** 写法： initRouter(app)
 ** 解释： 把 app 传进 router中, 导出可以导出多个
 */
-const app = createApp(App)
+const app = createApp(App);
+// 创建 Pinia 实例
+const pinia = createPinia();
 
 // 挂载echarts
 app.config.globalProperties.$echarts = echarts;
@@ -32,6 +35,7 @@ app.config.globalProperties.$moment = moment;
 // 初始化路由
 initRouter(app)
 setupAtnd(app)
+app.use(pinia)
 app.use(store)
 app.use(VCalendar, {})
 app.mount('#app')

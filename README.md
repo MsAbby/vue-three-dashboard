@@ -288,6 +288,50 @@ export default defineComponent({
 });
 </script>
 
+
+````
+
+## watch
+1. 可以监听如下
+````js
+// 单个 ref
+watch(x, (newX) => {
+  console.log(`x is ${newX}`)
+})
+
+// getter 函数
+watch(
+  () => x.value + y.value,
+  (sum) => {
+    console.log(`sum of x + y is: ${sum}`)
+  }
+)
+
+// 多个来源组成的数组
+watch([x, () => y.value], ([newX, newY]) => {
+  console.log(`x is ${newX} and y is ${newY}`)
+})
+````
+2. 不可以监听如下
+````js
+// 你不能直接侦听响应式对象的属性值
+const obj = reactive({ count: 0 })
+
+// 错误，因为 watch() 得到的参数是一个 number
+watch(obj.count, (count) => {
+  console.log(`count is: ${count}`)
+})
+
+// 正确做法：
+// 这里需要用一个返回该属性的 getter 函数：
+watch(
+  () => obj.count,
+  (count) => {
+    console.log(`count is: ${count}`)
+  },
+  // 深层监听器
+  { deep: true }
+)
 ````
 
 
@@ -302,5 +346,8 @@ app.config.globalProperties.$echarts = echarts;
 
 
 visualMap visualMap-piecewise 可以自定义tooltips
+
+
+
 
 

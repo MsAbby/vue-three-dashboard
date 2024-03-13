@@ -57,7 +57,7 @@
 		</div>
 	</div>
 </template>
-<script lang="ts" setup>
+<script lang="ts" setup name="Header">
 import { RadarChartOutlined } from '@ant-design/icons-vue';
 import { reactive, toRef, ref, defineProps } from "vue";
 import { mapState, useStore } from "vuex";

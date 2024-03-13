@@ -1,4 +1,4 @@
-import allRoutes from '../../router/all-routers';
+import allRoutes from '../../../router/all-routers';
 
 // interface
 interface StateInterface {
