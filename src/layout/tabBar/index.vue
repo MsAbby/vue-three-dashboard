@@ -74,10 +74,9 @@ watch(
  * @param { string } targetKey 点击的tabKey
  */
  const handleTabClick = (targetKey: string) => {
-	// 点击的是不同的tab时，路由跳转
+	// 点击的是不同的tab时，选中tab, 路由跳转
 	if (router.currentRoute.value.fullPath !== targetKey) {
 		tabActive.value = targetKey;
-		// 页面跳转
 		router.push(targetKey);
 	}
 };
