@@ -6,6 +6,7 @@
 			size="small"
 			type="editable-card"
 			class="tabs-content"
+			:tabBarStyle="tabBarStyle"
 			@tabClick="handleTabClick"
             @edit="handleTabRemove"
 		>
@@ -24,9 +25,10 @@ import { useRouter } from "vue-router";
 import { useTabRoutesStore } from "../../store/tabs";
 import { useCacheMenuStore } from "../../store/keepAlive";
 
+const tabBarStyle = {
+	color: "rgba(0, 0, 0, 0.65)",
+}
 const cacheMenuStore = useCacheMenuStore();
-
-
 
 // store
 const tabRouterStore = useTabRoutesStore();
@@ -86,28 +88,10 @@ watch(
  * @param {*} targetKey
  */
 const handleTabRemove = (targetKey: string) => {
-    console.log("---------, targetKey")
 	// tabRouterStore.deleteTabRoutes(params)
 };
 
-// const filterAffixtabs = (routes) => {
-// 	let tabs = [];
-// 	routes.forEach((route) => {
-// 		if (route.meta && route.meta.affix) {
-// 			tabs.push({
-// 				fullPath: route.path,
-// 				path: route.path,
-// 				name: route.name,
-// 				meta: { ...route.meta },
-// 			});
-// 		}
-// 		if (route.children) {
-// 			const temptabs = filterAffixtabs(route.children, route.path);
-// 			if (temptabs.length >= 1) {
-// 				tabs = [...tabs, ...temptabs];
-// 			}
-// 		}
-// 	});
-// 	return tabs;
-// };
 </script>
+<style scoped>
+
+</style>
