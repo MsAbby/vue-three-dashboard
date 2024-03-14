@@ -34,8 +34,7 @@
 				<div class="main__container">
 					{{ includeList }}
 					<router-view v-slot="{ Component }">
-						<!-- <keep-alive :include="includeList"> -->
-							<keep-alive :include="['demand-category']">
+						<keep-alive :include="includeList">
 							<component :is="Component" />
 						</keep-alive>
 					</router-view>

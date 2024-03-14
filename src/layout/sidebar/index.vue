@@ -31,9 +31,6 @@ const store = useStore();
 const selectedKeys = ref<string[]>(['/']);
 const openKeys = ref<string[]>([])
 
-console.log("1212",selectedKeys)
-console.log("33333",openKeys)
-
 // computed
 const menuRouter = computed(() => {
 	return store.state.routes.routes;

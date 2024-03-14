@@ -29,10 +29,8 @@ export const useCacheMenuStore = defineStore('cacheMenu',{
 
         // 移除缓存页面
         removeCacheMenu(routeName) {
-            console.log("-------", routeName, this.includeList)
             const index = this.includeList.indexOf(routeName)
             index > -1 && this.includeList.splice(index, 1)
-            console.log("=========", routeName, this.includeList)
         }
     } 
 })
