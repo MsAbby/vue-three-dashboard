@@ -32,8 +32,10 @@
 				<TabBar />
 				<!-- 内容切换 -->
 				<div class="main__container">
+					{{ includeList }}
 					<router-view v-slot="{ Component }">
-						<keep-alive :include="includeList">
+						<!-- <keep-alive :include="includeList"> -->
+							<keep-alive :include="['demand-category']">
 							<component :is="Component" />
 						</keep-alive>
 					</router-view>
@@ -48,21 +50,19 @@
  **      ref:  给值类型添加响应式
  **    toRef:  针对一个响应式对象（reactive 封装）的 prop（属性）创建一个ref
  */
-import { reactive, toRef, ref } from "vue";
+import { reactive, computed, ref } from "vue";
 import Breadcrumb from "./breadcrumb/index.vue";
 import layoutSidebar from './sideBar/index.vue'
-// import layoutTabs from './tabs/tabs.vue'
 import HeaderBar from './headerBar/index.vue'
 import TabBar from './tabBar/index.vue'
 import { useCacheMenuStore } from "../store/keepAlive";
 
-// const cacheMenuStore = useCacheMenuStore();
+const cacheMenuStore = useCacheMenuStore();
+
 // 缓存的路由页面
-// const includeList = ref(cacheMenuStore.includeList);
+const includeList = computed(() => cacheMenuStore.includeList);
 
 const collapsed = ref<boolean>(false);
-
-const state = reactive({});
 
 </script>
 
@@ -94,21 +94,6 @@ const state = reactive({});
 </style>
 <style lang="less">
 .layout {
-//   &.ant-layout-sider-children {
-//     overflow-y: auto;
-//     overflow-x: hidden;
-//   }
-//   &.ant-layout-sider-children::-webkit-scrollbar {
-//     width: 4px;
-//   }
-//   &.ant-layout-sider-children::-webkit-scrollbar-thumb {
-//     border-radius: 10px;
-//     box-shadow: inset 0 0 5px #d8d8d8;
-//     background: #535353;
-//   }
-//   &.ant-layout-sider-children::-webkit-scrollbar-track {
-//     box-shadow: inset 0 0 5px #d8d8d8;
-//     background: #ededed;
-//   }
+
 }
 </style>

@@ -4,3 +4,28 @@
 2. 增加面包屑
 3. 增加tab标签（切换tab需要有缓存）
 
+
+
+4. vue3中keep-alive使用include不生效
++ 原因： Vue3的setup语法糖，导致无法自定义组件name，使用keep-alive是需要name的，所以include不生效。
+解决这个问题通常有两种方式
+
++ 方式一：是通过写两个script标签来解决，一个使用setup，一个不使用
++ 方式二：借助vite-plugin-vue-setup-extend插件
+````js
+npm install vite-plugin-vue-setup-extend --save
+
+配置vite.config.ts
+import { defineConfig } from 'vite'
+import vue from '@vitejs/plugin-vue'
+import VueSetupExtend from 'vite-plugin-vue-setup-extend'
+export default defineConfig({
+  plugins: [
+    vue(),
+    VueSetupExtend()
+  ]
+})
+<!-- 组件中使用 -->
+<script setup name='testAddName'></script>
+````
+

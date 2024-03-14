@@ -4,7 +4,7 @@
 		<!-- 一级菜单: 无子菜单 -->
 		<a-menu-item v-if="!item.children" :key="item.name">
 			<!-- 注意：此处to属性中用的是name值，而不是path；如果用path, router/index.ts中的子菜单path应该定义为“/父菜单路由/子菜单路由”，例如：将“role”改为“/system/role”。 -->
-			<router-link :to="{ name: item.name }">
+			<router-link :to="{ name: item.name }" @click="handelMenuJump(item)">
 				<!-- <Icon v-if="item.meta && item.meta.icon" :icon="item.meta.icon" /> -->
 				<span>{{ item.meta && item.meta.title }}</span>
 			</router-link>
@@ -27,7 +27,15 @@
 
 <script lang="ts" setup name="SubMenu">
 import { computed } from "vue";
-import { useStore } from "vuex";
+import { useRouter } from "vue-router";
+import { useCacheMenuStore } from "../../store/keepAlive";
+// keepAlive store
+const cacheMenuStore = useCacheMenuStore();
+
+/**
+ * @description: 第一步：获取所有路由
+ */
+const router = useRouter();
 
 defineProps({
 	menuRouter: {
@@ -38,19 +46,10 @@ defineProps({
 	},
 });
 
-const store = useStore();
+const handelMenuJump = (item) => {
+	cacheMenuStore.removeCacheMenu(item.name)
+}
 
-// const theme = computed(() => {
-//   return store.getters['setting/theme'];
-// });
-
-const menuBgColor = computed(() => {
-	// return themeOptions[theme.value].menuBgColor;
-});
-
-const isBlack = computed(() => {
-	// return whiteColors.indexOf(menuBgColor.value) === -1;
-});
 </script>
 <style lang="less" scoped>
 .menu-icon,

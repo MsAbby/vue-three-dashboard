@@ -5,6 +5,9 @@
  * 本页面采用高级写法
  */
 import { defineStore } from 'pinia';
+import { useRouter } from "vue-router";
+
+const router = useRouter();
 
 export const useCacheMenuStore = defineStore('cacheMenu',{
     state: () => {
@@ -14,7 +17,7 @@ export const useCacheMenuStore = defineStore('cacheMenu',{
         }
     },
     getters: {
-        getCacheMen: () => this.includeList
+        getCacheMenu: () => this.includeList
     },
     actions: {
         // 设置缓存页面
@@ -22,7 +25,14 @@ export const useCacheMenuStore = defineStore('cacheMenu',{
             if (routeName && !this.includeList.includes(routeName)) {
                 this.includeList.push(routeName)
             }
+        },
+
+        // 移除缓存页面
+        removeCacheMenu(routeName) {
+            console.log("-------", routeName, this.includeList)
+            const index = this.includeList.indexOf(routeName)
+            index > -1 && this.includeList.splice(index, 1)
+            console.log("=========", routeName, this.includeList)
         }
     } 
-
 })

@@ -5,6 +5,7 @@ import AutoImport from 'unplugin-auto-import/vite';
 import Components from 'unplugin-vue-components/vite';
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers';
 import vueJsx from "@vitejs/plugin-vue-jsx"; // 配置vue使用jsx
+import VueSetupExtend from 'vite-plugin-vue-setup-extend' // setup语法糖写法支持加name
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -16,7 +17,9 @@ export default defineConfig({
     Components({
       resolvers: [ElementPlusResolver()],
     }),
-    vueJsx()
+    vueJsx(),
+    // setup语法糖写法支持加name
+    VueSetupExtend()
   ],
   
   resolve: {

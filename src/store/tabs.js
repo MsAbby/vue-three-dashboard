@@ -30,15 +30,15 @@ export const useTabRoutesStore = defineStore('tabRoutes', {
                 return;
             }
             this.tabRoutes.push(Object.assign({}, route))
-            console.log("_______", this.tabRoutes);
         },
 
         /**
-         * 1. 删除tab路由
+         * @description: 删除tab路由
+         * @param: routerKey: 路由key（item.fullPath）
          */
-        deleteTabRoutes(route) {
+        deleteTabRoutes(routerKey) {
             this.tabRoutes.forEach((item, index) => {
-                if (item.path === route.path) this.tabRoutes.splice(index, 1);
+                if (item.fullPath === routerKey) this.tabRoutes.splice(index, 1);
             });
         },
     }

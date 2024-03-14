@@ -101,6 +101,7 @@ export const useTodoStore = defineStore("todo", {
 
 
 ## 4. 高级写法
+[参考案例](https://www.cnblogs.com/mcayear/p/17711313.html)
 ````js
 // 为实现更多高级用法，你甚至可以使用一个函数 (与组件 setup() 类似) 来定义一个 Store：
 

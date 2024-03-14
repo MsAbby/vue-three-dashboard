@@ -16,6 +16,6 @@
     "noImplicitAny": false, //去掉
     "types": ["element-plus/global"]
   },
-  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue", "src/components/base-components/form-content/index.jsx", "src/store/tabs.js"],
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue", "src/components/base-components/form-content/index.jsx", "src/store/tabs.js", "src/store/keepAlive.js"],
   "references": [{ "path": "./tsconfig.node.json" }],
 }

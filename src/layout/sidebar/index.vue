@@ -3,8 +3,8 @@
 	<a-menu
 		mode="inline"
 		theme="light"
-		v-model:selectedKeys="selectedKeys"
 		class="el-menu-vertical-demo"
+		v-model:selectedKeys="selectedKeys"
 		v-model:openKeys="openKeys"
 	>
 		<!-- 引入子组件 -->
@@ -28,9 +28,11 @@ const props = defineProps({
 });
 
 const store = useStore();
-const route = useRouter();
 const selectedKeys = ref<string[]>(['/']);
 const openKeys = ref<string[]>([])
+
+console.log("1212",selectedKeys)
+console.log("33333",openKeys)
 
 // computed
 const menuRouter = computed(() => {

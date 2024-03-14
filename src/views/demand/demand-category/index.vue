@@ -28,7 +28,7 @@
   </div>
 </template>
 
-<script lang='ts' setup>
+<script lang='ts' setup name='demand-category'>
 import { reactive, toRef, ref } from 'vue';
 const attrs = [
         {
