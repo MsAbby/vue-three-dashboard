@@ -24,15 +24,14 @@
 			<!-- 右侧内容 -->
 			<a-layout-content
 				class="container"
-				:style="{ margin: '24px 16px', minHeight: '280px' }"
+				:style="{ margin: '16px'}"
 			>	
 				<!-- 面包屑 -->
 				<Breadcrumb />
 				<!-- 顶部tab -->
 				<TabBar />
 				<!-- 内容切换 -->
-				<div class="main__container">
-					{{ includeList }}
+				<div class="main_container">
 					<router-view v-slot="{ Component }">
 						<keep-alive :include="includeList">
 							<component :is="Component" />
@@ -66,17 +65,17 @@ const collapsed = ref<boolean>(false);
 </script>
 
 <style scoped lang="less">
+@import '@/assets/style/variable.less';
+
 .layout {
 	overflow: hidden;
 	height: 100vh;
-	.header {
-	  background-color: #FFF;
-	  padding: 0;
+
+	.main_container {
+		height: 100%;
+		overflow-y: scroll
 	}
-	.container {
-	  overflow-y: auto;
-	  overflow-x: hidden;
-	}
+
 	&.container::-webkit-scrollbar {
 	  width: 6px;
 	}
@@ -90,9 +89,4 @@ const collapsed = ref<boolean>(false);
 	  background: #ededed;
 	}
   }
-</style>
-<style lang="less">
-.layout {
-
-}
 </style>

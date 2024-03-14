@@ -27,7 +27,8 @@ import { useCacheMenuStore } from "../../store/keepAlive";
 
 const tabBarStyle = {
 	color: "rgba(0, 0, 0, 0.65)",
-}
+	marginBottom: "0px",
+};
 
 // keepAlive store
 const cacheMenuStore = useCacheMenuStore();
@@ -103,17 +104,34 @@ const handleTabRemove = (targetKey: string, action: string) => {
 		}
 		// 长度大于1：
 		else {
-			// 删除的是高亮的tab, targetKey的前一个tab高亮跳转
+			// 删除的是高亮的tab
 			tabRouteList.value.map((item, index) => {
 				if (item.fullPath === targetKey) {
+					// targetKey的前一个tab高亮
 					tabActive.value = tabRouteList.value[index - 1]["fullPath"]
+					// 跳转
 					router.push(tabActive.value)
+					// keep-alive 删除
+					cacheMenuStore.removeCacheMenu(item.name)
 				}
 			})
 		}
+		// tabList 减少
 		tabRouterStore.deleteTabRoutes(targetKey)
     }
 };
 </script>
-<style scoped>
+<style lang="less">
+.tabs-content {
+	margin-top: 10px;
+	.ant-tabs-nav {
+		.ant-tabs-tab {
+			padding: 2px 16px !important;
+		}
+		.ant-tabs-tab-remove {
+			padding-left: 0 !important;
+			padding-right: 0 !important
+		}
+	}
+}
 </style>
