@@ -32,6 +32,23 @@ export default defineConfig({
 
 5. vue3 ant-design a-button icon 自定义svg
 
-6.vue3 ant-design 全局主题色修改
-+ 在Vue 3中修改Ant Design的主题色，你可以使用Ant Design Vue提供的ConfigProvider组件和theme属性
+6.vue3 ant-design 全局主题色修改,
++ layout文件中修改
+````js
+
+<template>
+	<div class="app-content" id="add">
+		<a-config-provider :theme="theme">
+			<router-view></router-view>
+		</a-config-provider>
+	</div>
+</template>
+
+<script lang="ts" setup>
+const theme = {
+	token: {
+		colorPrimary: "#CE0D2D",
+	}
+};
+````
 

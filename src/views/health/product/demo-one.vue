@@ -48,6 +48,14 @@
 					<span class="search-text">筛选</span>
 				</a-button>
 			</a-popover>
+            <!-- 新增按钮 -->
+            <a-button
+                type="primary"
+                :icon="h(PlusOutlined)"
+                style="margin-right: 8px"
+            >
+            新建
+            </a-button>
 			<!-- 一条竖线 -->
 			<div
 				style="
@@ -65,7 +73,7 @@
 				placement="left"
 			>
 				<template #content>
-					<div style="width:300px">
+					<div style="width:300px; padding: 12px;">
                         <a-checkbox
                             v-model:checked="columnsFilter.checkAll"
                             :indeterminate="columnsFilter.indeterminate"
@@ -83,13 +91,21 @@
                                     :span="24"
                                     v-for="item in column"
                                     :key="item.dataIndex"
+                                    style="margin-bottom: 16px;"
                                 >
-                                    <a-checkbox :value="item.title">
-                                        {{item.title}}
-                                    </a-checkbox>
+                                    <div class="flex-x-start">
+                                        <img src="@/assets/image/icons/dot.png" style="height: 12px; margin-right: 6px;"/>
+                                        <a-checkbox :value="item.title">
+                                            {{item.title}}
+                                        </a-checkbox>
+                                    </div>
                                 </a-col>
                             </a-row>
                         </a-checkbox-group>
+                        <div style="text-align: right; padding-top: 8px;">
+                            <a-button type="default" @click="handleCancel" class="custom-btn">取消</a-button>
+                            <a-button type="primary" @click="handleSave" class="custom-btn">保存</a-button>
+                        </div>
 					</div>
 				</template>
 				<img src="@/assets/image/icons/shezhi.png" style="margin: 0 8px" />
@@ -102,7 +118,7 @@
 
 <script lang="ts" setup name="health-demo-one">
 import { ref, h, reactive } from "vue";
-import { SearchOutlined } from "@ant-design/icons-vue";
+import { PlusOutlined } from "@ant-design/icons-vue";
 const column = reactive([
 	{
 		title: "姓名",
@@ -159,6 +175,20 @@ const onCheckAllChange = (e: any) => {
 		indeterminate: false,
 	});
 };
+
+/**
+ * @description: 取消
+ */
+const handleCancel = () => {
+    columnsFilter.visible = false
+}
+
+/**
+ * @description: 保存
+ */
+ const handleSave = () => {
+    columnsFilter.visible = false
+}
 </script>
 <style lang="less" scoped>
 @import "@/assets/style/variable.less";
@@ -169,6 +199,12 @@ const onCheckAllChange = (e: any) => {
 		color: @color-black-85;
 	}
 }
+.custom-btn {
+    padding: 4px 24px !important;
+    &:first-child {
+        margin-right: 16px
+    }
+}
 </style>
 <style lang="less">
 @import "@/assets/style/variable.less";
@@ -176,13 +212,6 @@ const onCheckAllChange = (e: any) => {
 	.ant-input-search-button {
 		border-left: 1px solid transparent;
 	}
-	.ant-input-affix-wrapper:hover,
-	.ant-input-affix-wrapper:focus,
-	.ant-input-affix-wrapper:active,
-	.ant-input-affix-wrapper:visited,
-	.ant-input-affix-wrapper:focus-within {
-		border-color: @color-red-main;
-		box-shadow: 0 0 0 2px @box-shadow-red;
-	}
 }
+
 </style>
