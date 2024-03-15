@@ -15,6 +15,17 @@ const echartsRouter = {
         title: '案例一',
         icon: 'icon-code',
       },
+      children: [
+        {
+          path: '/demo-one-1',
+          name: 'echarts-demo-one-1',
+          component: () => import('@/views/echarts/demo0.vue'),
+          meta: {
+            title: '案例-',
+            icon: 'icon-code',
+          },
+        }
+      ]
     },
     {
       path: '/cost',
