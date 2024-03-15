@@ -6,6 +6,7 @@ import demandManageRouter from './menus/demand'
 import componentRouter from './menus/component'
 import echartsRouter from './menus/echarts'
 import tableRouter from './menus/table'
+import healthRouter from './menus/health'
 
 // ...[homeRouter]： 为了解决ts语法报错（必须具有返回迭代器的 Symbol.iterator 方法”）
 let allRoutes = [
@@ -15,7 +16,8 @@ let allRoutes = [
   ...[demandManageRouter],
   ...[componentRouter],
   ...[echartsRouter],
-  ...[tableRouter]
+  ...[tableRouter],
+  ...[healthRouter]
 
 ]
 export default allRoutes

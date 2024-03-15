@@ -23,7 +23,9 @@ import {
 	Popover,
 	Tooltip,
 	Breadcrumb,
-	Tabs
+	Tabs,
+	Divider,
+	ConfigProvider
 } from "ant-design-vue";
 
 
@@ -50,7 +52,9 @@ const components = [
 	Popover,
 	Tooltip,
 	Breadcrumb,
-	Tabs
+	Tabs,
+	Divider,
+	ConfigProvider
 ];
 
 export default function setupAtnd(app: any) {

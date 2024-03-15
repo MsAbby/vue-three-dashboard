@@ -15,7 +15,7 @@
 			<a-layout-sider
 				width="256"
 				style="background: #F3F4F6;"
-			 	v-model:collapsed="collapsed"
+				v-model:collapsed="collapsed"
 				:trigger="null"
 				collapsible
 			>

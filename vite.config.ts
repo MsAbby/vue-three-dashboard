@@ -15,7 +15,8 @@ export default defineConfig({
       resolvers: [ElementPlusResolver()],
     }),
     Components({
-      resolvers: [ElementPlusResolver()],
+      resolvers: [
+        ElementPlusResolver()],
     }),
     vueJsx(),
     // setup语法糖写法支持加name

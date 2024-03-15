@@ -30,3 +30,8 @@ export default defineConfig({
 <script setup name='testAddName'></script>
 ````
 
+5. vue3 ant-design a-button icon 自定义svg
+
+6.vue3 ant-design 全局主题色修改
++ 在Vue 3中修改Ant Design的主题色，你可以使用Ant Design Vue提供的ConfigProvider组件和theme属性
+
