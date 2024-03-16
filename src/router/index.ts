@@ -5,16 +5,12 @@ import { createRouter, createWebHashHistory } from 'vue-router'
 
 // 实例化路由
 const router = createRouter({
-	history: createWebHashHistory(),
+	history: createWebHashHistory("/"),
 	routes: constantRouter
 });
 
 console.log("-----", 2)
 
 permission(router)
-
-// export const initRouter = (app: App<Element>) => {
-// 	app.use(router)
-// }
 
 export default router;

@@ -56,3 +56,6 @@ const theme = {
 > "vite-plugin-mock": "^3.0.1", 对象字面量只能指定已知属性，并且“supportTs”不在类型“ViteMockOptions”中。ts(2353)
 + 解决方法：与vite-plugin-mock版本有关，新版本兼容不行，重新安装了2.9.6版本之后就不报错了。
 
+
+8. pinia 和store一样刷新就没了
+

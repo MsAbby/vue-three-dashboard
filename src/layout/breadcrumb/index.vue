@@ -1,3 +1,6 @@
+<!--
+ * @description: 面包屑组件
+-->
 <template>
 	<div>
 		<a-breadcrumb>
@@ -9,13 +12,15 @@
 </template>
 <script lang="ts" setup name="Breadcrumb">
 import { computed } from "vue";
-import { useStore } from "vuex";
 
-const store = useStore();
+const menuRouter = [
+	{
+		path: "/",
+		name: "测试",
+		meta: {
+			title: "测试1"
+		}
+	}
+]
 
-const menuRouter = computed(() => {
-	return store.state.routes.routes;
-});
-
-const basePath = "/components/breadcrumb";
 </script>

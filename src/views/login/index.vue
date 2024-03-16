@@ -46,9 +46,11 @@
  **      ref:  给值类型添加响应式
  **    toRef:  针对一个响应式对象（reactive 封装）的 prop（属性）创建一个ref
  */
-import { reactive, toRef, ref } from "vue";
+import { reactive } from "vue";
 import { useRouter } from "vue-router";
 import { useStore } from "vuex";
+import axios from 'axios';
+import { useRouterStore } from "../../store/router";
 
 const router = useRouter();
 const store = useStore();
@@ -97,12 +99,8 @@ const formState = reactive<FormState>({
 });
 
 // 4. methods
+// 登录时存储菜单信息
 const handelLogin = () => {
-	// ruleFormRef.value.validate().then(() => {
-	// 	console.log('校验通过')
-	// }).catch(() => {
-	// 	console.log('校验不通过')
-	// })
 	store.dispatch("routes/setAllRoutes");
 	router.push("/welcome");
 };

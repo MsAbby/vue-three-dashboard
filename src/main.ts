@@ -1,8 +1,9 @@
 import { createApp } from "vue";
 import { createPinia } from "pinia";
 import App from "./App.vue";
-import router from "./router";
 import setupAtnd from "./ant-design-vue/index";
+// 引入路由
+import router from "./router";
 // 引入echarts
 import echarts from "./plugins/echarts/index";
 // 引入moment
@@ -30,10 +31,9 @@ const pinia = createPinia();
 app.config.globalProperties.$echarts = echarts;
 // 挂载moment
 app.config.globalProperties.$moment = moment;
-// app.provide("moment", moment);
-
 
 console.log("-----", 1)
+
 setupAtnd(app)
 app.use(pinia)
 app.use(VCalendar, {})
