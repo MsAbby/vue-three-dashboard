@@ -117,8 +117,24 @@
 </template>
 
 <script lang="ts" setup name="health-demo-one">
-import { ref, h, reactive } from "vue";
+import { ref, h, reactive, onMounted } from "vue";
 import { PlusOutlined } from "@ant-design/icons-vue";
+
+//导入axios
+import axios from "axios";
+ 
+const getStationData = () => {
+    axios.get("/api/auth/queryUserPermission2").then(res => {
+		const data = res.data
+		console.log(data)
+  })
+}
+
+onMounted(() => {
+	console.log("1111")
+	getStationData()
+})
+
 const column = reactive([
 	{
 		title: "姓名",

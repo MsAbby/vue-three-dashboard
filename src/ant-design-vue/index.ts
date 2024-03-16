@@ -25,7 +25,8 @@ import {
 	Breadcrumb,
 	Tabs,
 	Divider,
-	ConfigProvider
+	ConfigProvider,
+	Result
 } from "ant-design-vue";
 
 
@@ -54,7 +55,8 @@ const components = [
 	Breadcrumb,
 	Tabs,
 	Divider,
-	ConfigProvider
+	ConfigProvider,
+	Result
 ];
 
 export default function setupAtnd(app: any) {

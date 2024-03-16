@@ -2,6 +2,7 @@
 const echartsRouter = {
   path: '/echarts',
   name: 'echarts',
+  permission: "echarts",
   meta: {
     title: '图表',
     icon: 'icon-code',
@@ -10,6 +11,7 @@ const echartsRouter = {
     {
       path: '/demo-one',
       name: 'echarts-demo-one',
+      permission: "echarts-demo-one",
       component: () => import('@/views/echarts/demo-one.vue'),
       meta: {
         title: '案例一',
@@ -19,6 +21,7 @@ const echartsRouter = {
         {
           path: '/demo-one-1',
           name: 'echarts-demo-one-1',
+          permission: "'echarts-demo-one-1",
           component: () => import('@/views/echarts/demo0.vue'),
           meta: {
             title: '案例-',
@@ -30,6 +33,7 @@ const echartsRouter = {
     {
       path: '/cost',
       name: 'echarts-cost',
+      permission: "echarts-cost",
       component: () => import('@/views/echarts/cost/index.vue'),
       meta: {
         title: '案例二',
@@ -39,6 +43,7 @@ const echartsRouter = {
     {
       path: '/cost2',
       name: 'echarts-cost2',
+      permission: "echarts-cost2",
       component: () => import('@/views/echarts/cost2/index.vue'),
       meta: {
         title: '案例三',
@@ -48,6 +53,7 @@ const echartsRouter = {
     {
       path: '/cost4',
       name: 'echarts-cost4',
+      permission: "echarts-cost4",
       component: () => import('@/views/echarts/cost4/index.vue'),
       meta: {
         title: '案例四',

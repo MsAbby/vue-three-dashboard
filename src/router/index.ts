@@ -1,49 +1,20 @@
 
-import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
-import { App } from 'vue';
-import allRoutes from './all-routers';
+import { permission } from './permission'
+import { constantRouter } from './constant.router'
+import { createRouter, createWebHashHistory } from 'vue-router'
 
-interface routerInterface {
-	path: string,
-	name: string,
-	component: ()=>{}
-}
-
-const constantRoutes: Array<RouteRecordRaw> = [
-	{ path: '/', redirect: '/login' },
-	{
-		path: '/login',
-		name: 'login',
-		component: () => import('@/views/login/index.vue'),
-	},
-]
-
-const dynamicRoutes: Array<RouteRecordRaw> = [
-	{
-		path: '/layout',
-		name: 'layout',
-		component: () => import('@/layout/index.vue'),
-		children: [
-			{
-				path: '/welcome',
-				name: 'welcome',
-				component: () => import('@/views/welcome/index.vue'),
-			},
-		].concat(allRoutes)
-	},
-]
-
-const routes: Array<RouteRecordRaw> = [
-	...constantRoutes,
-	...dynamicRoutes
-]
+// 实例化路由
 const router = createRouter({
-	routes,
 	history: createWebHashHistory(),
+	routes: constantRouter
 });
 
-export const initRouter = (app: App<Element>) => {
-	app.use(router)
-}
+console.log("-----", 2)
+
+permission(router)
+
+// export const initRouter = (app: App<Element>) => {
+// 	app.use(router)
+// }
 
 export default router;

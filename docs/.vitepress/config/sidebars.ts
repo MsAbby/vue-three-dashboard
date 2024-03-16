@@ -23,26 +23,30 @@ export const sidebar = {
             {
                 text: "项目配置",
                 items: [
-                    { text: '环境变量配置', link: '/page/sidebar/guide/introduce/introduce' },
-                    { text: '配置', link: '/page/sidebar/guide/introduce/introduce' },
-                    { text: '安装', link: '/page/sidebar/guide/introduce/introduce' },
+                    { text: '权限控制', link: '/page/sidebar/guide/config/permission' },
                 ]
-            }
+            },
+            {
+                text: '组件',
+                items: [
+                    {
+                        text: "pinia",
+                        link: '/page/sidebar/guide/component/pinia'
+                    },
+                    {
+                        text: "面包屑",
+                        link: '/page/sidebar/guide/component/breadcrumb'
+                    },
+                    {
+                        text: "tab标签",
+                        link: '/page/sidebar/guide/component/tab'
+                        
+                    },
+                ]
+            },
         ]
     },
-    {
-        text: '组件',
-        items: [
-            {
-                text: "面包屑",
-                link: '/page/sidebar/guide/component/breadcrumb'
-            },
-            {
-                text: "tab标签",
-                link: '/page/sidebar/guide/component/tab'
-                
-            },
-        ]
-    }
+    
+   
 ]
 }

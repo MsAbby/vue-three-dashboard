@@ -1,4 +1,9 @@
+/*
+ * @description: 动态路由
+ * RouteRecordRaw：属于类型定义， 是 Vue Router 4.x 中新增的类型，用于定义路由配置。它是一个 TypeScript 类型
+ */
 
+import { RouteRecordRaw } from "vue-router";
 import homeRouter from './menus/home'
 import billboardsRouter from './menus/billboards'
 import projectManageRouter from './menus/project'
@@ -18,6 +23,20 @@ let allRoutes = [
   ...[echartsRouter],
   ...[tableRouter],
   ...[healthRouter]
-
 ]
-export default allRoutes
+
+// 导出动态路由
+export const dynamicRoutes: Array<RouteRecordRaw> = [
+	{
+		path: '/layout',
+		name: 'layout',
+		component: () => import('@/layout/index.vue'),
+		children: [
+			{
+				path: '/welcome',
+				name: 'welcome',
+				component: () => import('@/views/welcome/index.vue'),
+			},
+		].concat(allRoutes)
+	},
+]
