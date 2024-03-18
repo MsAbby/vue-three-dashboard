@@ -97,7 +97,11 @@ router.beforeEach(async (to, from, next) => {
 ````
 
 
-12. 解决router.beforeEach()动态加载路由出现死循环问题
+12. addRouter动态添加的路由存在内存里面的（就像vue的根实例，axios的实例,router的实例），刷新就没了，所以刷新后必须要重新执行添加路由。
+> 解决方法：
++ 1、如果保持以过滤路由是否存在作为判断，那过滤路由就不能存在session里，而是存在js的某个变量里（比如vux的state），使得刷新页面后一起重新来过。
++ 2、或者定义个变量标记来判断
+
 
 
 

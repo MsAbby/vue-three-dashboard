@@ -29,11 +29,12 @@ let allRoutes = [
 export const dynamicRoutes: Array<RouteRecordRaw> = [
 	{
 		path: '/dashboard',
-		name: 'Dashboard',
+		name: 'dashboard',
 		component: () => import('@/layout/index.vue'),
 		meta: {
             title: '首页',
             icon: "Home",
+			permission: "dashboard",
         },
 		children: [
 			{
@@ -41,6 +42,11 @@ export const dynamicRoutes: Array<RouteRecordRaw> = [
 				name: 'welcome',
 				permission: "welcome",
 				component: () => import('@/views/welcome/index.vue'),
+				meta: {
+					title: '欢迎页',
+					icon: 'icon-code',
+					permission: "welcome",
+				},
 			},
 		].concat(allRoutes)
 	},

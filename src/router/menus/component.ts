@@ -1,10 +1,10 @@
 const componentRouter = {
   path: '/component',
   name: 'component',
-  permission: "component",
   meta: {
     title: '组件',
     icon: 'icon-code',
+    permission: "component",
   },
   children: [
     {
@@ -15,6 +15,7 @@ const componentRouter = {
       meta: {
         title: '日期控件',
         icon: 'icon-code',
+        permission: "date",
       },
     },
   ]

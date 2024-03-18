@@ -28,7 +28,7 @@ export const usePermissionRouterStore = defineStore('permissionRouterStore', {
             const finallyRoutes = [];
             routerList.forEach(item => {
                 // 有权限
-                if (item.permission && apiRouterList.includes(item.permission)) {
+                if (item.meta.permission && apiRouterList.includes(item.meta.permission)) {
                     // 路由有children, 需要再次循环
                     if (item.children) {
                         item.children = this.mapRouterList(item.children, apiRouterList)
@@ -48,7 +48,7 @@ export const usePermissionRouterStore = defineStore('permissionRouterStore', {
             return new Promise((resolve) => {
                 let apiRouterList = JSON.parse(JSON.stringify(routes));
                 // 进行递归解析, apiRouterList后端获取的权限列表["权限1", "权限2"]
-                const res = this.mapRouterList(dynamicRoutes[0].children, apiRouterList);
+                const res = this.mapRouterList(dynamicRoutes, apiRouterList);
                 console.log("++++", res)
                 // 得到权限路由
                 this.permissionRoutes = res;

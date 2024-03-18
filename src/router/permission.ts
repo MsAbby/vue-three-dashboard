@@ -33,11 +33,11 @@ export const permission = (router => {
             const menus= result.permission.menus;
             // 获取最终权限路由
             const accessRoutes = await permissionRouterStore.setFilterRoutes(menus);
-            console.log("resultresultresult", accessRoutes)
             // 动态挂载路由
             accessRoutes.forEach((item) => {
-                router.addRoute(item)
+                router.addRoutes(item)
             })
+            console.log("resultresultresult", accessRoutes, router)
             console.log("+++++++", to)
             next({...to, replace:true})
         }

@@ -2,30 +2,30 @@
 const echartsRouter = {
   path: '/echarts',
   name: 'echarts',
-  permission: "echarts",
   meta: {
     title: '图表',
     icon: 'icon-code',
+    permission: "echarts",
   },
   children: [
     {
       path: '/demo-one',
       name: 'echarts-demo-one',
-      permission: "echarts-demo-one",
       component: () => import('@/views/echarts/demo-one.vue'),
       meta: {
         title: '案例一',
         icon: 'icon-code',
+        permission: "echarts-demo-one",
       },
       children: [
         {
           path: '/demo-one-1',
           name: 'echarts-demo-one-1',
-          permission: "'echarts-demo-one-1",
           component: () => import('@/views/echarts/demo0.vue'),
           meta: {
             title: '案例-',
             icon: 'icon-code',
+            permission: "'echarts-demo-one-1",
           },
         }
       ]

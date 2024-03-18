@@ -30,13 +30,11 @@ app.config.globalProperties.$echarts = echarts;
 // 挂载moment
 app.config.globalProperties.$moment = moment;
 
-console.log("------------------------", 1, router)
-
 setupAtnd(app)
 app.use(pinia)
 app.use(VCalendar, {})
 // 使用路由
 app.use(router)
-app.mount("#app")
+// app.mount("#app")
 // isReady不接受任何参数。若路由器完成了初始化导航，会立即解析Promise
-// router.isReady().then(() => app.mount("#app"))
+router.isReady().then(() => app.mount("#app"))

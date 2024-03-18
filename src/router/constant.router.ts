@@ -19,15 +19,6 @@ export const constantRouter: RouteRecordRaw[] = [
 		redirect: '/dashboard' 
 	},
 	{
-		path: '/dashboard',
-		name: 'Dashboard',
-		component: () => import('@/layout/index.vue'),
-		meta: {
-            title: '首页',
-            icon: "Home",
-        },
-	},
-	{
 		path: "/login",
 		name: "login",
 		component: () => import('@/views/login/index.vue'),
