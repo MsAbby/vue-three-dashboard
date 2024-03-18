@@ -1,38 +1,50 @@
 
-import axios from "axios";
-import { Router, RouteRecordRaw } from "vue-router";
-import { useRouterStore } from "../store/router";
+/**
+ * 获取后端路由数组，动态挂载路由permission.ts
+ */
+import { usePermissionRouterStore } from "../store/router";
+import { useUserInfoStore } from "../store/user";
 
+// 引入进度条
+import NProgress from 'nprogress';
+import'nprogress/nprogress.css'
 
-// 权限验证
+// 固定路径
 const loginPath = "/login";
-const defaultPath = '/';
 
-export const permission = (router: Router) => {
-        // 路由跳转
-        router.beforeEach(async (to, from, next) => {
-            //   if (storage.get('token')) {
+export const permission = (router => {
+    // 路由跳转
+    router.beforeEach(async (to, from, next) => {
+        NProgress.start();
+        next();
 
-            // 如果是登录页面
-            if (to.path === loginPath) {
-                next(defaultPath);
-            }
-            // 非登录页面
-            else {
-                console.log("111mmm=========")
-                // 1. 处理用户权限，筛选出需要添加的权限
-                useRouterStore().setFilterRoutes(router);
-                
-                // 添加完动态路由之后，需要在进行一次主动跳转
-                return next(to.path);
-            }
-        
-            //   } else {
-            //     if (whiteList.includes(to.path)) {
-            //       next()
-            //     } else {
-            //       next({ path: loginPath, query: { redirect: to.fullPath } })
-            //     }
-            //   }
+        const permissionRouterStore = usePermissionRouterStore();
+        const userInfoStore = useUserInfoStore();
+
+        // 如果是登录
+        if (to.path === loginPath) {
+            NProgress.done();
+            next(loginPath);
+        }
+        // // 非登录
+        else {
+            // 获取接口路由
+            const result: any = await userInfoStore.getUserInfo();
+            const menus= result.permission.menus;
+            // 获取最终权限路由
+            const accessRoutes = await permissionRouterStore.setFilterRoutes(menus);
+            console.log("resultresultresult", accessRoutes)
+            // 动态挂载路由
+            accessRoutes.forEach((item) => {
+                router.addRoute(item)
+            })
+            console.log("+++++++", to)
+            next({...to, replace:true})
+        }
     });
-};
+
+    router.afterEach(() => {
+        NProgress.done()
+    })
+})
+

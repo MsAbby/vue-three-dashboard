@@ -3,11 +3,30 @@
  * 基础路由
  * RouteRecordRaw：属于类型定义， 是 Vue Router 4.x 中新增的类型，用于定义路由配置。它是一个 TypeScript 类型
  */
-import { RouteRecordRaw } from "vue-router";
+import { RouteRecordRaw, _RouteRecordBase } from "vue-router";
 
+// 解决 RouteRecordRaw 没有hidden属性
+declare module 'vue-router'{
+    interface _RouteRecordBase {
+        hidden?: boolean
+    }
+}
+  
 // 导出静态路由
 export const constantRouter: RouteRecordRaw[] = [
-	{ path: '/', redirect: '/login' },
+	{
+		path: '/',
+		redirect: '/dashboard' 
+	},
+	{
+		path: '/dashboard',
+		name: 'Dashboard',
+		component: () => import('@/layout/index.vue'),
+		meta: {
+            title: '首页',
+            icon: "Home",
+        },
+	},
 	{
 		path: "/login",
 		name: "login",
@@ -18,7 +37,10 @@ export const constantRouter: RouteRecordRaw[] = [
 		name: "404",
 		component: () => import("@/views/errorPages/404.vue"),
 	},
+	{
+		// 此写法解决动态路由页面刷新的 warning 警告
+        path: '/:pathMatch(.*)*',
+        component: () => import('@/views/errorPages/404.vue'),
+        hidden: true
+    },
 ];
-
-// 白名单(路径)
-export const whiteRouterList = ["/login", "/404"];

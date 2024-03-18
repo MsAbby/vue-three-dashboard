@@ -59,3 +59,45 @@ const theme = {
 
 8. pinia 和store一样刷新就没了
 
+
+9. 关于 vue-router 和main.js 和app.vue 的关系
+> 在Vue.js项目中，vue-router是用来管理单页面应用中视图的路由系统。main.js是项目的入口文件，通常会在这个文件中配置Vue实例以及相关的全局配置，如插件、路由等。App.vue是一个Vue组件，通常作为应用的根组件，包含了整个应用的页面结构。
+
++ 关系概述：
+
++ + main.js 中通过 new Vue() 创建Vue实例，并引入 vue-router 实例。
+
++ + main.js 中还会注册全局组件，如 App.vue。
+
++ + App.vue 包含了顶级布局和其他页面组件的插槽，用来渲染当前路由对应的视图。
+
+10. vue-router 4.x 没有hidden属性
+
+11. 报错： pinia.js?v=e5cb783a:1455 Uncaught Error: [🍍]: "getActivePinia()" was called but there was no active Pinia. Are you trying to use a store before calling "app.use(pinia)"?
+> 在setup()中，你可以随便使用useStore，隐含意思就是在js或别的文件中，就不能随便用了
++ 如果没有SSR, 在使用app.use(pinia)安装pinia插件后，任何useStore调用都起作用。 倒入顺序很重要，
+````
+
+import { usePermissionRouterStore } from "../store/router";
+import { useUserInfoStore } from "../store/user";
+
+const permissionRouterStore = usePermissionRouterStore();
+const userInfoStore = useUserInfoStore();
+
+<!-- 以上会报错 -->
+
+
+
+router.beforeEach(async (to, from, next) => {
+	NProgress.start();
+	const permissionRouterStore = usePermissionRouterStore();
+	const userInfoStore = useUserInfoStore();
+})
+
+````
+
+
+12. 解决router.beforeEach()动态加载路由出现死循环问题
+
+
+

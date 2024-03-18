@@ -50,7 +50,7 @@ import { reactive } from "vue";
 import { useRouter } from "vue-router";
 import { useStore } from "vuex";
 import axios from 'axios';
-import { useRouterStore } from "../../store/router";
+import { usePermissionRouterStore } from "../../store/router";
 
 const router = useRouter();
 const store = useStore();

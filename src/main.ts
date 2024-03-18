@@ -15,8 +15,6 @@ import "./assets/style/index.less";
 import VCalendar from "v-calendar";
 import "v-calendar/style.css";
 
-debugger
-
 /*
  ** 写法： app.use(router)
  ** 解释： 以前是把router 引进来，再使用, 默认导出只能导出一个
@@ -32,12 +30,13 @@ app.config.globalProperties.$echarts = echarts;
 // 挂载moment
 app.config.globalProperties.$moment = moment;
 
-console.log("-----", 1)
+console.log("------------------------", 1, router)
 
 setupAtnd(app)
 app.use(pinia)
 app.use(VCalendar, {})
 // 使用路由
 app.use(router)
+app.mount("#app")
 // isReady不接受任何参数。若路由器完成了初始化导航，会立即解析Promise
-router.isReady().then(() => app.mount("#app"))
+// router.isReady().then(() => app.mount("#app"))

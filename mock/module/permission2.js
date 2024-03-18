@@ -14,6 +14,7 @@ const permissionList2 = Mock.mock({
             userCount: "zs00123122",
             permission: {
                 menus: [
+                    "welcome",
                     "home",
                     "echarts",
                     "echarts-demo-one",

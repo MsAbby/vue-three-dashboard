@@ -24,11 +24,11 @@
  **    toRef:  针对一个响应式对象（reactive 封装）的 prop（属性）创建一个ref
  */
 import { computed, ref } from "vue";
-import { useRouterStore } from '../../store/router';
+import { usePermissionRouterStore } from '../../store/router';
 import SubMenu from "./sub-menu.vue";
 
 // 路由store
-const routerStore = useRouterStore();
+const routerStore = usePermissionRouterStore();
 
 const props = defineProps({
 	collapsed: Boolean
@@ -39,6 +39,7 @@ const openKeys = ref<string[]>([])
 
 // computed
 const menuRouter = computed(() => {
+	console.log("+++??????", routerStore.getFilterRoutes())
 	return routerStore.getFilterRoutes();
 });
 </script>

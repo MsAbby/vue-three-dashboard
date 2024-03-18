@@ -28,13 +28,18 @@ let allRoutes = [
 // 导出动态路由
 export const dynamicRoutes: Array<RouteRecordRaw> = [
 	{
-		path: '/layout',
-		name: 'layout',
+		path: '/dashboard',
+		name: 'Dashboard',
 		component: () => import('@/layout/index.vue'),
+		meta: {
+            title: '首页',
+            icon: "Home",
+        },
 		children: [
 			{
 				path: '/welcome',
 				name: 'welcome',
+				permission: "welcome",
 				component: () => import('@/views/welcome/index.vue'),
 			},
 		].concat(allRoutes)
