@@ -15,39 +15,28 @@ import healthRouter from './menus/health'
 
 // ...[homeRouter]： 为了解决ts语法报错（必须具有返回迭代器的 Symbol.iterator 方法”）
 let allRoutes = [
-  ...[homeRouter],
-  ...[billboardsRouter],
-  ...[projectManageRouter],
-  ...[demandManageRouter],
-  ...[componentRouter],
-  ...[echartsRouter],
-  ...[tableRouter],
-  ...[healthRouter]
+	...[homeRouter],
+	...[billboardsRouter],
+	...[projectManageRouter],
+	...[demandManageRouter],
+	...[componentRouter],
+	...[echartsRouter],
+	...[tableRouter],
+	...[healthRouter]
 ]
 
 // 导出动态路由
 export const dynamicRoutes: Array<RouteRecordRaw> = [
 	{
-		path: '/dashboard',
-		name: 'dashboard',
+		path: "/layout",
 		component: () => import('@/layout/index.vue'),
+		redirect: "/home",
+		name: "Layout",
 		meta: {
-            title: '首页',
-            icon: "Home",
-			permission: "dashboard",
-        },
-		children: [
-			{
-				path: '/welcome',
-				name: 'welcome',
-				permission: "welcome",
-				component: () => import('@/views/welcome/index.vue'),
-				meta: {
-					title: '欢迎页',
-					icon: 'icon-code',
-					permission: "welcome",
-				},
-			},
-		].concat(allRoutes)
-	},
+			title: "首页",
+			icon: "icon-code",
+			permission: "home",
+		},
+		children: allRoutes,
+	}
 ]

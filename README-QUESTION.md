@@ -103,5 +103,8 @@ router.beforeEach(async (to, from, next) => {
 + 2、或者定义个变量标记来判断
 
 
+<!-- yarn: 安装忽略版本：yarn config set ignore-engines true  -->
+
+
 
 

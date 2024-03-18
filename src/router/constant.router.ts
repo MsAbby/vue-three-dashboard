@@ -15,23 +15,38 @@ declare module 'vue-router'{
 // 导出静态路由
 export const constantRouter: RouteRecordRaw[] = [
 	{
-		path: '/',
-		redirect: '/dashboard' 
+		path: "/login",
+		name: "Login",
+		component: () => import('@/views/login/index.vue'),
+		meta: {
+			title: "登录"
+		},
+		hidden: true
 	},
 	{
-		path: "/login",
-		name: "login",
-		component: () => import('@/views/login/index.vue'),
+		path: '/',
+		component: () => import('@/layout/index.vue'),
+		redirect: '/welcome',
+		children: [{
+			path: 'welcome',
+			name: 'Welcome',
+			component: () => import('@/views/welcome/index.vue'),
+			meta: {
+				title: '欢迎页',
+				icon: 'icon-code',
+			},
+		}]
 	},
 	{
 		path: "/404",
 		name: "404",
 		component: () => import("@/views/errorPages/404.vue"),
+		hidden: true
 	},
-	{
-		// 此写法解决动态路由页面刷新的 warning 警告
-        path: '/:pathMatch(.*)*',
-        component: () => import('@/views/errorPages/404.vue'),
-        hidden: true
-    },
+	// {
+	// 	// 此写法解决动态路由页面刷新的 warning 警告
+    //     path: '/:pathMatch(.*)*',
+    //     component: () => import('@/views/errorPages/404.vue'),
+    //     hidden: true
+    // },
 ];

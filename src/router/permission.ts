@@ -16,30 +16,34 @@ export const permission = (router => {
     // 路由跳转
     router.beforeEach(async (to, from, next) => {
         NProgress.start();
-        next();
-
         const permissionRouterStore = usePermissionRouterStore();
         const userInfoStore = useUserInfoStore();
 
         // 如果是登录
         if (to.path === loginPath) {
-            NProgress.done();
             next(loginPath);
+            NProgress.done();
         }
-        // // 非登录
+        // 非登录
         else {
-            // 获取接口路由
-            const result: any = await userInfoStore.getUserInfo();
-            const menus= result.permission.menus;
-            // 获取最终权限路由
-            const accessRoutes = await permissionRouterStore.setFilterRoutes(menus);
-            // 动态挂载路由
-            accessRoutes.forEach((item) => {
-                router.addRoutes(item)
-            })
-            console.log("resultresultresult", accessRoutes, router)
-            console.log("+++++++", to)
-            next({...to, replace:true})
+            try {
+                // 获取接口路由
+                const result: any = await userInfoStore.getUserInfo();
+                const menus= result.permission.menus;
+                // 获取最终权限路由
+                const accessRoutes = await permissionRouterStore.setFilterRoutes(menus);
+
+                // 动态挂载路由
+                accessRoutes.forEach((item) => {
+                    router.addRoute(item)
+                })
+                router.options.routes = accessRoutes
+                
+                console.log("+++++++---------", to, router)
+                next({...to, replace:true})
+            } catch (error) {
+                console.log(error)
+            }
         }
     });
 

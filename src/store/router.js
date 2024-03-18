@@ -49,12 +49,10 @@ export const usePermissionRouterStore = defineStore('permissionRouterStore', {
                 let apiRouterList = JSON.parse(JSON.stringify(routes));
                 // 进行递归解析, apiRouterList后端获取的权限列表["权限1", "权限2"]
                 const res = this.mapRouterList(dynamicRoutes, apiRouterList);
-                console.log("++++", res)
                 // 得到权限路由
                 this.permissionRoutes = res;
                 // 得到所有路由
                 this.routes = constantRouter.concat(res);
-                console.log("this.permissionRoutes", this.permissionRoutes)
                 resolve(res)
             })
         }
