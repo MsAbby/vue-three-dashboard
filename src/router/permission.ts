@@ -36,7 +36,7 @@ export const permission = (router => {
                     const menus= result.permission.menus;
                     // 获取最终权限路由
                     const accessRoutes = await permissionRouterStore.setFilterRoutes(menus);
-                    // 动态挂载路由
+                    // 动态挂载路由: addRoute 每次加一个，加多个代表多个一级菜单
                     accessRoutes.forEach((item) => {
                         router.addRoute(item)
                     })
