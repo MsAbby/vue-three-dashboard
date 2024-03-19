@@ -3,11 +3,12 @@
 -->
 <template>
 	<div>
-		<a-breadcrumb>
+		1111
+		<!-- <a-breadcrumb>
             <a-breadcrumb-item v-for="item in menuRouter" :key="item.path">
                 <router-link :to="{ name: item.name }">{{ item.meta && item.meta.title }}</router-link>
             </a-breadcrumb-item>
-		</a-breadcrumb>
+		</a-breadcrumb> -->
 	</div>
 </template>
 <script lang="ts" setup name="Breadcrumb">

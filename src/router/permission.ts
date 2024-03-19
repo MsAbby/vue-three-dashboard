@@ -21,26 +21,30 @@ export const permission = (router => {
 
         // 如果是登录
         if (to.path === loginPath) {
-            next(loginPath);
+            // 跳出循环, 进入登录页面
+            next();
             NProgress.done();
         }
         // 非登录
         else {
             try {
-                // 获取接口路由
-                const result: any = await userInfoStore.getUserInfo();
-                const menus= result.permission.menus;
-                // 获取最终权限路由
-                const accessRoutes = await permissionRouterStore.setFilterRoutes(menus);
-
-                // 动态挂载路由
-                accessRoutes.forEach((item) => {
-                    router.addRoute(item)
-                })
-                router.options.routes = accessRoutes
-                
-                console.log("+++++++---------", to, router)
-                next({...to, replace:true})
+                // 先判断路由是否存在，防止重复加载，进入无限循环（很重要）
+                const accessRoutesList = permissionRouterStore.getFilterRoutes;
+                if (accessRoutesList === null || accessRoutesList.length === 0) {
+                    // 获取接口路由
+                    const result: any = await userInfoStore.getUserInfo();
+                    const menus= result.permission.menus;
+                    // 获取最终权限路由
+                    const accessRoutes = await permissionRouterStore.setFilterRoutes(menus);
+                    // 动态挂载路由
+                    accessRoutes.forEach((item) => {
+                        router.addRoute(item)
+                    })
+                    next({...to, replace:true})
+                } else {
+                    // 跳出循环, 进入对应页面
+                    next();
+                }
             } catch (error) {
                 console.log(error)
             }

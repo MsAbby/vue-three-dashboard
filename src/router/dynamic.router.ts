@@ -30,7 +30,6 @@ export const dynamicRoutes: Array<RouteRecordRaw> = [
 	{
 		path: "/layout",
 		component: () => import('@/layout/index.vue'),
-		redirect: "/home",
 		name: "Layout",
 		meta: {
 			title: "首页",

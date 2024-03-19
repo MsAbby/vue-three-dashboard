@@ -102,7 +102,56 @@ router.beforeEach(async (to, from, next) => {
 + 1、如果保持以过滤路由是否存在作为判断，那过滤路由就不能存在session里，而是存在js的某个变量里（比如vux的state），使得刷新页面后一起重新来过。
 + 2、或者定义个变量标记来判断
 
+13. beforeEach 动态添加路由无限循环了为啥？？？
++ to: 即将路由的地址
++ form: 当前的路由地址，也就是马上要离开的地址
++ next(): 执行进入下一个路由
++ next(false): 禁止进入下一个路由
++ next('/login'): 路由到/login地址
 
+> 路由到相同地址的死循环
+
+````js
+// 1. 因为没登录，isLogin为null，这时候通过next("/login")就会重定向到登录页面
+// 2. 重定向到登录页面后，这时候isLogin还是空，那么就要继续重定向登录页面，于是出现了死循环 
+if (isLogin) {
+	next()
+} else {
+	next("/login")
+}
+
+// 解决方案
+if (isLogin) {
+	next()
+} else {
+	// 如果是登录页面，直接next()跳转
+	if (to.path === "/login") {
+		next()
+	}
+	// 非登录页面，重定向，由路由到登录页面
+	else {
+		next("/login")
+	}
+}
+````
+
+> 动态加载路由表出现的死循环(对的)
+
++ 1. 在beforeEach()中都会获取路由表存入store，然后从store取出动态加入此路由表。但每次路由之前都会重新添加路由表，每次添加完路由表当前默认路径是首页（to.path显示内容）而非登陆页面，页面会自动跳转到首页，但是如果这时候通过next(’/login’)跳转到登录页面，那么就会重新路由，在路由前又开始重新添加路由表，然后当前路径是首页，这时候又要跳转到登录页面因此就会出现死循环。
+
+
+````js
+// 解决方案： 这时候我们就不能反复加载路由表，加个判断条件就行了。
+router.beforeEach(async (to, from, next) => {
+	// 动态挂载路由
+	if (dynamicRoutes === null || dynamicRoutes.length === 0) {
+		dynamicRoutes.forEach((item) => {
+			router.addRoute(item)
+		})
+	}
+	next({...to, replace:true})
+});
+````
 <!-- yarn: 安装忽略版本：yarn config set ignore-engines true  -->
 
 

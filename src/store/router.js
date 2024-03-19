@@ -15,7 +15,9 @@ export const usePermissionRouterStore = defineStore('permissionRouterStore', {
         permissionRoutes: [],
     }),
     getters: {
-        getFilterRoutes: () => this.permissionRoutes,
+        getFilterRoutes() {
+            return  this.permissionRoutes
+        }
     },
     actions: {
         /**
