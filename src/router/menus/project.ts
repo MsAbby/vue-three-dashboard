@@ -1,6 +1,7 @@
 const projectManageRouter = {
 	path: "/project",
 	name: "project",
+	component: () => import('@/layout/index.vue'),
 	meta: {
 		title: "项目管理",
 		icon: "icon-code",

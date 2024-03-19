@@ -1,6 +1,7 @@
 const tableRouter = {
 	path: "/tables",
 	name: "tables",
+	component: () => import('@/layout/index.vue'),
 	meta: {
 		title: "表格",
 		icon: "icon-code",

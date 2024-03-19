@@ -41,9 +41,11 @@ export const permission = (router => {
                         router.addRoute(item)
                     })
                     next({...to, replace:true})
+                    NProgress.done();
                 } else {
                     // 跳出循环, 进入对应页面
                     next();
+                    NProgress.done();
                 }
             } catch (error) {
                 console.log(error)

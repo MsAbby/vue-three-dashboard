@@ -19,13 +19,16 @@ const permissionList2 = Mock.mock({
                     "home",
                     "echarts",
                     "echarts-demo-one",
+                    "echarts-demo-one-1",
                     "echarts-cost",
                     "echarts-cost2",
                     "echarts-cost4",
                     "health",
                     "health-demo-one",
                     "tables",
-                    "tables-demo-one"
+                    "tables-demo-one",
+                    "cost",
+                    "echarts-cost2"
                 ]
             },
             role: {

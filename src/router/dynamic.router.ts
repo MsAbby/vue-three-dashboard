@@ -14,7 +14,7 @@ import tableRouter from './menus/table'
 import healthRouter from './menus/health'
 
 // ...[homeRouter]： 为了解决ts语法报错（必须具有返回迭代器的 Symbol.iterator 方法”）
-let allRoutes = [
+export const dynamicRoutes: Array<RouteRecordRaw> = [
 	...[homeRouter],
 	...[billboardsRouter],
 	...[projectManageRouter],
@@ -25,17 +25,37 @@ let allRoutes = [
 	...[healthRouter]
 ]
 
-// 导出动态路由
-export const dynamicRoutes: Array<RouteRecordRaw> = [
-	{
-		path: "/layout",
-		component: () => import('@/layout/index.vue'),
-		name: "Layout",
-		meta: {
-			title: "首页",
-			icon: "icon-code",
-			permission: "home",
-		},
-		children: allRoutes,
-	}
-]
+
+// 格式如下： 
+/**
+ * const router = [
+ * {
+ * 菜单一：
+ * 		path: "/父路径",
+ * 		component: () => import('@/layout/index.vue'), // layout
+ * 		meta: {}
+ * 		children: [{
+ * 			path: 'billboards1',
+ *  		name: 'billboards1',
+ * 			component: () => import('@/views/billboards/index.vue'),
+ * 			meta: {}
+ * 		}]
+ * },
+ * 菜单一：
+ * {    path: "/父路径",
+ * 		component: () => import('@/layout/index.vue'), // layout
+ * 		meta: {}
+ * 		children: [{
+ * 			path: 'billboards2',
+ *  		name: 'billboards3',
+ * 			component: () => import('@/views/billboards/index2.vue'),
+ * 			meta: {}
+ *		 },{
+ * 			path: 'billboards2',
+ *  		name: 'billboards3',
+ * 			component: () => import('@/views/billboards/index2.vue'),
+ * 			meta: {}
+ *		 }]
+ * }
+ * 
+ **/

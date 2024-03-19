@@ -1,6 +1,7 @@
 const demandManageRouter = {
   path: '/demand',
   name: 'demand',
+  component: () => import('@/layout/index.vue'),
   meta: {
     title: '需求',
     icon: 'icon-code',
