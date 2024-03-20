@@ -1,6 +1,19 @@
 <template>
 	<div class="relative-container">
-        <div class="search flex-x-between">
+        <div class="search flex-x-start">
+            <div class="right flex-x-end" style="margin-right: 30px;">
+                <a-tree-select
+                    v-model:value="searchValue"
+                    style="width: 248px"
+                    :tree-data="treeData"
+                    tree-checkable
+                    allow-clear
+                    :show-checked-strategy="true"
+                    placeholder="请选择"
+                    tree-node-filter-prop="label"
+                />
+                <a-button type="primary" class="search-btn">查询</a-button>
+            </div>
             <div class="left flex-x-start">
                 <div class="left-item item-one flex-x-start">
                     <CheckCircleFilled class="icon-filled"/>
@@ -10,10 +23,6 @@
                     <CheckCircleFilled class="icon-filled" />
                     拂拂时图
                 </div>
-            </div>
-            <div class="right flex-x-end">
-                <a-input></a-input>
-                <a-button type="primary" class="search-btn">查询</a-button>
             </div>
         </div>
         <div class="bottom-container flex-x-between">
@@ -86,7 +95,12 @@
                     :bodyStyle="{padding: '12px 16px 16px'}"
                     class="card-module"
                 >
-                    <template #extra><p>共计<span>28</span>个</p></template>
+                    <template #extra>
+                        <div class="flex-x-end">
+                            <p>共计<span>28</span>个</p>
+                            <RightOutlined style="margin-left: 12px;" />
+                        </div>
+                    </template>
                     <div class="table-container">
                         <a-table
                             :pagination="false"
@@ -104,7 +118,12 @@
                     
                     class="card-module"
                 >
-                    <template #extra><p>共计<span>28</span>个</p></template>
+                    <template #extra>
+                        <div class="flex-x-end">
+                            <p>共计<span>28</span>个</p>
+                            <a-button type="primary" style="margin-left: 12px;" size="small">更多</a-button>
+                        </div>
+                    </template>
                     <div class="table-container">
                         <a-table
                             :pagination="false"
@@ -120,11 +139,17 @@
 </template>
 <script lang="ts" setup>
 import { onMounted, ref, nextTick, getCurrentInstance, reactive} from "vue";
-import { CheckCircleFilled } from '@ant-design/icons-vue';
-import { productList } from "./index.config"
+import { CheckCircleFilled, RightOutlined } from '@ant-design/icons-vue';
+import { productList } from "./index.config";
+import { TreeSelect } from 'ant-design-vue';
 import axios from "axios";
 
 const { proxy }: any = getCurrentInstance();
+const SHOW_PARENT = TreeSelect.SHOW_PARENT;
+
+let searchValue: any = ref([]);
+
+let treeData: any = ref([]);
 // 图例列表
 let legendList: any = ref([]);
 
@@ -185,6 +210,7 @@ const getChartData = async () => {
         serviceInfo = result.data.serviceInfo;
         couplingList.value = result.data.couplingList;
         warningList.value = result.data.warningList;
+        treeData.value = result.data.searchTree;
         options.series[0].data = result.data.nodes;
         options.series[0].links = result.data.links;
         options.series[0].categories = result.data.categories;
@@ -192,9 +218,6 @@ const getChartData = async () => {
             initChart();
         })
     }
-
-    // const myChart = proxy.$echarts.init(document.getElementById('relativeChart') as HTMLCanvasElement)
-    // myChart.setOption(options)
 }
 
 const initChart = () => {
@@ -232,7 +255,8 @@ const initChart = () => {
         .left {
             .left-item {
                 width: 240px;
-                height: 46px;
+                // height: 46px;
+                height: 40px;
                 padding: 12px 20px;
                 font-size: 16px;
                 border-radius: 6px;

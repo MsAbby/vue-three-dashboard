@@ -27,7 +27,8 @@ import {
 	Divider,
 	ConfigProvider,
 	Result,
-	Card
+	Card,
+	TreeSelect
 } from "ant-design-vue";
 
 
@@ -58,7 +59,8 @@ const components = [
 	Divider,
 	ConfigProvider,
 	Result,
-	Card
+	Card,
+	TreeSelect
 ];
 
 export default function setupAtnd(app: any) {

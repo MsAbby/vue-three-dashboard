@@ -1609,19 +1609,89 @@ const relativeCharts = Mock.mock({
             },
             // 耦合信息
             "couplingList": [
-                { name: "api-sds-ffd-fdfd-dfdf-dfdfdf", yewu: "某某某某域名", number: 12},
-                { name: "api-sds-ffd-fdfd-dfdf-dfdf23", yewu: "某某某某域名", number: 112},
-                { name: "api-sds-ffd-fdfd-dvh-dfdf23", yewu: "某某某某域名", number: 112},
-                { name: "api-sds-ffd-fdfd-dfxcv-d2f23", yewu: "某某某某域名", number: 112},
-                { name: "api-sds-ffd-fdfd-dfd21-d1df23", yewu: "某某某某域名", number: 112},
+                { name: "api-sds-ffd-fdfd-dfdf-dfdfdf", yewu: "某某某某域名", number: 12 },
+                { name: "api-sds-ffd-fdfd-dfdf-dfdf23", yewu: "某某某某域名", number: 112 },
+                { name: "api-sds-ffd-fdfd-dvh-dfdf23", yewu: "某某某某域名", number: 112 },
+                { name: "api-sds-ffd-fdfd-dfxcv-d2f23", yewu: "某某某某域名", number: 112 },
+                { name: "api-sds-ffd-fdfd-dfd21-d1df23", yewu: "某某某某域名", number: 112 },
             ],
             // 警告信息
             "warningList": [
-                { name: "api-sds-ffd-fdfd-dfdf-dfdfdf", yewu: "某某某某域名", time: "2024/01/01 12:23:23"},
-                { name: "api-sds-ffd-fdfd-dfdf-dfdf23", yewu: "某某某某域名", time: "2024/01/01 12:23:23"},
-                { name: "api-sds-ffd-fdfd-dvh-dfdf23", yewu: "某某某某域名", time: "2024/01/01 12:23:23"},
-                { name: "api-sds-ffd-fdfd-dfxcv-d2f23", yewu: "某某某某域名", time: "2024/01/01 12:23:23"},
-                { name: "api-sds-ffd-fdfd-dfd21-d1df23", yewu: "某某某某域名", time: "2024/01/01 12:23:23"},
+                { name: "api-sds-ffd-fdfd-dfdf-dfdfdf", yewu: "某某某某域名", time: "2024/01/01 12:23:23" },
+                { name: "api-sds-ffd-fdfd-dfdf-dfdf23", yewu: "某某某某域名", time: "2024/01/01 12:23:23" },
+                { name: "api-sds-ffd-fdfd-dvh-dfdf23", yewu: "某某某某域名", time: "2024/01/01 12:23:23" },
+                { name: "api-sds-ffd-fdfd-dfxcv-d2f23", yewu: "某某某某域名", time: "2024/01/01 12:23:23" },
+                { name: "api-sds-ffd-fdfd-dfd21-d1df23", yewu: "某某某某域名", time: "2024/01/01 12:23:23" },
+            ],
+            // 搜索树节点
+            searchTree: [
+                {
+                    label: '嗷嗷啊啊域',
+                    value: '0-0',
+                    children: [
+                        {
+                            label: '子域名1',
+                            value: '0-0-0',
+                        },
+                    ],
+                },
+                {
+                    label: '主主主主域',
+                    value: '0-1',
+
+                    children: [
+                        {
+                            label: '子域名1',
+                            value: '0-1-0',
+                        },
+                        {
+                            label: '子域名2',
+                            value: '0-1-1',
+                        },
+                        {
+                            label: '子域名3',
+                            value: '0-1-2',
+                        },
+                    ],
+                },
+                {
+                    label: 'tttt应用域',
+                    value: '0-2',
+                    children: [
+                        {
+                            label: '子域名1',
+                            value: '0-2-0',
+                        },
+                        {
+                            label: '子域名2',
+                            value: '0-2-1',
+                        },
+                        {
+                            label: '子域名4',
+                            value: '0-2-2',
+                        },
+                    ],
+                },
+                {
+                    label: '生生应用域',
+                    value: '0-1',
+
+                    children: [
+                        {
+                            label: 'Child Node3',
+                            value: '0-1-0',
+                            disabled: true,
+                        },
+                        {
+                            label: 'Child Node4',
+                            value: '0-1-1',
+                        },
+                        {
+                            label: 'Child Node5',
+                            value: '0-1-2',
+                        },
+                    ],
+                },
             ]
         }
     }
