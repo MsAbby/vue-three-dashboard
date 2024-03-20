@@ -1,8 +1,20 @@
 import permissionList1 from "./module/permission1";
 import permissionList2 from "./module/permission2";
+import relativeCharts from "./module/product/relative";
 
 export default [
-    // 数组对象
+    {
+        url: "/api/queryRelativeCharts",
+        type: "get",
+        response: () => {
+            return relativeCharts
+        }
+    },
+    
+    /**
+     * @description 获取用户权限
+     * 数组对象
+     */
     {
         url: "/api/auth/queryUserPermission1",
         type: "get",
@@ -10,7 +22,10 @@ export default [
             return permissionList1
         }
     },
-    // menu是数组字符串
+    /**
+     * @description 获取用户权限
+     * menu是数组字符串
+     */
     {
         url: "/api/auth/queryUserPermission2",
         type: "get",

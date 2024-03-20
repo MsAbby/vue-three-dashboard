@@ -24,7 +24,6 @@
 			<!-- 右侧内容 -->
 			<a-layout-content
 				class="container"
-				:style="{ margin: '16px'}"
 			>	
 				<!-- 面包屑 -->
 				<Breadcrumb />

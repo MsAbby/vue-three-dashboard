@@ -77,6 +77,36 @@ const handelData = () => {
 					children: [
 						{
 							name: "cluster",
+							value: 3938,
+							symbolSize: 5, 
+						},
+						{
+							name: "cluster",
+							value: 3938,
+							symbolSize: 5, 
+						},
+						{
+							name: "cluster",
+							value: 3938
+						},
+						{
+							name: "cluster",
+							value: 3938
+						},
+						{
+							name: "cluster",
+							value: 3938
+						},
+						{
+							name: "cluster",
+							value: 3938
+						},
+						{
+							name: "cluster",
+							value: 3938
+						},
+						{
+							name: "cluster",
 							value: 3938
 						},
 					],
@@ -89,12 +119,48 @@ const handelData = () => {
 							name: "cluster",
 							value: 3938
 						},
+						{
+							name: "cluster",
+							value: 3938
+						},
+						{
+							name: "cluster",
+							value: 3938
+						},
+						{
+							name: "cluster",
+							value: 3938
+						},
+						{
+							name: "cluster",
+							value: 3938
+						},
+						{
+							name: "cluster",
+							value: 3938
+						},
 					],
 				},
 				{
 					name: "analytics",
 					value: 10000,
 					children: [
+						{
+							name: "cluster",
+							value: 3938
+						},
+						{
+							name: "cluster",
+							value: 3938
+						},
+						{
+							name: "cluster",
+							value: 3938
+						},
+						{
+							name: "cluster",
+							value: 3938
+						},
 						{
 							name: "cluster",
 							value: 3938
@@ -198,7 +264,7 @@ const initEcharts = () => {
           left: '7%',
           bottom: '50',
           right: '20%',
-          symbolSize: 15,
+        //   symbolSize: 8,
           label: {
             position:"bottom",
             verticalAlign: 'middle',

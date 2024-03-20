@@ -20,11 +20,11 @@ const healthRouter = {
             },
        },
        {
-        path: 'health-demo-one',
-        name: 'health-demo-two',
-        component: () => import('@/views/health/product/demo-two.vue'),
+        path: 'relative',
+        name: 'Relative',
+        component: () => import('@/views/health/relative/index.vue'),
         meta: {
-            title: '产品2',
+            title: '关系树',
             icon: 'icon-code',
             permission: "health-demo-one",
         },

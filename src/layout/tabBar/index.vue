@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<a-tabs
+		<!-- <a-tabs
 			v-model:activeKey="tabActive"
 			hide-add
 			size="small"
@@ -16,7 +16,7 @@
 				:tab="item.meta.title"
 			>
 			</a-tab-pane>
-		</a-tabs>
+		</a-tabs> -->
 	</div>
 </template>
 <script setup lang="ts" name="TabBar">

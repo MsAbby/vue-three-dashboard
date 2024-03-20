@@ -26,7 +26,8 @@ import {
 	Tabs,
 	Divider,
 	ConfigProvider,
-	Result
+	Result,
+	Card
 } from "ant-design-vue";
 
 
@@ -56,7 +57,8 @@ const components = [
 	Tabs,
 	Divider,
 	ConfigProvider,
-	Result
+	Result,
+	Card
 ];
 
 export default function setupAtnd(app: any) {
