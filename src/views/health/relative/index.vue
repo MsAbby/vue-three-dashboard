@@ -4,7 +4,7 @@
             <div class="right flex-x-end" style="margin-right: 30px;">
                 <a-tree-select
                     v-model:value="searchValue"
-                    style="width: 248px"
+                    style="width: 280px"
                     :tree-data="treeData"
                     tree-checkable
                     allow-clear
