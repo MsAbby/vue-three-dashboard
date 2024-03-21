@@ -1759,174 +1759,195 @@ const relativeChartsChildren = Mock.mock({
                 },
                 
             ],
-            "treeNode": [{
-                "name": "flare",
-                "children": [
+            "treeNodeMenu": [
                 {
-                        name: "analytics-轻武器恶趣味",
-                        value: 10000,
-                        children: [
-                            {
-                                name: "cluster",
-                                value: 3938
-                            },
-                        ],
-                    },
+                    label: "链路一",
+                    value: 1
+                },
+                {
+                    label: "链路二",
+                    value: 2
+                },
+                {
+                    label: "链路三",
+                    value: 3
+                },
+                {
+                    label: "链路四",
+                    value: 4
+                },
+                {
+                    label: "链路五",
+                    value: 5
+                },
+                {
+                    label: "链路六",
+                    value: 6
+                },
+                {
+                    label: "链路七",
+                    value: 7
+                }
+            ],
+            "treeNode": [
+            {
+                name: "flare",
+                children : [
                     {
-                        name: "analytics-1212",
-                        value: 10000,
+                        name: "analytics-api-api-apiaassads-asdsd-asdsa",
                         children: [
                             {
-                                name: "cluster",
-                                value: 3938,
-                                symbolSize: 5, 
-                            },
-                            {
-                                name: "cluster",
-                                value: 3938,
-                                symbolSize: 5, 
-                            },
-                            {
-                                name: "cluster",
-                                value: 3938
-                            },
-                            {
-                                name: "cluster",
-                                value: 3938
-                            },
-                            {
-                                name: "cluster",
-                                value: 3938
-                            },
-                            {
-                                name: "cluster",
-                                value: 3938
-                            },
-                            {
-                                name: "cluster",
-                                value: 3938
-                            },
-                            {
-                                name: "cluster",
-                                value: 3938
-                            },
-                        ],
-                    },
-                    {
-                        name: "analytics-是对的",
-                        value: 10000,
-                        children: [
-                            {
-                                name: "cluster",
-                                value: 3938
-                            },
-                            {
-                                name: "cluster",
-                                value: 3938
-                            },
-                            {
-                                name: "cluster",
-                                value: 3938
-                            },
-                            {
-                                name: "cluster",
-                                value: 3938
-                            },
-                            {
-                                name: "cluster",
-                                value: 3938
-                            },
-                            {
-                                name: "cluster",
-                                value: 3938
-                            },
-                        ],
-                    },
-                    {
-                        name: "analytics",
-                        value: 10000,
-                        children: [
-                            {
-                                name: "cluster",
-                                value: 3938
-                            },
-                            {
-                                name: "cluster",
-                                value: 3938
-                            },
-                            {
-                                name: "cluster",
-                                value: 3938
-                            },
-                            {
-                                name: "cluster",
-                                value: 3938
-                            },
-                            {
-                                name: "cluster",
-                                value: 3938
-                            },
-                        ],
-                    },
-                    {
-                        name: "data",
-                        value: 10000,
-                        children: [
-                            { name: "DataField", value: 1759 },
+                                name: "121212-ics-api-api-apiaassads-asdsd-asdsa",
+                                children: [
+                                    {
+                                        name: "sdsiaassads-asdsd-asdsa-dfdfd",
+                                        children: [
+                                            {
+                                                name: "s5646-ads-asdsd-asdsa-dfdfd",
+                                                "children": [
+                                                    {
+                                                            name: "analytics-轻武器恶趣味",
+                                                            selected: true, //当前选中
+                                                            create: "二珂",
+                                                            children: [
+                                                                {
+                                                                    name: "cluster",
+                                                                },
+                                                            ],
+                                                        },
+                                                        {
+                                                            name: "analytics-1212",
+                                                            children: [
+                                                                {
+                                                                    name: "cluster",
+                                                                    symbolSize: 5, 
+                                                                },
+                                                                {
+                                                                    name: "cluster",
+                                                                    symbolSize: 5, 
+                                                                },
+                                                                {
+                                                                    name: "cluster",
+                                                                },
+                                                                {
+                                                                    name: "cluster",
+                                                                },
+                                                                {
+                                                                    name: "cluster",
+                                                                },
+                                                                {
+                                                                    name: "cluster",
+                                                                },
+                                                                {
+                                                                    name: "cluster",
+                                                                },
+                                                                {
+                                                                    name: "cluster",
+                                                                },
+                                                            ],
+                                                        },
+                                                        {
+                                                            name: "analytics-是对的",
+                                                            children: [
+                                                                {
+                                                                    name: "cluster",
+                                                                },
+                                                                {
+                                                                    name: "cluster",
+                                                                },
+                                                                {
+                                                                    name: "cluster",
+                                                                },
+                                                                {
+                                                                    name: "cluster",
+                                                                },
+                                                                {
+                                                                    name: "cluster",
+                                                                },
+                                                                {
+                                                                    name: "cluster",
+                                                                },
+                                                            ],
+                                                        },
+                                                        {
+                                                            name: "analytics",
+                                                            children: [
+                                                                {
+                                                                    name: "cluster",
+                                                                    
+                                                                },
+                                                                {
+                                                                    name: "cluster",
+                                                                },
+                                                                {
+                                                                    name: "cluster",
+                                                                },
+                                                                {
+                                                                    name: "cluster",
+                                                                },
+                                                                {
+                                                                    name: "cluster",
+                                                                },
+                                                            ],
+                                                        },
+                                                        {
+                                                            name: "data",
+                                                            children: [
+                                                                { name: "DataField"},
+                                                            ]
+                                                        },
+                                                        {
+                                                            name: "physics",
+                                                            children: [
+                                                                { name: "DragForce"},
+                                                                { name: "GravityForce"},
+                                                            ],
+                                                        },
+                                                        {
+                                                            name: "query",
+                                                            children: [
+                                                                { name: "And" },
+                                                                { name: "Arithmetic"},
+                                                                { name: "BinaryExpression"},
+                                                            ],
+                                                        },
+                                                        {
+                                                            name: "主动鲍勃",
+                                                            children: [
+                                                                {
+                                                                    name: "cluster",
+                                                                },
+                                                                {
+                                                                    name: "graph",
+                                                                },
+                                                            ],
+                                                        },
+                                                        {
+                                                            name: "此洞鲍勃",
+                                                            children: [
+                                                                {
+                                                                    name: "cluster",
+                                                                },
+                                                            ],
+                                                        },
+                                                        {
+                                                            name: "鲍勃--撒上熟的",
+                                                            children: [
+                                                                {
+                                                                    name: "cluster",
+                                                                },
+                                                            ],
+                                                        },
+                                                    ],
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
                         ]
-                    },
-                    {
-                        name: "physics",
-                        value: 10000,
-                        children: [
-                            { name: "DragForce", value: 1082 },
-                            { name: "GravityForce", value: 1336 },
-                        ],
-                    },
-                    {
-                        name: "query",
-                        value: 10000,
-                        children: [
-                            { name: "And", value: 1027 },
-                            { name: "Arithmetic", value: 3891 },
-                            { name: "BinaryExpression", value: 2893 },
-                        ],
-                    },
-                    {
-                        name: "主动鲍勃",
-                        value: 10000,
-                        children: [
-                            {
-                                name: "cluster",
-                                value: 1027
-                            },
-                            {
-                                name: "graph",
-                                value: 3534
-                            },
-                        ],
-                    },
-                    {
-                        name: "此洞鲍勃",
-                        value: 10000,
-                        children: [
-                            {
-                                name: "cluster",
-                                value: 1027
-                            },
-                        ],
-                    },
-                    {
-                        name: "鲍勃--撒上熟的",
-                        value: 1000,
-                        children: [
-                            {
-                                name: "cluster",
-                                value: 1027
-                            },
-                        ],
-                    },
-                ],
+                    }
+                ]
+               
             }],
         }
     }

@@ -57,11 +57,20 @@
 				</div>
 				<div class="relative-chart-box">
 					<div id="relativeChart" class="relative-chart"></div>
-					<div
-						id="relativeChartTree"
-						class="relative-chart"
-						style="background-color: #fff"
-					></div>
+					<div class="flex-x-start-start relative-parent-box">
+						<a-tabs
+							v-model:activeKey="activeKey"
+							tab-position="left"
+							:style="{ width: '100px', height: '100%' }"
+							>
+							<a-tab-pane v-for="item in treeNodeMenu" :key="item.value" :tab="item.label"></a-tab-pane>
+						</a-tabs>
+						<div
+							id="relativeChartTree"
+							class="relative-chart-tree"
+							style="background-color: #fff"
+						></div>
+					</div>
 				</div>
 			</div>
 			<div class="right-container">
@@ -110,7 +119,8 @@ import { productList } from "./index.config";
 import axios from "axios";
 
 const { proxy }: any = getCurrentInstance();
-
+let activeKey = ref(1)
+let treeNodeMenu = ref([{ label: "", value: ""}]);
 // 图例列表
 let legendList: any = ref([]);
 
@@ -363,41 +373,54 @@ let optionParent = reactive({
 		{
 			type: "tree",
 			data: [],
-			top: "1%",
-			left: "7%",
-			bottom: "50",
-			right: "20%",
-			//   symbolSize: 8,
+			top: '4%',
+			left: '7%',
+			bottom: '1%',
+			right: '20%',
+			symbolSize: 7,
+			// 意思待定
+			roam:true,
 			label: {
-				position: "bottom",
-				verticalAlign: "middle",
-				align: "right",
-				fontSize: 12,
-				formatter: (params) => {
-					if (params.value) {
-						return `${params.name}  ${params.value}`;
+				position: 'top',
+				verticalAlign: 'middle',
+				align: 'right',
+				fontSize: 9,
+				formatter: function (params) {
+					console.log(params)
+					if (params.data.selected) {
+						console.log(params.data.selected)
+						let str = "当前:";
+						return `{box|${str}${params.data.name}}`;
 					} else {
-						return `${params.name}`;
+						return `${params.data.name}`;
 					}
 				},
+				rich: {
+					box: {
+						color: "#3FA7DC",
+						background: "#3FA7DC",
+					},
+				},
 			},
+			
 			//   itemStyle: {
 			// 	color: "#5AD8A6"
 			//   },
 			lineStyle: {
-				color: "#5AD8A6",
+				color: "rgba(229, 229, 229, 1)",
 			},
 			leaves: {
 				label: {
-					position: "right",
-					verticalAlign: "middle",
-					align: "left",
-				},
+				position: 'right',
+				verticalAlign: 'middle',
+				align: 'left'
+				}
 			},
 			emphasis: {
-				focus: "descendant",
+				focus: "relative",
 			},
-			expandAndCollapse: true,
+			// 节点多时是否折叠
+			expandAndCollapse: false,
 			animationDuration: 550,
 			animationDurationUpdate: 750,
 		},
@@ -416,6 +439,7 @@ const getChartData = async () => {
 	if (result.code === "000000") {
 		legendList.value = result.data.categories;
 		warningList.value = result.data.warningList;
+		treeNodeMenu.value = result.data.treeNodeMenu;
 		// 面积图1
 		const areaData1X = result.data.areaData.map((item) => {
 			return item.name;
@@ -467,7 +491,6 @@ const initChartParent = () => {
 	const chartDom = document.getElementById("relativeChartTree") as HTMLCanvasElement;
 	let myChart = proxy.$echarts.init(chartDom);
 	optionParent && myChart.setOption(optionParent);
-	console.log("1212", optionParent)
 	//随着屏幕大小调节图表
 	window.addEventListener("resize", () => {
 		setTimeout(() => {
@@ -544,15 +567,25 @@ const initChartArea2 = () => {
 		.relative-chart-box {
 			height: calc(100% - 96px);
 		}
+
+		.relative-parent-box {
+			height: 350px;
+			background: #ffffff;
+			padding: 16px 16px 16px 0;
+			border-radius: 10px;
+			.relative-chart-tree {
+				height: 100%;
+				flex: 1;
+				margin-left: 16px;
+			}
+		}
 		.relative-chart {
 			height: 350px;
 			background: #ffffff;
 			padding: 16px;
 			margin-right: 16px;
 			border-radius: 10px;
-			&:first-child {
-				margin-bottom: 16px;
-			}
+			margin-bottom: 16px;
 		}
 
 		.right-container {
