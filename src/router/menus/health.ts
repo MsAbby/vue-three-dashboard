@@ -28,6 +28,16 @@ const healthRouter = {
             icon: 'icon-code',
             permission: "health-demo-one",
         },
+      },
+      {
+        path: 'relative-children',
+        name: 'relativeChildren',
+        component: () => import('@/views/health/relativeChildren/index.vue'),
+        meta: {
+            title: '关系树子树',
+            icon: 'icon-code',
+            permission: "health-demo-one",
+        },
       }
     ]
 }

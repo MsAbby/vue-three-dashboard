@@ -1,6 +1,6 @@
 import Mock from "mockjs"
 
-const relativeCharts = Mock.mock({
+const relativeChartsChildren = Mock.mock({
     response: {
         code: "000000",
         description: "SUCCESS",
@@ -10,35 +10,35 @@ const relativeCharts = Mock.mock({
                 {
                     "id": "0",
                     "name": "Myriel",
-                    "symbolSize": 19.12381,
+                    "symbolSize": 12,
                     "value": 28.685715,
                     "category": 0
                 },
                 {
                     "id": "1",
                     "name": "Napoleon",
-                    "symbolSize": 2.6666666666666665,
+                    "symbolSize": 2,
                     "value": 4,
                     "category": 0
                 },
                 {
                     "id": "2",
                     "name": "MlleBaptistine",
-                    "symbolSize": 6.323809333333333,
+                    "symbolSize": 6,
                     "value": 9.485714,
                     "category": 1
                 },
                 {
                     "id": "3",
                     "name": "MmeMagloire",
-                    "symbolSize": 6.323809333333333,
+                    "symbolSize": 6,
                     "value": 9.485714,
                     "category": 1
                 },
                 {
                     "id": "4",
                     "name": "CountessDeLo",
-                    "symbolSize": 2.6666666666666665,
+                    "symbolSize": 2,
                     "value": 4,
                     "category": 0
                 },
@@ -87,14 +87,14 @@ const relativeCharts = Mock.mock({
                 {
                     "id": "11",
                     "name": "Valjean",
-                    "symbolSize": 66.66666666666667,
+                    "symbolSize": 14,
                     "value": 100,
                     "category": 1
                 },
                 {
                     "id": "12",
                     "name": "Marguerite",
-                    "symbolSize": 4.495239333333333,
+                    "symbolSize": 3,
                     "value": 6.742859,
                     "category": 1
                 },
@@ -122,84 +122,84 @@ const relativeCharts = Mock.mock({
                 {
                     "id": "16",
                     "name": "Tholomyes",
-                    "symbolSize": 17.295237333333333,
+                    "symbolSize": 8,
                     "value": 25.942856,
                     "category": 2
                 },
                 {
                     "id": "17",
                     "name": "Listolier",
-                    "symbolSize": 13.638097333333334,
+                    "symbolSize": 8,
                     "value": 20.457146,
                     "category": 2
                 },
                 {
                     "id": "18",
                     "name": "Fameuil",
-                    "symbolSize": 13.638097333333334,
+                    "symbolSize": 8,
                     "value": 20.457146,
                     "category": 2
                 },
                 {
                     "id": "19",
                     "name": "Blacheville",
-                    "symbolSize": 13.638097333333334,
+                    "symbolSize": 10,
                     "value": 20.457146,
                     "category": 2
                 },
                 {
                     "id": "20",
                     "name": "Favourite",
-                    "symbolSize": 13.638097333333334,
+                    "symbolSize": 8,
                     "value": 20.457146,
                     "category": 2
                 },
                 {
                     "id": "21",
                     "name": "Dahlia",
-                    "symbolSize": 13.638097333333334,
+                    "symbolSize": 6,
                     "value": 20.457146,
                     "category": 2
                 },
                 {
                     "id": "22",
                     "name": "Zephine",
-                    "symbolSize": 13.638097333333334,
+                    "symbolSize": 6,
                     "value": 20.457146,
                     "category": 2
                 },
                 {
                     "id": "23",
                     "name": "Fantine",
-                    "symbolSize": 28.266666666666666,
+                    "symbolSize": 6,
                     "value": 42.4,
                     "category": 2
                 },
                 {
                     "id": "24",
                     "name": "MmeThenardier",
-                    "symbolSize": 20.95238266666667,
+                    "symbolSize": 8,
                     "value": 31.428574,
                     "category": 7
                 },
                 {
                     "id": "25",
                     "name": "Thenardier",
-                    "symbolSize": 30.095235333333335,
+                    "symbolSize": 12,
                     "value": 45.142853,
                     "category": 7
                 },
                 {
                     "id": "26",
                     "name": "Cosette",
-                    "symbolSize": 20.95238266666667,
+                    "symbolSize": 8,
                     "value": 31.428574,
                     "category": 6
                 },
                 {
                     "id": "27",
                     "name": "Javert",
-                    "symbolSize": 31.923806666666668,
+                    "symbolSize": 9,
                     "value": 47.88571,
                     "category": 7
                 },
@@ -213,7 +213,7 @@ const relativeCharts = Mock.mock({
                 {
                     "id": "29",
                     "name": "Bamatabois",
-                    "symbolSize": 15.466666666666667,
+                    "symbolSize": 8,
                     "value": 23.2,
                     "category": 3
                 },
@@ -248,35 +248,35 @@ const relativeCharts = Mock.mock({
                 {
                     "id": "34",
                     "name": "Judge",
-                    "symbolSize": 11.809524666666666,
+                    "symbolSize": 7,
                     "value": 17.714287,
                     "category": 3
                 },
                 {
                     "id": "35",
                     "name": "Champmathieu",
-                    "symbolSize": 11.809524666666666,
+                    "symbolSize": 7,
                     "value": 17.714287,
                     "category": 3
                 },
                 {
                     "id": "36",
                     "name": "Brevet",
-                    "symbolSize": 11.809524666666666,
+                    "symbolSize": 6,
                     "value": 17.714287,
                     "category": 3
                 },
                 {
                     "id": "37",
                     "name": "Chenildieu",
-                    "symbolSize": 11.809524666666666,
+                    "symbolSize": 6,
                     "value": 17.714287,
                     "category": 3
                 },
                 {
                     "id": "38",
                     "name": "Cochepaille",
-                    "symbolSize": 11.809524666666666,
+                    "symbolSize": 6,
                     "value": 17.714287,
                     "category": 3
                 },
@@ -297,7 +297,7 @@ const relativeCharts = Mock.mock({
                 {
                     "id": "41",
                     "name": "Eponine",
-                    "symbolSize": 20.95238266666667,
+                    "symbolSize": 8,
                     "value": 31.428574,
                     "category": 7
                 },
@@ -346,14 +346,14 @@ const relativeCharts = Mock.mock({
                 {
                     "id": "48",
                     "name": "Gavroche",
-                    "symbolSize": 41.06667066666667,
+                    "symbolSize": 10,
                     "value": 61.600006,
                     "category": 8
                 },
                 {
                     "id": "49",
                     "name": "Gillenormand",
-                    "symbolSize": 13.638097333333334,
+                    "symbolSize": 6,
                     "value": 20.457146,
                     "category": 6
                 },
@@ -367,7 +367,7 @@ const relativeCharts = Mock.mock({
                 {
                     "id": "51",
                     "name": "MlleGillenormand",
-                    "symbolSize": 13.638097333333334,
+                    "symbolSize": 6,
                     "value": 20.457146,
                     "category": 6
                 },
@@ -395,7 +395,7 @@ const relativeCharts = Mock.mock({
                 {
                     "id": "55",
                     "name": "Marius",
-                    "symbolSize": 35.58095333333333,
+                    "symbolSize": 6,
                     "value": 53.37143,
                     "category": 6
                 },
@@ -409,70 +409,70 @@ const relativeCharts = Mock.mock({
                 {
                     "id": "57",
                     "name": "Mabeuf",
-                    "symbolSize": 20.95238266666667,
+                    "symbolSize": 8,
                     "value": 31.428574,
                     "category": 8
                 },
                 {
                     "id": "58",
                     "name": "Enjolras",
-                    "symbolSize": 28.266666666666666,
+                    "symbolSize": 6,
                     "value": 42.4,
                     "category": 8
                 },
                 {
                     "id": "59",
                     "name": "Combeferre",
-                    "symbolSize": 20.95238266666667,
+                    "symbolSize": 8,
                     "value": 31.428574,
                     "category": 8
                 },
                 {
                     "id": "60",
                     "name": "Prouvaire",
-                    "symbolSize": 17.295237333333333,
+                    "symbolSize": 4,
                     "value": 25.942856,
                     "category": 8
                 },
                 {
                     "id": "61",
                     "name": "Feuilly",
-                    "symbolSize": 20.95238266666667,
+                    "symbolSize": 8,
                     "value": 31.428574,
                     "category": 8
                 },
                 {
                     "id": "62",
                     "name": "Courfeyrac",
-                    "symbolSize": 24.609526666666667,
+                    "symbolSize": 6,
                     "value": 36.91429,
                     "category": 8
                 },
                 {
                     "id": "63",
                     "name": "Bahorel",
-                    "symbolSize": 22.780953333333333,
+                    "symbolSize": 2,
                     "value": 34.17143,
                     "category": 8
                 },
                 {
                     "id": "64",
                     "name": "Bossuet",
-                    "symbolSize": 24.609526666666667,
+                    "symbolSize": 5,
                     "value": 36.91429,
                     "category": 8
                 },
                 {
                     "id": "65",
                     "name": "Joly",
-                    "symbolSize": 22.780953333333333,
+                    "symbolSize": 5,
                     "value": 34.17143,
                     "category": 8
                 },
                 {
                     "id": "66",
                     "name": "Grantaire",
-                    "symbolSize": 19.12381,
+                    "symbolSize": 10,
                     "value": 28.685715,
                     "category": 8
                 },
@@ -486,28 +486,28 @@ const relativeCharts = Mock.mock({
                 {
                     "id": "68",
                     "name": "Gueulemer",
-                    "symbolSize": 19.12381,
+                    "symbolSize": 10,
                     "value": 28.685715,
                     "category": 7
                 },
                 {
                     "id": "69",
                     "name": "Babet",
-                    "symbolSize": 19.12381,
+                    "symbolSize": 12,
                     "value": 28.685715,
                     "category": 7
                 },
                 {
                     "id": "70",
                     "name": "Claquesous",
-                    "symbolSize": 19.12381,
+                    "symbolSize": 12,
                     "value": 28.685715,
                     "category": 7
                 },
                 {
                     "id": "71",
                     "name": "Montparnasse",
-                    "symbolSize": 17.295237333333333,
+                    "symbolSize": 4,
                     "value": 25.942856,
                     "category": 7
                 },
@@ -535,14 +535,14 @@ const relativeCharts = Mock.mock({
                 {
                     "id": "75",
                     "name": "Brujon",
-                    "symbolSize": 13.638097333333334,
+                    "symbolSize": 6,
                     "value": 20.457146,
                     "category": 7
                 },
                 {
                     "id": "76",
                     "name": "MmeHucheloup",
-                    "symbolSize": 13.638097333333334,
+                    "symbolSize": 6,
                     "value": 20.457146,
                     "category": 8
                 }
@@ -1596,112 +1596,342 @@ const relativeCharts = Mock.mock({
                     "name": "I"
                 }
             ],
-            // 服务信息
-            "serviceInfo": {
-                "linkNumber": 2,
-                "linkPercent": "1%",
-                "nodeMaxNumber": 4,
-                "nodeMaxPercent": "1%",
-                "serviceNumber": 5,
-                "servicePercent": "2%",
-                "cpuPercent": "70%",
-                "bingNumber": 6
-            },
-            // 耦合信息
-            "couplingList": [
-                { name: "api-sds-ffd-fdfd-dfdf-dfdfdf", yewu: "某某某某域名", number: 12 },
-                { name: "api-sds-ffd-fdfd-dfdf-dfdf23", yewu: "某某某某域名", number: 112 },
-                { name: "api-sds-ffd-fdfd-dvh-dfdf23", yewu: "某某某某域名", number: 112 },
-                { name: "api-sds-ffd-fdfd-dfxcv-d2f23", yewu: "某某某某域名", number: 112 },
-                { name: "api-sds-ffd-fdfd-dfd21-d1df23", yewu: "某某某某域名", number: 112 },
-            ],
             // 警告信息
             "warningList": [
-                { name: "api-sds-ffd-fdfd-dfdf-dfdfdf", yewu: "某某某某域名", time: "2024/01/01 12:23:23" },
-                { name: "api-sds-ffd-fdfd-dfdf-dfdf23", yewu: "某某某某域名", time: "2024/01/01 12:23:23" },
-                { name: "api-sds-ffd-fdfd-dvh-dfdf23", yewu: "某某某某域名", time: "2024/01/01 12:23:23" },
-                { name: "api-sds-ffd-fdfd-dfxcv-d2f23", yewu: "某某某某域名", time: "2024/01/01 12:23:23" },
-                { name: "api-sds-ffd-fdfd-dfd21-d1df23", yewu: "某某某某域名", time: "2024/01/01 12:23:23" },
+                { name: "api-sds-ffd-fdfd-dfdf-dfdfdf", yewu: "警告"},
+                { name: "api-sds-ffd-fdfd-dfdf-dfdf23", yewu: "失败", },
+                { name: "api-sds-ffd-fdfd-dvh-dfdf23", yewu: "成功", },
+                { name: "api-sds-ffd-fdfd-dfxcv-d2f23", yewu: "成功", },
+                { name: "api-sds-ffd-fdfd-dfd21-d1df23", yewu: "成功", },
             ],
-            // 搜索树节点
-            searchTree: [
+            // 面积图-周
+            "areaData": [
                 {
-                    label: '全部',
-                    value: 'xx',
-                    children: [
-                        {
-                            label: '嗷嗷啊啊域',
-                            value: 'ccc',
-                                children: [
-                                    {
-                                        label: '子域名1',
-                                        value: 'fff',
-                                    },
-                                ],
-                            },
-                        {
-                            label: '主主主主域',
-                            value: 'ffff',
-                            children: [
-                                {
-                                    label: '子域名1',
-                                    value: '0-0-1-0',
-                                },
-                                {
-                                    label: '子域名2',
-                                    value: '0-0-1-1',
-                                },
-                                {
-                                    label: '子域名3',
-                                    value: '0-0-1-2',
-                                },
-                            ],
-                        },
-                        {
-                            label: 'tttt应用域',
-                            value: '0-0-2',
-                            children: [
-                                {
-                                    label: '子域名1',
-                                    value: '0-0-2-0',
-                                },
-                                {
-                                    label: '子域名2',
-                                    value: '0-0-2-1',
-                                },
-                                {
-                                    label: '子域名4',
-                                    value: '0-0-2-2',
-                                },
-                            ],
-                        },
-                        {
-                            label: '生生应用域',
-                            value: '0-0-3',
-        
-                            children: [
-                                {
-                                    label: 'Child Node3',
-                                    value: '0-0-3-0',
-                                },
-                                {
-                                    label: 'Child Node4',
-                                    value: '0-0-3-1',
-                                },
-                                {
-                                    label: 'Child Node5',
-                                    value: '0-0-3-2',
-                                },
-                            ],
-                        },
-                    ],
+                    name: "2021/01/01",
+                    value: 100
+                },
+                {
+                    name: "2021/01/02",
+                    value: 200
+                },
+                {
+                    name: "2021/01/03",
+                    value: 300
+                },
+                {
+                    name: "2021/01/04",
+                    value: 500
+                },
+                {
+                    name: "2021/01/05",
+                    value: 100
+                },
+                {
+                    name: "2021/01/06",
+                    value: 900
+                },
+                {
+                    name: "2021/01/07",
+                    value: 900
+                },
+            ],
+            // 面积图-月
+            "areaDataMonth": [
+                {
+                    name: "2021/01/01",
+                    value: 100
+                },
+                {
+                    name: "2021/01/02",
+                    value: 200
+                },
+                {
+                    name: "2021/01/03",
+                    value: 300
+                },
+                {
+                    name: "2021/01/04",
+                    value: 500
+                },
+                {
+                    name: "2021/01/05",
+                    value: 100
+                },
+                {
+                    name: "2021/01/06",
+                    value: 900
+                },
+                {
+                    name: "2021/01/07",
+                    value: 900
+                },
+                {
+                    name: "2021/01/08",
+                    value: 100
+                },
+                {
+                    name: "2021/01/09",
+                    value: 200
+                },
+                {
+                    name: "2021/01/10",
+                    value: 300
+                },
+                {
+                    name: "2021/01/11",
+                    value: 500
+                },
+                {
+                    name: "2021/01/12",
+                    value: 100
+                },
+                {
+                    name: "2021/01/13",
+                    value: 900
+                },
+                {
+                    name: "2021/01/14",
+                    value: 900
+                },
+                {
+                    name: "2021/01/15",
+                    value: 500
+                },
+                {
+                    name: "2021/01/16",
+                    value: 100
+                },
+                {
+                    name: "2021/01/17",
+                    value: 900
+                },
+                {
+                    name: "2021/01/18",
+                    value: 900
+                },
+                {
+                    name: "2021/01/19",
+                    value: 100
+                },
+                {
+                    name: "2021/01/20",
+                    value: 500
+                },
+                {
+                    name: "2021/01/21",
+                    value: 600
+                },
+                {
+                    name: "2021/01/22",
+                    value: 700
+                },
+                {
+                    name: "2021/01/23",
+                    value: 800
+                },
+                {
+                    name: "2021/01/24",
+                    value: 880
+                },
+                {
+                    name: "2021/01/25",
+                    value: 910
+                },
+                {
+                    name: "2021/01/26",
+                    value: 920
+                },
+                {
+                    name: "2021/01/27",
+                    value: 1000
+                },
+                {
+                    name: "2021/01/28",
+                    value: 1100
+                },
+                {
+                    name: "2021/01/29",
+                    value: 1200
+                },
+                {
+                    name: "2021/01/30",
+                    value: 900
                 },
                 
-            ]
+            ],
+            "treeNode": [{
+                "name": "flare",
+                "children": [
+                {
+                        name: "analytics-轻武器恶趣味",
+                        value: 10000,
+                        children: [
+                            {
+                                name: "cluster",
+                                value: 3938
+                            },
+                        ],
+                    },
+                    {
+                        name: "analytics-1212",
+                        value: 10000,
+                        children: [
+                            {
+                                name: "cluster",
+                                value: 3938,
+                                symbolSize: 5, 
+                            },
+                            {
+                                name: "cluster",
+                                value: 3938,
+                                symbolSize: 5, 
+                            },
+                            {
+                                name: "cluster",
+                                value: 3938
+                            },
+                            {
+                                name: "cluster",
+                                value: 3938
+                            },
+                            {
+                                name: "cluster",
+                                value: 3938
+                            },
+                            {
+                                name: "cluster",
+                                value: 3938
+                            },
+                            {
+                                name: "cluster",
+                                value: 3938
+                            },
+                            {
+                                name: "cluster",
+                                value: 3938
+                            },
+                        ],
+                    },
+                    {
+                        name: "analytics-是对的",
+                        value: 10000,
+                        children: [
+                            {
+                                name: "cluster",
+                                value: 3938
+                            },
+                            {
+                                name: "cluster",
+                                value: 3938
+                            },
+                            {
+                                name: "cluster",
+                                value: 3938
+                            },
+                            {
+                                name: "cluster",
+                                value: 3938
+                            },
+                            {
+                                name: "cluster",
+                                value: 3938
+                            },
+                            {
+                                name: "cluster",
+                                value: 3938
+                            },
+                        ],
+                    },
+                    {
+                        name: "analytics",
+                        value: 10000,
+                        children: [
+                            {
+                                name: "cluster",
+                                value: 3938
+                            },
+                            {
+                                name: "cluster",
+                                value: 3938
+                            },
+                            {
+                                name: "cluster",
+                                value: 3938
+                            },
+                            {
+                                name: "cluster",
+                                value: 3938
+                            },
+                            {
+                                name: "cluster",
+                                value: 3938
+                            },
+                        ],
+                    },
+                    {
+                        name: "data",
+                        value: 10000,
+                        children: [
+                            { name: "DataField", value: 1759 },
+                        ]
+                    },
+                    {
+                        name: "physics",
+                        value: 10000,
+                        children: [
+                            { name: "DragForce", value: 1082 },
+                            { name: "GravityForce", value: 1336 },
+                        ],
+                    },
+                    {
+                        name: "query",
+                        value: 10000,
+                        children: [
+                            { name: "And", value: 1027 },
+                            { name: "Arithmetic", value: 3891 },
+                            { name: "BinaryExpression", value: 2893 },
+                        ],
+                    },
+                    {
+                        name: "主动鲍勃",
+                        value: 10000,
+                        children: [
+                            {
+                                name: "cluster",
+                                value: 1027
+                            },
+                            {
+                                name: "graph",
+                                value: 3534
+                            },
+                        ],
+                    },
+                    {
+                        name: "此洞鲍勃",
+                        value: 10000,
+                        children: [
+                            {
+                                name: "cluster",
+                                value: 1027
+                            },
+                        ],
+                    },
+                    {
+                        name: "鲍勃--撒上熟的",
+                        value: 1000,
+                        children: [
+                            {
+                                name: "cluster",
+                                value: 1027
+                            },
+                        ],
+                    },
+                ],
+            }],
         }
     }
 
 })
 
-export default relativeCharts
+export default relativeChartsChildren
 

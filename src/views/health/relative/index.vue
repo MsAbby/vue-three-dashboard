@@ -6,6 +6,8 @@
                     v-model:value="searchValue"
                     style="width: 280px"
                     :tree-data="treeData"
+                    :filterTreeNode="true"
+                    :maxTagCount = "2"
                     tree-checkable
                     allow-clear
                     :show-checked-strategy="true"

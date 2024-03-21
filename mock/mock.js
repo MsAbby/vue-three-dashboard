@@ -1,8 +1,16 @@
 import permissionList1 from "./module/permission1";
 import permissionList2 from "./module/permission2";
 import relativeCharts from "./module/product/relative";
+import relativeChartsChildren from "./module/product/relativeChildren";
 
 export default [
+    {
+        url: "/api/queryRelativeChartsChildren",
+        type: "get",
+        response: () => {
+            return relativeChartsChildren
+        }
+    },
     {
         url: "/api/queryRelativeCharts",
         type: "get",
