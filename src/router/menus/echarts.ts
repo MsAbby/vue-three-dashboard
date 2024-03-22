@@ -28,10 +28,11 @@ const echartsRouter = {
           title: '案例二',
           icon: 'icon-code',
           permission: "echarts-demo-one",
+          hidden: true
         },
       },
     {
-      path: '/cost',
+      path: 'cost',
       name: 'echarts-cost',
       permission: "echarts-cost",
       component: () => import('@/views/echarts/cost/index.vue'),
@@ -39,10 +40,11 @@ const echartsRouter = {
         title: '案例二',
         icon: 'icon-code',
         permission: "cost",
+        hidden: true
       },
     },
     {
-      path: '/cost2',
+      path: 'cost2',
       name: 'echarts-cost2',
       permission: "echarts-cost2",
       component: () => import('@/views/echarts/cost2/index.vue'),
@@ -50,6 +52,7 @@ const echartsRouter = {
         title: '案例三',
         icon: 'icon-code',
         permission: "echarts-cost2",
+        hidden: true
       },
     },
     {
@@ -61,6 +64,7 @@ const echartsRouter = {
         title: '案例四',
         icon: 'icon-code',
         permission: "echarts-cost2",
+        hidden: true
       },
     },
   ]

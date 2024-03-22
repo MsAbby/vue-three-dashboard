@@ -39,7 +39,6 @@ const openKeys = ref<string[]>([])
 
 // computed
 const menuRouter = computed(() => {
-	console.log("+++??????", routerStore.getFilterRoutes)
 	return routerStore.getFilterRoutes;
 });
 </script>

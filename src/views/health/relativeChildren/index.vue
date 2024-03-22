@@ -11,12 +11,12 @@
 						<div class="flex-x-between" style="width: 100%">
 							<p style="flex: 1" class="flex-x-start">
 								<img src="@/assets/image/icons/icon1.png" class="icons-img" />
-								<span style="margin-right: 40px">产品关联书</span>
+								<span style="margin-right: 20px">产品关联书</span>
 								<span>4</span>
 							</p>
 							<p style="flex: 1" class="flex-x-start">
 								<img src="@/assets/image/icons/icon2.png" class="icons-img" />
-								<span style="margin-right: 40px">业务平均想想是啊件</span>
+								<span style="margin-right: 20px">业务平均想想是啊件</span>
 								<span>3</span>
 							</p>
 						</div>
@@ -30,7 +30,7 @@
 					</div>
 					<div class="top-container flex-y-between-start">
 						<div class="flex-x-between" style="width: 100%">
-							<p style="flex: 1; margin-right: 80px" class="flex-x-start">
+							<p style="flex: 1; margin-right: 20px" class="flex-x-start">
 								<img src="@/assets/image/icons/icon4.png" class="icons-img" />
 								<span style="margin-right: 40px">某某某某（季度）</span>
 								<span>4</span>
@@ -42,7 +42,7 @@
 							</p>
 						</div>
 						<div class="flex-x-between" style="width: 100%">
-							<p style="flex: 1; margin-right: 80px" class="flex-x-start">
+							<p style="flex: 1; margin-right: 20px" class="flex-x-start">
 								<img src="@/assets/image/icons/icon1.png" class="icons-img" />
 								<span style="margin-right: 40px">某某某某某某</span>
 								<span>0.1ms</span>
@@ -361,6 +361,17 @@ let options = reactive({
 });
 
 let optionParent = reactive({
+	title: {
+		text: "关系链路图",
+		left: "left",
+		top: "top",
+		textStyle: {
+			color: "#000000",
+		},
+		subtextStyle: {
+			color: "#000000",
+		},
+	},
 	// 图示空白间距
 	grid: {
 		top: "10",
@@ -573,6 +584,7 @@ const initChartArea2 = () => {
 			background: #ffffff;
 			padding: 16px 16px 16px 0;
 			border-radius: 10px;
+			margin-right: 16px;
 			.relative-chart-tree {
 				height: 100%;
 				flex: 1;
